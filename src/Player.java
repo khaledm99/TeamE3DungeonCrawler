@@ -2,6 +2,15 @@
 public class Player extends Entity {
 
 	private int xp;
+	private String combatStatus;
+	
+	public void attack() {
+		this.combatStatus = "attack";
+	}
+	
+	public void defend() {
+		this.combatStatus = "defend";
+	}
 
 	public int getXp() {
 		return xp;
