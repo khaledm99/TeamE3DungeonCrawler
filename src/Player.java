@@ -21,11 +21,11 @@ public class Player extends Entity {
 	}
 	
 	public void moveUp(int amount) {
-		setYcoord(getYcoord() + amount);
+		setYcoord(getYcoord() - amount);
 	}
 	
 	public void moveDown(int amount) {
-		setYcoord(getYcoord() - amount);
+		setYcoord(getYcoord() + amount);
 	}
 	
 	public void moveLeft(int amount) {
