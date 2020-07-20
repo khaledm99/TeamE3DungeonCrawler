@@ -6,8 +6,8 @@ public class Userinterface {
 	
 	//
 	Entity currentEntity = new Entity();
-	Player currentPlayer = new Player();
-	
+	//Player currentPlayer = new Player();
+	Player currentPlayer;
 	
 	private int currentPlayerCoins = currentPlayer.getCoins();
 	
@@ -17,6 +17,10 @@ public class Userinterface {
 	
 	private int currentPlayerKillCount = currentPlayer.getKillCount();
 	
+	//Constructor which takes a player
+	public Userinterface(Player player) {
+		this.currentPlayer = player;
+	}
 	
 	private String[] healthBarArray = new String [12];
 	
