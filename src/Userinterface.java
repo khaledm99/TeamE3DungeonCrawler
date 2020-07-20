@@ -4,14 +4,18 @@ import java.util.Date;
 
 public class Userinterface {
 	
+	//
+	Entity currentEntity = new Entity();
+	Player currentPlayer = new Player();
 	
-	private int currentPlayerCoins = 0;
 	
-	private int currentPlayerHealth = 0;
+	private int currentPlayerCoins = currentPlayer.getCoins();
 	
-	private double currentPlayerXP = 0;
+	private int currentPlayerHealth = currentPlayer.getHp();
 	
-	private int currentPlayerKillCount = 3;
+	private double currentPlayerXP = currentPlayer.getXp();
+	
+	private int currentPlayerKillCount = currentPlayer.getKillCount();
 	
 	
 	private String[] healthBarArray = new String [12];
