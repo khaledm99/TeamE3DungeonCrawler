@@ -23,7 +23,7 @@ public class Userinterface {
 	
 	
 	
-	public Userinterface(Entity currentEntity, Player currentPlayer) {
+	public Userinterface(Player currentPlayer) {
 		this.currentPlayerCoins = currentPlayer.getCoins();
 		this.currentPlayerHealth = currentPlayer.getHp();
 		this.currentPlayerXP = currentPlayer.getXp();
