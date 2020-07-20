@@ -3,6 +3,8 @@ public class Player extends Entity {
 
 	private int xp;
 	private String combatStatus;
+	private int coins;
+	private int killCount;
 	
 	public void attack() {
 		this.combatStatus = "attack";
@@ -34,6 +36,22 @@ public class Player extends Entity {
 	
 	public void moveRight(int amount) {
 		setXcoord(getXcoord() + amount);
+	}
+
+	public int getKillCount() {
+		return killCount;
+	}
+
+	public void setKillCount(int killCount) {
+		this.killCount = killCount;
+	}
+
+	public int getCoins() {
+		return coins;
+	}
+
+	public void setCoins(int coins) {
+		this.coins = coins;
 	}
 
 }
