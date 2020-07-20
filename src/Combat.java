@@ -157,5 +157,5 @@ public class Combat {
 	//	Combat test = new Combat("goblin", 20, 20);
 	//	test.combatInit();
 	}
-}
+//}
 
