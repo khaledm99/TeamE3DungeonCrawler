@@ -13,7 +13,7 @@ public class Main {
 		player.setKillCount(0);
 		player.setLevel(1);
 		player.setName("Test Player");
-		System.out.println(player.getCoins());
+
 		Userinterface playerStats = new Userinterface(player);
 		Scanner inputScanner = new Scanner(System.in);
 		String playerInput = "";

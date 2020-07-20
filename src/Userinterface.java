@@ -7,7 +7,7 @@ public class Userinterface {
 	//
 	Entity currentEntity = new Entity();
 	//Player currentPlayer = new Player();
-	Player currentPlayer;
+	Player currentPlayer = new Player();
 	
 	private int currentPlayerCoins = currentPlayer.getCoins();
 	
@@ -21,7 +21,7 @@ public class Userinterface {
 	public Userinterface(Player player) {
 		this.currentPlayer = player;
 	}
-	
+
 	private String[] healthBarArray = new String [12];
 	
 	private String[][] currentMapRender = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
