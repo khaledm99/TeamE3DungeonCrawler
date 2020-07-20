@@ -153,9 +153,9 @@ public class Combat {
 	}
 	
 	//just for testing. pls ignore and comment out if not using
-	public static void main(String[] args) {
-		Combat test = new Combat("goblin", 20, 20);
-		test.combatInit();
+	//public static void main(String[] args) {
+	//	Combat test = new Combat("goblin", 20, 20);
+	//	test.combatInit();
 	}
 }
 
