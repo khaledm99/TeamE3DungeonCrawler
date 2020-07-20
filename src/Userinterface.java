@@ -4,36 +4,37 @@ import java.util.Date;
 
 public class Userinterface {
 	
-	//
-	Entity currentEntity = new Entity();
-	Player currentPlayer = new Player();
 	
-	
-	private int currentPlayerCoins = currentPlayer.getCoins();
-	
-	private int currentPlayerHealth = currentPlayer.getHp();
-	
-	private double currentPlayerXP = currentPlayer.getXp();
-	
-	private int currentPlayerKillCount = currentPlayer.getKillCount();
-	
-	
-	private String[] healthBarArray = new String [12];
-	
-	private String[][] currentMapRender = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".","#",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".","#",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".","#",".",".",".",".","#",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".","#",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".","#",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".","#","#","#","#","#","#",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
-		      {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}
-};
 		
+	private int currentPlayerCoins;
+	
+	private int currentPlayerHealth;
+	
+	private double currentPlayerXP;
+	
+	private int currentPlayerKillCount;
+	
+	private int currentPlayerLevel;
+	
+	
+	public Userinterface() {
+		
+	}
+	
+	
+	
+	public Userinterface(Entity currentEntity, Player currentPlayer) {
+		this.currentPlayerCoins = currentPlayer.getCoins();
+		this.currentPlayerHealth = currentPlayer.getHp();
+		this.currentPlayerXP = currentPlayer.getXp();
+		this.currentPlayerKillCount = currentPlayer.getKillCount();
+		this.currentPlayerLevel = currentPlayer.getLevel();
+	}
+
+		
+	private String[] healthBarArray = new String [12];
+
+	
 	public String[] healthBarArrayFiller (String[] healthBarArray, int nrOfHealthBars) {
 	
 			int size = healthBarArray.length;
@@ -175,6 +176,7 @@ public class Userinterface {
 		System.out.println("Player Current Status: ");
 		System.out.println("---------------------------");
 		//System.out.println("");
+		System.out.println("Player Level: " + currentPlayerLevel);
 		System.out.println("Player Healthbar: " + healthBar + " currently @ "  + currentPlayerHealth + "%");
 		System.out.println("Player XP: " + currentPlayerXP);
 		System.out.println("Player Coins: " + currentPlayerCoins + " Coins");
@@ -185,15 +187,6 @@ public class Userinterface {
 	}
 
 	
-	//TEST
-	public int getCurrentPlayerHealth() {
-		return currentPlayerHealth;
-	}
-	//TEST
-
-	public void setCurrentPlayerHealth(int currentPlayerHealth) {
-		this.currentPlayerHealth = currentPlayerHealth;
-	}
 	
 	
 
