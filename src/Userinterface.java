@@ -185,6 +185,19 @@ public class Userinterface {
 		System.out.println("---------------------------");
 		
 	}
+	
+	public void slowPrint(String s) {
+		for (int i = 0; i < s.length(); i++){
+		    System.out.print(s.charAt(i));  
+		    try {
+				Thread.sleep(5); //default 40
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("");
+	}
 
 	
 	

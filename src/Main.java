@@ -4,6 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		Start menu = new Start();
+		menu.startScreen();
+		
+		
 		Map map = new Map();
 		Player player = new Player();
 		player.setXcoord(6);
@@ -13,6 +17,7 @@ public class Main {
 		player.setKillCount(0);
 		player.setLevel(1);
 		player.setName("Test Player");
+		
 
 		Userinterface playerStats = new Userinterface(player);
 		Scanner inputScanner = new Scanner(System.in);
@@ -26,6 +31,12 @@ public class Main {
 		while (!playerInput.equals("quit")) {
 			if (playerInput.equals("stats")) {
 				playerStats.playerStepPrintOut();
+				System.out.println("Type anything to return: ");
+				inputScanner.nextLine();
+				System.out.println(map.render(player));
+				System.out.println("What would you like to do? (up, down, left, right, stats, quit) ");
+				playerInput = inputScanner.nextLine();
+				continue;
 			}
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") ) {
 				testmap = map.renderNext(player, playerInput); 
@@ -37,6 +48,6 @@ public class Main {
 			System.out.println("What would you like to do? (up, down, left, right, stats, quit) ");
 			playerInput = inputScanner.nextLine();
 		}
-		System.out.println("Finished...");
+		System.out.println("Finished");
 	}	
 }

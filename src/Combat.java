@@ -44,7 +44,7 @@ public class Combat {
 		} else if (decision == 2) {
 			System.out.println("You step back cautiously, determined to avoid trouble");
 		}
-		init.close();
+		//init.close();
 	}
 	
 	public void combatRun() {
@@ -135,8 +135,8 @@ public class Combat {
 				quit = true;
 			}
 		}
-		playerMove.close();
-		invSelc.close();
+		//playerMove.close();
+		//invSelc.close();
 		combatEnd();
 	}
 	
