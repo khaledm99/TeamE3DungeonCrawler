@@ -1,3 +1,4 @@
+import javax.sound.sampled.Clip;
 
 public class Map {
 	
@@ -18,7 +19,17 @@ public class Map {
 					      {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}
 	};
 	
-	
+	private Enemy skeletonOne = new Enemy();
+	private Combat combat;
+	private void setSkeleton() {
+		skeletonOne.setHp(10);
+		skeletonOne.setName("Skeleton");
+		skeletonOne.setDead(false);
+		skeletonOne.setGivesXP(5);
+		skeletonOne.setGivesCoin(10);
+		skeletonOne.setXcoord(12);
+		skeletonOne.setYcoord(3);
+	}
 	
 	
 	public int getWidth() {
@@ -53,21 +64,58 @@ public class Map {
 	}
 	
 	public String renderNext(Player player, String direction) {
+		this.setSkeleton();
 		if (direction.equals("up")) {
-			if (layout[player.getYcoord()-1][player.getXcoord()] != "#")
+			if (layout[player.getYcoord()-1][player.getXcoord()] != "#") {
 				player.moveUp(1);
+				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+					//audioHandler.stop(clip);
+					//clip = audioHandler.loop("/combat.wav");
+					combat = new Combat(skeletonOne, player);
+					combat.combatInit();
+					//audioHandler.stop(clip);
+					//clip = audioHandler.loop("/dungeon.wav");
+				}
+			}
 		}
 		else if (direction.equals("down")) {
-			if (layout[player.getYcoord()+1][player.getXcoord()] != "#")
+			if (layout[player.getYcoord()+1][player.getXcoord()] != "#") {
 				player.moveDown(1);
+				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
+					combat = new Combat(skeletonOne, player);
+					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
+				}	
+			}
 		}
 		else if (direction.equals("left")) {
-			if (layout[player.getYcoord()][player.getXcoord()-1] != "#")
+			if (layout[player.getYcoord()][player.getXcoord()-1] != "#") {
 				player.moveLeft(1);
+				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
+					combat = new Combat(skeletonOne, player);
+					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
+				}
+			}
 		}
 		else if (direction.equals("right")) {
-			if (layout[player.getYcoord()][player.getXcoord()+1] != "#")
+			if (layout[player.getYcoord()][player.getXcoord()+1] != "#") {
 				player.moveRight(1);
+				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
+					combat = new Combat(skeletonOne, player);
+					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
+				}
+			}
 		}
 		else {
 			return "Please input a valid direction";
