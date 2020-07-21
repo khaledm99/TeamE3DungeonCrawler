@@ -54,10 +54,8 @@ public class Combat {
 		p1.addToInv(p1, p1.getFlamingSword());
 		System.out.println("Choose your weapon...");
 		p1.getInventory();
-
 		int weaponDecision = invSelc.nextInt();
 		int weaponDamage = p1.getInvList()[weaponDecision].getDamage();
-		System.out.println(weaponDamage);
 		Random rand = new Random();
 		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack...");
 		boolean quit = false;
@@ -136,6 +134,7 @@ public class Combat {
 			}
 		}
 		playerMove.close();
+		invSelc.close();
 		combatEnd();
 	}
 	
