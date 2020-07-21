@@ -1,12 +1,19 @@
 import java.util.Scanner;
 
+import javax.sound.sampled.Clip;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
+		//audioHandler music = new audioHandler();
+		Clip clip = audioHandler.loop("/menu.wav");
+		
+		
 		Start menu = new Start();
 		menu.startScreen();
 		
+		audioHandler.stop(clip);
 		
 		Map map = new Map();
 		Player player = new Player();
@@ -23,6 +30,7 @@ public class Main {
 		Scanner inputScanner = new Scanner(System.in);
 		String playerInput = "";
 		
+		clip = audioHandler.loop("/dungeon.wav");
 		String testmap = map.render(player);
 		System.out.println(testmap);
 		System.out.println("What would you like to do? (up, down, left, right, stats, quit) ");
@@ -39,7 +47,7 @@ public class Main {
 				continue;
 			}
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") ) {
-				testmap = map.renderNext(player, playerInput); 
+				testmap = map.renderNext(player, playerInput, clip); 
 				System.out.println(testmap);
 			}
 			else {
