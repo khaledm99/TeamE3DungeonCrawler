@@ -44,7 +44,7 @@ public class Combat {
 		} else if (decision == 2) {
 			System.out.println("You step back cautiously, determined to avoid trouble");
 		}
-		//init.close();
+		init.close();
 	}
 	
 	public void combatRun() {
@@ -53,11 +53,11 @@ public class Combat {
 		Inventory p1 = new Inventory("p1");
 		p1.addToInv(p1, p1.getFlamingSword());
 		p1.getInventory();
-		System.out.println("Choose your weapon...");
-		System.out.println("Select an inventory slot (Enter one): ");
+		System.out.println("Choose your weapon..." +"\n");
+		System.out.println("Select an inventory slot (Enter one): " + "\n");
 		int weaponDecision = invSelc.nextInt();
 		int weaponDamage = p1.getInvList()[weaponDecision].getDamage();
-		
+		// invSelc.close();
 		Random rand = new Random();
 		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack...");
 		boolean quit = false;
@@ -105,13 +105,13 @@ public class Combat {
 				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses.");
 				System.out.println("The " + enemyName + " falls into a defensive position, but your careful attack finds a weak spot!");
 				System.out.println("You strike the " + enemyName + " in its weak spot, dealing 5 damage!" + "\n");
-				enemysRemainingHP -= 5;
+				enemysRemainingHP -= weaponDamage;
 			}
 			
 			else if (playermoveDecision == 3 && enemyMove == 1) {
 				System.out.println("You fall into a defensive stance, prepared to block" + "\n");
 				System.out.println("The " + enemyName + " makes a strong attack, but you deflect its blow and quickly counterstrike, dealing 5 damage!");
-				enemysRemainingHP -= 5;
+				enemysRemainingHP -= weaponDamage;
 			}
 			
 			else if (playermoveDecision == 3 && enemyMove == 2) {
@@ -135,7 +135,7 @@ public class Combat {
 				quit = true;
 			}
 		}
-		//playerMove.close();
+		// playerMove.close();
 		//invSelc.close();
 		combatEnd();
 	}
@@ -154,6 +154,7 @@ public class Combat {
 			combatPlayer.setHp(playersRemainingHP);
 			combatEnemy.setHp(0);
 			combatPlayer.setXp(combatPlayer.getXp() + combatEnemy.getGivesXP());
+			combatPlayer.setCoins(combatPlayer.getCoins() + combatEnemy.getGivesCoin());
 			combatEnemy.setDead(true);
 		}
 		if (enemysRemainingHP > 0 && playersRemainingHP > 0) {
