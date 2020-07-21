@@ -52,10 +52,12 @@ public class Combat {
 		Scanner invSelc = new Scanner(System.in);
 		Inventory p1 = new Inventory("p1");
 		p1.addToInv(p1, p1.getFlamingSword());
-		System.out.println("Choose your weapon...");
 		p1.getInventory();
+		System.out.println("Choose your weapon...");
+		System.out.println("Select an inventory slot (Enter one): ");
 		int weaponDecision = invSelc.nextInt();
 		int weaponDamage = p1.getInvList()[weaponDecision].getDamage();
+		
 		Random rand = new Random();
 		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack...");
 		boolean quit = false;
