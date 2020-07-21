@@ -15,7 +15,6 @@ public class Inventory {
 	private static Item ironSword = new Item("Iron Sword",5,20);
 	private static Item silverSword = new Item("Silver Sword",10,15);
 	private static Item flamingSword = new Item("Flaming Sword", 20, 30);
-	private Item[] weaponsList = {woodenSword, ironSword, silverSword, flamingSword};
 
 	public Inventory(String name)
 	{
@@ -32,7 +31,6 @@ public class Inventory {
 	{
 		name = toCopy.name;
 		invList = toCopy.invList;
-		weaponsList = toCopy.weaponsList;
 		invElement = toCopy.invElement;
 	}
 	
@@ -96,17 +94,58 @@ public class Inventory {
 			System.out.println(anItem.getName() + " not found within " + this.getInvName() + "'s inventory");
 		}
 	}
-	public Item[] getWeaponsList()
+	public Item getWoodenSword()
 	{
-		return weaponsList;
+		return woodenSword;
 	}
 	
+	public Item getIronSword()
+	{
+		return ironSword;
+	}
+	public Item getSilverSword()
+	{
+		return silverSword;
+	}
+	public Item getFlamingSword()
+	{
+		return flamingSword;
+	}
+	public Item getEmpty()
+	{
+		return Empty;
+	}
+	public Item[] getInvList()
+	{
+		return invList;
+	}
 	public String getInvName()
 	{
 		return this.name;
 	}
-}
-/*
+	public void getInventory()
+	{
+		int spaceLeft = 0;
+		//Output for p1 Inventory
+		for(int i = 0; i < this.invList.length; i++)
+		{
+			if (this.invList[i] == Empty)
+			{
+				spaceLeft++;
+			}
+		}
+		System.out.println("--- " + this.getInvName() + "'s Inventory ---");
+		for(int i = 0; i< this.invList.length;i++)
+		{
+			if (this.invList[i].getName() != "Empty")
+			{
+				System.out.println("** " + this.invList[i].getName() + " |Damage: " + this.invList[i].getDamage()+" Duribililty: "
+			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
+			}
+		}
+		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
+	}
+
 	public static void main(String[] args)
 	{
 		
@@ -120,25 +159,6 @@ public class Inventory {
 		p1.dropFromInv(p1,1);
 		
 		int spaceLeft = 0;
-		//Output for p1 Inventory
-		for(int i = 0; i < p1.invList.length; i++)
-		{
-			if (p1.invList[i] == Empty)
-			{
-				spaceLeft++;
-			}
-		}
-		System.out.println("--- " + p1.getInvName() + "'s Inventory ---");
-		for(int i = 0; i< p1.invList.length;i++)
-		{
-			if (p1.invList[i].getName() != "Empty")
-			{
-				System.out.println("** " + p1.invList[i].getName() + " |Damage: " + p1.invList[i].getDamage()+" Duribililty: "
-			+ p1.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
-			}
-		}
-		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
-		//end of p1 Inventory
 		
 		//start of chest Inventory
 		spaceLeft = 0;
@@ -149,7 +169,7 @@ public class Inventory {
 				spaceLeft++;
 			}
 		}
-		System.out.println("--- " + chest.getInvName() + "'s Inventory ---");
+		System.out.println("--- " + chest.getInvName() + "'s Inventory ---"+"/n");
 
 		for(int i = 0; i< chest.invList.length;i++)
 		{
@@ -164,6 +184,6 @@ public class Inventory {
 		//end of chest inventory
 	
 	}
-	*/
+	
 
 

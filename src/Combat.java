@@ -48,6 +48,16 @@ public class Combat {
 	}
 	
 	public void combatRun() {
+		//adding inventory choice XL
+		Scanner invSelc = new Scanner(System.in);
+		Inventory p1 = new Inventory("p1");
+		p1.addToInv(p1, p1.getFlamingSword());
+		System.out.println("Choose your weapon...");
+		p1.getInventory();
+
+		int weaponDecision = invSelc.nextInt();
+		int weaponDamage = p1.getInvList()[weaponDecision].getDamage();
+		System.out.println(weaponDamage);
 		Random rand = new Random();
 		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack...");
 		boolean quit = false;
@@ -75,8 +85,8 @@ public class Combat {
 			
 			else if (playermoveDecision == 1 && enemyMove == 2) {
 				System.out.println("You make a heavy strike against the " + enemyName);
-				System.out.println("The " + enemyName + " makes a light jab, but is overpowered by your agressive blow, taking 5 damage!");
-				enemysRemainingHP -= 5;
+				System.out.println("The " + enemyName + " makes a light jab, but is overpowered by your agressive blow, taking " + weaponDamage  +" damage!");
+				enemysRemainingHP -= weaponDamage;
 			}
 			
 			else if (playermoveDecision == 1 && enemyMove == 3) {
@@ -153,9 +163,10 @@ public class Combat {
 	}
 	
 	//just for testing. pls ignore and comment out if not using
-	//public static void main(String[] args) {
-	//	Combat test = new Combat("goblin", 20, 20);
-	//	test.combatInit();
+	public static void main(String[] args)
+	{
+		Combat test = new Combat("goblin", 20, 20);
+		test.combatInit();
 	}
-//}
+}
 
