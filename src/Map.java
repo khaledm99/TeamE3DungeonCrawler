@@ -1,3 +1,4 @@
+import javax.sound.sampled.Clip;
 
 public class Map {
 	
@@ -68,8 +69,12 @@ public class Map {
 			if (layout[player.getYcoord()-1][player.getXcoord()] != "#") {
 				player.moveUp(1);
 				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+					//audioHandler.stop(clip);
+					//clip = audioHandler.loop("/combat.wav");
 					combat = new Combat(skeletonOne, player);
 					combat.combatInit();
+					//audioHandler.stop(clip);
+					//clip = audioHandler.loop("/dungeon.wav");
 				}
 			}
 		}
@@ -77,8 +82,12 @@ public class Map {
 			if (layout[player.getYcoord()+1][player.getXcoord()] != "#") {
 				player.moveDown(1);
 				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
 					combat = new Combat(skeletonOne, player);
 					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
 				}	
 			}
 		}
@@ -86,8 +95,12 @@ public class Map {
 			if (layout[player.getYcoord()][player.getXcoord()-1] != "#") {
 				player.moveLeft(1);
 				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
 					combat = new Combat(skeletonOne, player);
 					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
 				}
 			}
 		}
@@ -95,8 +108,12 @@ public class Map {
 			if (layout[player.getYcoord()][player.getXcoord()+1] != "#") {
 				player.moveRight(1);
 				if (player.getYcoord() == (skeletonOne.getYcoord()) && player.getXcoord() == (skeletonOne.getXcoord())){
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/combat.wav");
 					combat = new Combat(skeletonOne, player);
 					combat.combatInit();
+				//	audioHandler.stop(clip);
+				//	clip = audioHandler.loop("/dungeon.wav");
 				}
 			}
 		}
