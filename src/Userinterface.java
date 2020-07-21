@@ -166,9 +166,9 @@ public class Userinterface {
 	    dateFormat = new SimpleDateFormat("kk:mm:ss");
 	
 		String healthBar = healthBarStringCreator();
-		String border_1= "######################################";
 		
-		System.out.println(border_1);
+		
+		System.out.println("---------------------------");
 		System.out.println("TIME: " +dateFormat.format(dt));
 		//System.out.println(border_2);
 		//System.out.println(border_3);
@@ -186,17 +186,29 @@ public class Userinterface {
 		
 	}
 	
-	public void slowPrint(String s) {
-		for (int i = 0; i < s.length(); i++){
-		    System.out.print(s.charAt(i));  
-		    try {
-				Thread.sleep(5); //default 40
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	public void clearConsole() {
 		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+
 	}
 
 	
