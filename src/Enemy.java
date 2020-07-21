@@ -5,7 +5,6 @@ public class Enemy extends Entity {
 	private boolean isDead;
 	private int givesXP;
 	private int givesCoin;
-	private ArrayList<Integer> moveSet = new ArrayList<Integer>();
 
 	public boolean isDead() {
 		return isDead;
@@ -21,14 +20,6 @@ public class Enemy extends Entity {
 
 	public void setGivesXP(int givesXP) {
 		this.givesXP = givesXP;
-	}
-
-	public ArrayList<Integer> getMoveSet() {
-		return moveSet;
-	}
-
-	public void setMoveSet(ArrayList<Integer> moveSet) {
-		this.moveSet = moveSet;
 	}
 
 	public int getGivesCoin() {
