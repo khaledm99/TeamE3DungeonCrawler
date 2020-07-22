@@ -166,26 +166,29 @@ public class Userinterface {
 	    dateFormat = new SimpleDateFormat("kk:mm:ss");
 	
 		String healthBar = healthBarStringCreator();
-		String border_1= "######################################";
-		
-		System.out.println(border_1);
+		System.out.println("---------------------------")
 		System.out.println("TIME: " +dateFormat.format(dt));
-		//System.out.println(border_2);
-		//System.out.println(border_3);
 		System.out.println("---------------------------");
 		System.out.println("Player Current Status: ");
 		System.out.println("---------------------------");
-		//System.out.println("");
 		System.out.println("Player Level: " + currentPlayerLevel);
 		System.out.println("Player Healthbar: " + healthBar + " currently @ "  + currentPlayerHealth + "%");
 		System.out.println("Player XP: " + currentPlayerXP);
 		System.out.println("Player Coins: " + currentPlayerCoins + " Coins");
 		System.out.println("Player Killcount: " + currentPlayerKillCount + " Kills");
-		//System.out.println("");
 		System.out.println("---------------------------");
 		
 	}
+
+
+	public void clearConsole() {
+		int consoleLines = 0;
+		while(consoleLines < 51)
+			System.out.println("");
 	
+
+	}
+
 	public void slowPrint(String s) {
 		for (int i = 0; i < s.length(); i++){
 		    System.out.print(s.charAt(i));  
