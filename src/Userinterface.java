@@ -166,7 +166,7 @@ public class Userinterface {
 	    dateFormat = new SimpleDateFormat("kk:mm:ss");
 	
 		String healthBar = healthBarStringCreator();
-		System.out.println("---------------------------")
+		System.out.println("---------------------------");
 		System.out.println("TIME: " +dateFormat.format(dt));
 		System.out.println("---------------------------");
 		System.out.println("Player Current Status: ");
@@ -183,9 +183,10 @@ public class Userinterface {
 
 	public void clearConsole() {
 		int consoleLines = 0;
-		while(consoleLines < 51)
+		while(consoleLines < 51) {
 			System.out.println("");
-	
+			consoleLines++;
+		}
 
 	}
 
