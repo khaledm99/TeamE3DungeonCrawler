@@ -44,8 +44,18 @@ public class Userinterface {
 		this.currentPlayerKillCount = currentPlayer.getKillCount();
 		this.currentPlayerLevel = currentPlayer.getLevel();
 	}
-
-
+	
+	// Default constructor
+	public Userinterface() {
+	}
+	
+	public void setPlayer(Player player) {
+		this.currentPlayerCoins = player.getCoins();
+		this.currentPlayerHealth = player.getHp();
+		this.currentPlayerXP = player.getXp();
+		this.currentPlayerKillCount = player.getKillCount();
+		this.currentPlayerLevel = player.getLevel();
+	}
 	/**
 	 * healthBarArrayFiller method. This method takes the String array healthBarArray together with the int nrOfHealthBars
 	 * and fills the healthbarArray with the corresponding number of healthbars of the players health. Then, it returns the filled

@@ -17,6 +17,23 @@ public class Enemy extends Entity {
 	private int givesXP;
 	private int givesCoin;
 
+	/**
+	 * Enemy Constructor
+	 * @param xcoord: initial x-coordinate
+	 * @param ycoord: initial y-coordinate
+	 * @param name: Enemy name
+	 */
+	public Enemy(int xcoord, int ycoord, String name) {
+		this.setHp(20);
+		this.setXcoord(xcoord);
+		this.setYcoord(ycoord);
+		this.setName(name);
+		this.setType("enemy");
+		this.setLevel(1);
+		this.isDead = false;
+		this.givesXP = 5;
+		this.givesCoin = 5;
+	}
 	// Getter method for isDead
 	public boolean isDead() {
 		return isDead;

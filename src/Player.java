@@ -16,6 +16,23 @@ public class Player extends Entity {
 	private int coins;
 	private int killCount;
 
+	/**
+	 * Player constructor.
+	 * @param xcoord: initial x-coordinate
+	 * @param ycoord: initial y-coordinate
+	 * @param name: player name
+	 */
+	public Player(int xcoord, int ycoord, String name) {
+		this.setHp(20);
+		this.setXcoord(xcoord);
+		this.setYcoord(ycoord);
+		this.setName(name);
+		this.setType("player");
+		this.setLevel(1);
+		this.coins = 5;
+		this.xp = 0;
+		this.killCount = 0;
+	}
 	// Getter method for xp
 	public int getXp() {
 		return xp;

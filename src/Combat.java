@@ -97,13 +97,13 @@ public class Combat {
 			else if (playermoveDecision == 1 && enemyMove == 3) {
 				System.out.println("You make a heavy strike against the " + enemyName + ", but they fall into a defensive block, deflecting your " + weaponName + "!" + "\n");
 				System.out.println("While off-balance, the " + enemyName + " counterstrikes you, dealing 5 damage!" + "\n");
-				playersRemainingHP -= 5;
+				playersRemainingHP -= 2;
 			}
 			
 			else if (playermoveDecision == 2 && enemyMove == 1) {
 				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses." + "\n");
 				System.out.println("However, the " + enemyName + " makes a powerful strike, overpowering you and dealing 5 damage!" + "\n");
-				playersRemainingHP -= 5;
+				playersRemainingHP -= 2;
 			}
 			
 			else if (playermoveDecision == 2 && enemyMove == 3) {
@@ -128,7 +128,7 @@ public class Combat {
 			else if (playermoveDecision == 4) {
 				System.out.println("You break off your attack and flee, having overestimated your combat abilities" + "\n");
 				System.out.println("As you turn and run, the " + enemyName + " takes the opportunity to deliver a parting blow, dealing 5 damage!" + "\n");
-				playersRemainingHP -= 5;
+				playersRemainingHP -= 2;
 				quit = true;
 			}
 			
@@ -149,10 +149,12 @@ public class Combat {
 		
 		if (playersRemainingHP == 0) {
 			System.out.println("You were defeated by the " + enemyName + "!" + "\n");
-			System.out.println(enemyName + "'s remaining hit points: " + enemysRemainingHP + "\n");
+			//System.out.println(enemyName + "'s remaining hit points: " + enemysRemainingHP + "\n");
 			System.out.println("----------------------------------------------------------");
 			player.setHp(0);
 			enemy.setHp(enemysRemainingHP);
+			System.out.println("Quitting...");
+			System.exit(0);
 		}
 		
 		if (enemysRemainingHP == 0) {
