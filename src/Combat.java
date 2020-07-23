@@ -96,13 +96,13 @@ public class Combat {
 			
 			else if (playermoveDecision == 1 && enemyMove == 3) {
 				System.out.println("You make a heavy strike against the " + enemyName + ", but they fall into a defensive block, deflecting your " + weaponName + "!" + "\n");
-				System.out.println("While off-balance, the " + enemyName + " counterstrikes you, dealing 5 damage!" + "\n");
+				System.out.println("While off-balance, the " + enemyName + " counterstrikes you, dealing 2 damage!" + "\n");
 				playersRemainingHP -= 2;
 			}
 			
 			else if (playermoveDecision == 2 && enemyMove == 1) {
 				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses." + "\n");
-				System.out.println("However, the " + enemyName + " makes a powerful strike, overpowering you and dealing 5 damage!" + "\n");
+				System.out.println("However, the " + enemyName + " makes a powerful strike, overpowering you and dealing 2 damage!" + "\n");
 				playersRemainingHP -= 2;
 			}
 			
@@ -127,7 +127,7 @@ public class Combat {
 			
 			else if (playermoveDecision == 4) {
 				System.out.println("You break off your attack and flee, having overestimated your combat abilities" + "\n");
-				System.out.println("As you turn and run, the " + enemyName + " takes the opportunity to deliver a parting blow, dealing 5 damage!" + "\n");
+				System.out.println("As you turn and run, the " + enemyName + " takes the opportunity to deliver a parting blow, dealing 2 damage!" + "\n");
 				playersRemainingHP -= 2;
 				quit = true;
 			}
@@ -161,7 +161,7 @@ public class Combat {
 			System.out.println("You have vanquished the " + enemyName + "!" + "\n");
 			System.out.println("Your remaining hit points: " + playersRemainingHP);
 			System.out.println("XP gained: " + combatEnemy.getGivesXP());
-			System.out.println("Coins gained:" + combatEnemy.getGivesCoin() + "\n");
+			System.out.println("Coins gained: " + combatEnemy.getGivesCoin() + "\n");
 			System.out.println("----------------------------------------------------------");
 			player.setHp(playersRemainingHP);
 			enemy.setHp(0);
