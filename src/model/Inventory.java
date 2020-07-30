@@ -1,4 +1,3 @@
-package model;
 //import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,7 +26,6 @@ public class Inventory {
 			invList[invElement++]=woodenSword;
 		}
 	}
-
 	
 	public Inventory(Inventory toCopy)
 	{
@@ -119,7 +117,7 @@ public class Inventory {
 	}
 	public Item[] getInvList()
 	{
-		return this.invList;
+		return invList;
 	}
 	public String getInvName()
 	{
@@ -136,11 +134,7 @@ public class Inventory {
 				spaceLeft++;
 			}
 		}
-		System.out.println("---------------------------");
-		System.out.println(this.getInvName() + "'s Inventory");
-		System.out.println ("------------------------------------------------------");
-
-
+		System.out.println("--- " + this.getInvName() + "'s Inventory ---");
 		for(int i = 0; i< this.invList.length;i++)
 		{
 			if (this.invList[i].getName() != "Empty")
@@ -149,11 +143,9 @@ public class Inventory {
 			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
 			}
 		}
-		System.out.println("------------------------------------------------------");
-
-	//	System.out.println("Inventory Slots Remaining: " + (spaceLeft));
+		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
 	}
-/*
+
 	public static void main(String[] args)
 	{
 		
@@ -190,7 +182,7 @@ public class Inventory {
 		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
 	}
 		//end of chest inventory
-	*/
+	
 	}
 	
 
