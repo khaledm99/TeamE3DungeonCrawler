@@ -16,6 +16,7 @@ package model;
 public class Enemy extends Entity {
 	
 	private boolean isDead;
+	private int mapLevel;
 	private int givesXP;
 	private int givesCoin;
 
@@ -25,7 +26,8 @@ public class Enemy extends Entity {
 	 * @param ycoord: initial y-coordinate
 	 * @param name: Enemy name
 	 */
-	public Enemy(int xcoord, int ycoord, String name) {
+	public Enemy(int xcoord, int ycoord, int mapLevel, String name) {
+		this.setMapLevel(mapLevel);
 		this.setHp(20);
 		this.setXcoord(xcoord);
 		this.setYcoord(ycoord);
@@ -60,7 +62,14 @@ public class Enemy extends Entity {
 	public int getGivesCoin() {
 		return givesCoin;
 	}
-
+	
+	public int getMapLevel() {
+		return mapLevel;
+	}
+	
+	public void setMapLevel(int mapLevel) {
+		this.mapLevel = mapLevel;
+	}
 	// Setter method for givesCoin
 	public void setGivesCoin(int givesCoin) {
 		this.givesCoin = givesCoin;

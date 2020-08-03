@@ -1,8 +1,18 @@
+/**
+ * Classname: Main
+ * 
+ * Version: 0
+ * 
+ * Author: Khaled Mograbee
+ * 
+ * Description: Runs the main loop of the game
+ *
+ */
 package application;
+import java.io.IOException;
 import java.util.Scanner;
 
-import javax.sound.sampled.Clip;
-
+import model.Enemy;
 import model.Map;
 import model.Player;
 import model.Userinterface;
@@ -11,48 +21,54 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//audioHandler music = new audioHandler();
-		//Clip clip = audioHandler.loop("/menu.wav");
+		// Creates a new player object and sets its stats
+		Player player = new Player(6,8,"Player");
 		
+		// Creates a new enemy object and sets its stats
+		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
-		Start menu = new Start();
-		menu.startScreen();
+		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		
-		//audioHandler.stop(clip);
-		
-		Map map = new Map();
-		Player player = new Player();
-		player.setXcoord(6);
-		player.setYcoord(8);
-		player.setCoins(15);
-		player.setHp(20);
-		player.setKillCount(0);
-		player.setLevel(1);
-		player.setName("Test Player");
-		
-
-		Userinterface playerStats = new Userinterface(player);
+		// Displays the start screen
+		//Start menu = new Start();
+		//menu.startScreen();
+		//playerStats.clearConsole();
+			
+		Map map = new Map(); // Creates the map
+		try {
+			map.readMap("resource/test.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// Initializes a scanner for player input
 		Scanner inputScanner = new Scanner(System.in);
 		String playerInput = "";
 		
-		//clip = audioHandler.loop("/dungeon.wav");
-		String testmap = map.render(player);
+		// Renders the map and prompts for user input
+		String testmap = map.render(player, skeletonOne);
+		//System.out.println(map.getName());
 		System.out.println(testmap);
 		System.out.println("What would you like to do? (up, down, left, right, stats, quit) ");
 		playerInput = inputScanner.nextLine();
+		playerStats.clearConsole();
 		
-		while (playerInput != "quit") {
+		// This loop either moves the player and re-displays the map, displays the stats window, or quits depending on user input
+		while (!playerInput.equals("quit")) {
 			if (playerInput.equals("stats")) {
+				playerStats.clearConsole();
+				playerStats.setPlayer(player);
 				playerStats.playerStepPrintOut();
 				System.out.println("Type anything to return: ");
 				inputScanner.nextLine();
-				System.out.println(map.render(player));
+				playerStats.clearConsole();
+				System.out.println(map.render(player, skeletonOne));
 				System.out.println("What would you like to do? (up, down, left, right, stats, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
-			}
+			} 
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") ) {
-				testmap = map.renderNext(player, playerInput); 
+				playerStats.clearConsole();
+				testmap = map.renderNext(player, skeletonOne, playerInput); 
 				System.out.println(testmap);
 			}
 			else {

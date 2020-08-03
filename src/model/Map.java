@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Classname: Map
  * 
@@ -16,7 +22,7 @@ public class Map {
 	
 	private int width;
 	private int height;
-	private String name;
+	private int level;
 	// Map layout is stored in a nested array where each "cell" of the map is a single character String, to allow for a working coordinates system.
 	private String[][] layout = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
 					      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
@@ -47,12 +53,43 @@ public class Map {
 		return this.height;
 	}
 	
-	public String getName() {
-		return this.name;
+	public int getLevel() {
+		return this.level;
 	}
 	
 	public String[][] getLayout() {
 		return this.layout;
+	}
+	
+	public void readMap(String file) throws IOException {
+		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+		String is = classloader.getResource(file).getFile();
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line = reader.readLine();
+		
+		this.level = Integer.parseInt(line);
+		line = reader.readLine();
+		this.width = Integer.parseInt(line.substring(6));
+		line = reader.readLine();
+		this.height = Integer.parseInt(line.substring(7));
+		
+		this.layout = new String[height][width];
+
+		line = reader.readLine();
+		while (line != null) {
+			for (int y = 0; y < layout.length; y++) {
+			
+				int c = 0;
+				for (int x = 0; x < layout[y].length; x++) {
+					layout[y][x] = Character.toString(line.charAt(c));
+					c++;
+					}
+				line = reader.readLine();		
+			}
+		}
+		
+		
+
 	}
 	
 	/**
