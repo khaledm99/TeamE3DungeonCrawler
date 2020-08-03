@@ -7,7 +7,7 @@ public class Inventory {
 	private String name = "Unnamed Inv";	
 	private Item[] invList;
 	private int invElement = 0;
-	private int invSpace = 20;
+	private final int INVSPACE = 20;
 	private Item[] equippedList = new Item[5];
 	
 
@@ -27,6 +27,7 @@ public class Inventory {
 	private static Potion HPpotion = new Potion("HP Potion", 10, 1);
 	private static Potion staminaPotion = new Potion("Stamina Potion", 10, 1);
 	private static Potion ultraStaminaPotion = new Potion("Ultra Stamina Potion", 20, 1);
+	
 	public Potion getHPUltraPotion() {
 		return HPUltraPotion;
 	}
@@ -39,7 +40,7 @@ public class Inventory {
 	public Armor getRustyIronArmor() {
 		return rustyIronArmor;
 	}
-	public Armor getshinyIronArmor() {
+	public Armor getShinyIronArmor() {
 		return shinyIronArmor;
 	}
 	public Potion getStaminaPotion() {
@@ -92,16 +93,69 @@ public class Inventory {
 		return equippedList;
 		
 	}
+	public void equipItem(int anIndex) {
+		if (anIndex <= this.invList.length && this.invList[anIndex].getItemType() != "Empty") {
+			//System.out.println(this.invList[anIndex].getName() + " equipped");
+			if (this.invList[anIndex].getItemType() == "Weapon") {
+				if (equippedList[0] == null) {
+					equippedList[0] = this.invList[anIndex];
+				}
+				else {
+					equippedList[1] = this.invList[anIndex];
+				}
+			}
+			else if (this.invList[anIndex].getItemType() == "Armor") {
+				equippedList[2] = this.invList[anIndex];
+			}
+			else if (this.invList[anIndex].getItemType() == "Potion") {
+				if (equippedList[3] == null) {
+					equippedList[3] = this.invList[anIndex];
+				}
+				else {
+					equippedList[4] = this.invList[anIndex];
+				}
+			}
+			setEquippedList(equippedList);
+			}
+		
+		else {
+			System.out.println("Make sure you equip an Item in the list");
+		}
+	}
+	
+	public void unEquipItem(int anIndex) {
+		if (anIndex <= getEquippedList().length && getEquippedList()[anIndex] != null) {
+			equippedList[anIndex] = null;
+		}
+		setEquippedList(equippedList);
+	}
+	
+	
+	
 	
 
 	public Inventory(String name)
 	{
+		//default start inventory for p1//
 		this.name = name;
-		invList = new Item[invSpace];
+		invList = new Item[INVSPACE];
 		Arrays.fill(invList, Empty);
-		if (name == "p1") 
+		if (name != "Xavier") 
 		{
-			invList[invElement++]=woodenSword;
+			invList[invElement++] = getWoodenSword();
+			invList[invElement++] = getArmorScraps();
+			invList[invElement++] = getHPPotion();
+			invList[invElement++] = getStaminaPotion();
+		}
+		else {
+			invList[invElement++] = getFlamingSword();
+			invList[invElement++] = getShinyIronArmor();
+			invList[invElement++] = getHPUltraPotion();
+			invList[invElement++] = getSilverSword();
+			invList[invElement++] = getHPPotion();
+			invList[invElement++] = getStaminaPotion();
+			invList[invElement++] = getUltraStaminaPotion();
+			invList[invElement++] = getRustySword();
 		}
 	}
 
@@ -194,54 +248,30 @@ public class Inventory {
 		for(int i = 0; i< this.invList.length;i++)
 		{
 			if (this.invList[i].getName() != "Empty")
-			{
-				System.out.println("** " + this.invList[i].getName() + " |Damage: " + this.invList[i].getDamage()+" Duribililty: "
-			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
+				
+				if(this.invList[i].getItemType() == "Weapon"){
+					System.out.println(this.invList[i].getName() + " |Damage: " + this.invList[i].getDamage()+" Duribililty: "
+							+ this.invList[i].getDuribility() +"| In Inventory slot "+ i );
+				}
+				else if(this.invList[i].getItemType() == "Armor") {
+				System.out.println(this.invList[i].getName() + " |AP: " + this.invList[i].getArmorHP()+" Duribililty: "
+			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i);
+				}
+				else if(this.invList[i].getItemType() == "Potion") {
+					System.out.println(this.invList[i].getName() + " |HP: " + this.invList[i].getPotionHP()+" Duribililty: "
+							+ this.invList[i].getDuribility() +"| In Inventory slot "+ i);
+				}
+		}
+		System.out.println("------------------------------------------------------");
+		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
+		System.out.println("Equipped Items");
+		System.out.println("------------------------------------------------------");
+		//Displays the currently equipped list
+		for(int i = 0; i < getEquippedList().length; i++) {
+			if(getEquippedList()[i] != null) {
+			System.out.println(getEquippedList()[i].getName() + " Index slot: " + i);
 			}
 		}
 		System.out.println("------------------------------------------------------");
-
-	//	System.out.println("Inventory Slots Remaining: " + (spaceLeft));
 	}
-/*
-	public static void main(String[] args)
-	{
-		
-		Inventory p1 = new Inventory("p1");
-		Inventory chest = new Inventory("chest");
-		chest.addToInv(chest,flamingSword);
-		p1.addToInv(p1,flamingSword);
-		p1.addToInv(p1,silverSword);
-		p1.addToInv(p1,ironSword);	
-		chest.giveToInv(p1, ironSword);
-		p1.dropFromInv(p1,1);
-		
-		int spaceLeft = 0;
-		
-		//start of chest Inventory
-		spaceLeft = 0;
-		for(int i = 0; i < chest.invList.length; i++)
-		{
-			if (chest.invList[i] == Empty)
-			{
-				spaceLeft++;
-			}
-		}
-		System.out.println("--- " + chest.getInvName() + "'s Inventory ---"+"/n");
-
-		for(int i = 0; i< chest.invList.length;i++)
-		{
-			if (chest.invList[i].getName() != "Empty")
-			{
-				System.out.println("** " + chest.invList[i].getName() + " |Damage: " + chest.invList[i].getDamage()+" Duribililty: "
-			+ chest.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
-			}
-		}
-		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
-	}
-		//end of chest inventory
-	*/
-	}
-	
-
-
+}
