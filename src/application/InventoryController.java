@@ -596,6 +596,10 @@ public class InventoryController extends GameController{
           			DmgLabelSlot0.setText(" HP  ");
           			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
           		}
+        		else if (p1.getInvList()[0].getItemType() == "Armor") {
+          			DmgLabelSlot0.setText(" AP  ");
+          			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+          		}
         	}
         });
         Slot0.setOnMouseExited((event) -> {
@@ -628,6 +632,10 @@ public class InventoryController extends GameController{
           			DmgLabelSlot1.setText(" HP  ");
           			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
           		}
+          		else if (p1.getInvList()[1].getItemType() == "Armor") {
+          			DmgLabelSlot1.setText(" AP  ");
+          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+          		}
           	}
           });
           Slot1.setOnMouseExited((event) -> {
@@ -659,6 +667,10 @@ public class InventoryController extends GameController{
             		if (p1.getInvList()[2].getItemType() == "Potion") {
               			DmgLabelSlot2.setText(" HP  ");
               			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionHP()));
+              		}
+            		else if (p1.getInvList()[2].getItemType() == "Armor") {
+              			DmgLabelSlot2.setText(" AP  ");
+              			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getArmorHP()));
               		}
             	}
             });
@@ -817,6 +829,7 @@ public class InventoryController extends GameController{
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[7]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[7].getName());
   	    			}
+  	    			
   	    			else {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[7]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[7].getName());
