@@ -1,16 +1,21 @@
 package model;
 
-
 public class Item {
-	private String name;
-	private int damage;
-	private int duribility;
+	protected String name;
+	protected int damage;
+	protected int duribility;
+	protected int armorHP;
+	protected String itemType;
+	protected int potionHP;
+	protected int value;
 	
-	public Item(String name, int damage, int duribility) 
+	public Item(String name, String type, int value, int duribility) 
 	{
 		this.name = name;
-		this.damage = damage;
+		this.value = value;
 		this.duribility = duribility;
+		this.itemType = type;
+		
 	}
 	
 	public Item ()
@@ -38,6 +43,10 @@ public class Item {
 		return damage;
 	}
 	
+	public String getItemType() {
+		return itemType;
+	}
+	
 	public void setDamage(int damage) 
 	{
 		this.damage = damage;
@@ -52,7 +61,21 @@ public class Item {
 		this.duribility = duribility;
 	}
 	
+	public void setArmorHP(int armorHP) {
+		this.armorHP = armorHP;
+	}
 	
+	public int getArmorHP() {
+		return armorHP;
+	}
+	
+	public int getPotionHP() {
+		return potionHP;
+	}
+	
+	public void setPotionHP(int potionHP) {
+		this.potionHP = potionHP;
+	}
 }
 	
 	

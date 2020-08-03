@@ -1,5 +1,4 @@
 package model;
-
 //import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,14 +8,18 @@ public class Inventory {
 	private Item[] invList;
 	private int invElement = 0;
 	private int invSpace = 20;
+	private Item[] equippedList = new Item[5];
 	
+
 	
 	//The following are various items to be picked up in-game
 	private static Item Empty = new Item();
-	private static Item woodenSword = new Item("Wooden Sword",1,10);
-	private static Item ironSword = new Item("Iron Sword",5,20);
-	private static Item silverSword = new Item("Silver Sword",10,15);
-	private static Item flamingSword = new Item("Flaming Sword", 20, 30);
+	private static Weapon woodenSword = new Weapon("Wooden Sword",1,10);
+	private static Weapon ironSword = new Weapon("Iron Sword",5,20);
+	private static Weapon silverSword = new Weapon("Silver Sword",10,15);
+	private static Weapon flamingSword = new Weapon("Flaming Sword", 20, 30);
+	private static Armor leatherArmor = new Armor("Leather Armor", 10, 10);
+	private static Potion HPpotion = new Potion("HP Potion", 10, 1);
 
 	public Inventory(String name)
 	{
@@ -28,6 +31,7 @@ public class Inventory {
 			invList[invElement++]=woodenSword;
 		}
 	}
+
 	
 	public Inventory(Inventory toCopy)
 	{
@@ -96,20 +100,29 @@ public class Inventory {
 			System.out.println(anItem.getName() + " not found within " + this.getInvName() + "'s inventory");
 		}
 	}
-	public Item getWoodenSword()
+	
+	public Potion getHPPotion() {
+		return HPpotion;
+	}
+	public Armor getLeatherArmor()
+	{
+		return leatherArmor;
+	}
+	
+	public Weapon getWoodenSword()
 	{
 		return woodenSword;
 	}
 	
-	public Item getIronSword()
+	public Weapon getIronSword()
 	{
 		return ironSword;
 	}
-	public Item getSilverSword()
+	public Weapon getSilverSword()
 	{
 		return silverSword;
 	}
-	public Item getFlamingSword()
+	public Weapon getFlamingSword()
 	{
 		return flamingSword;
 	}
@@ -119,11 +132,19 @@ public class Inventory {
 	}
 	public Item[] getInvList()
 	{
-		return invList;
+		return this.invList;
 	}
 	public String getInvName()
 	{
 		return this.name;
+	}
+	
+	public void setEquippedList(Item[] aList) {
+		this.equippedList = aList;
+	}
+	public Item[] getEquippedList() {
+		return equippedList;
+		
 	}
 	public void getInventory()
 	{
@@ -136,7 +157,11 @@ public class Inventory {
 				spaceLeft++;
 			}
 		}
-		System.out.println("--- " + this.getInvName() + "'s Inventory ---");
+		System.out.println("---------------------------");
+		System.out.println(this.getInvName() + "'s Inventory");
+		System.out.println ("------------------------------------------------------");
+
+
 		for(int i = 0; i< this.invList.length;i++)
 		{
 			if (this.invList[i].getName() != "Empty")
@@ -145,9 +170,11 @@ public class Inventory {
 			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i + " **");
 			}
 		}
-		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
-	}
+		System.out.println("------------------------------------------------------");
 
+	//	System.out.println("Inventory Slots Remaining: " + (spaceLeft));
+	}
+/*
 	public static void main(String[] args)
 	{
 		
@@ -184,7 +211,7 @@ public class Inventory {
 		System.out.println("Inventory Slots Remaining: " + (spaceLeft));
 	}
 		//end of chest inventory
-	
+	*/
 	}
 	
 
