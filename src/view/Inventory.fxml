@@ -240,7 +240,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot0" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -267,7 +267,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot1" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -294,7 +294,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot2" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -321,7 +321,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot3" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -348,7 +348,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot4" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -379,7 +379,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot5" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -406,7 +406,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot6" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -433,7 +433,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot7" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -460,7 +460,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot8" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -487,7 +487,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot9" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -521,7 +521,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot10" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -548,7 +548,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot11" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -575,7 +575,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot12" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -602,7 +602,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot13" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -629,7 +629,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot14" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -663,7 +663,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot15" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -690,7 +690,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot16" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -717,7 +717,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot17" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -744,7 +744,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot18" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
@@ -771,7 +771,7 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot19" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
