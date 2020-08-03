@@ -6,12 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import model.Inventory;
 import model.Item;
 import model.Entity;
 
 public class InventoryController extends GameController{
+	
+		@FXML FlowPane parent;
 	
 	    @FXML
 	    private VBox VboxSlot13;
@@ -453,7 +456,12 @@ public class InventoryController extends GameController{
     	p1.addToInv(p1, p1.getFlamingSword());
     	p1.addToInv(p1, p1.getSilverSword());
     	p1.addToInv(p1, p1.getWoodenSword());
-
+    	p1.addToInv(p1, p1.getSilverSword());
+    	p1.addToInv(p1, p1.getWoodenSword());
+    	p1.addToInv(p1, p1.getIronSword());
+    	p1.addToInv(p1, p1.getFlamingSword());
+    	p1.addToInv(p1, p1.getSilverSword());
+    	p1.addToInv(p1, p1.getWoodenSword());
     	
     	/*
     	 * The code below examines the current player's inventory and sets the button label
@@ -493,7 +501,7 @@ public class InventoryController extends GameController{
         
         Slot0.setOnMouseClicked((event) -> {
         	if(Slot0.getText() != "Empty") {
-        		if (ItemObjectListView.getItems().size() <3) {
+        		if (ItemObjectListView.getItems().size() <5) {
         			ItemObjectListView.getItems().addAll(p1.getInvList()[0]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[0].getName());
   	    		 }
@@ -516,7 +524,7 @@ public class InventoryController extends GameController{
         
           Slot1.setOnAction((event) -> {
   	    	 if(Slot1.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[1]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[1].getName());
   	    		 }
@@ -537,7 +545,7 @@ public class InventoryController extends GameController{
          
           Slot2.setOnAction((event) -> {
   	    	 if(Slot2.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[2]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[2].getName());
   	    		 }
@@ -558,7 +566,7 @@ public class InventoryController extends GameController{
             
           Slot3.setOnAction((event) -> {
   	    	 if(Slot3.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[3]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[3].getName());
   	    		 }
@@ -579,7 +587,7 @@ public class InventoryController extends GameController{
            
           Slot4.setOnAction((event) -> {
   	    	 if(Slot4.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[4]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[4].getName());
   	    		 }
@@ -600,7 +608,7 @@ public class InventoryController extends GameController{
           
           Slot5.setOnAction((event) -> {
   	    	 if(Slot5.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[5]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[5].getName());
   	    		 }
@@ -621,7 +629,7 @@ public class InventoryController extends GameController{
           
           Slot6.setOnAction((event) -> {
   	    	 if(Slot6.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[6]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[6].getName());
   	    		 }
@@ -642,7 +650,7 @@ public class InventoryController extends GameController{
             
           Slot7.setOnAction((event) -> {
   	    	 if(Slot7.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[7]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[7].getName());
   	    		 }
@@ -662,7 +670,7 @@ public class InventoryController extends GameController{
             });
           Slot8.setOnAction((event) -> {
   	    	 if(Slot8.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[8]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[8].getName());
   	    		 }
@@ -683,7 +691,7 @@ public class InventoryController extends GameController{
            
           Slot9.setOnAction((event) -> {
   	    	 if(Slot9.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[9]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[9].getName());
   	    		 }
@@ -704,7 +712,7 @@ public class InventoryController extends GameController{
             
           Slot10.setOnAction((event) -> {
   	    	 if(Slot10.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[10]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[10].getName());
   	    		 }
@@ -724,7 +732,7 @@ public class InventoryController extends GameController{
             });
           Slot11.setOnAction((event) -> {
   	    	 if(Slot11.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[11]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[11].getName());
   	    		 }
@@ -744,7 +752,7 @@ public class InventoryController extends GameController{
           
           Slot12.setOnAction((event) -> {
   	    	 if(Slot12.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <3) {
+  	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[12]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[12].getName());
   	    		 }
@@ -764,7 +772,7 @@ public class InventoryController extends GameController{
           
           Slot13.setOnAction((event) -> {
    	    	 if(Slot13.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[13]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[13].getName());
   	    		 }
@@ -784,7 +792,7 @@ public class InventoryController extends GameController{
           
           Slot14.setOnAction((event) -> {
    	    	 if(Slot14.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[14]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[14].getName());
   	    		 }
@@ -804,7 +812,7 @@ public class InventoryController extends GameController{
           
           Slot15.setOnAction((event) -> {
    	    	 if(Slot15.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[15]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[15].getName());
   	    		 }
@@ -824,7 +832,7 @@ public class InventoryController extends GameController{
           
           Slot16.setOnAction((event) -> {
    	    	 if(Slot16.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[16]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[16].getName());
   	    		 }
@@ -844,7 +852,7 @@ public class InventoryController extends GameController{
           
           Slot17.setOnAction((event) -> {
    	    	 if(Slot17.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[17]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[17].getName());
   	    		 }
@@ -864,7 +872,7 @@ public class InventoryController extends GameController{
           
           Slot18.setOnAction((event) -> {
    	    	 if(Slot18.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[18]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[18].getName());
   	    		 }
@@ -884,7 +892,7 @@ public class InventoryController extends GameController{
           
           Slot19.setOnAction((event) -> {
    	    	 if(Slot19.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <3) {
+   	    		if (ItemObjectListView.getItems().size() <5) {
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[19]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[19].getName());
   	    		 }
