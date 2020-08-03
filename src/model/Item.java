@@ -21,6 +21,7 @@ public class Item {
 	public Item ()
 	{
 		this.name = "Empty";
+		this.itemType = "Empty";
 	}
 	
 	public Item(Item toCopy)
