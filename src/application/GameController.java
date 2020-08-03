@@ -23,5 +23,12 @@ public abstract class GameController {
 		return app.getP1Name();
 	}
 	
+	protected void setEquippedList(Item[] aList) {
+		app.setEquippedList(aList);
+	}
+	protected Item[] getEquippedList() {
+		return app.getEquippedList();
+	}
+	
 	
 }
