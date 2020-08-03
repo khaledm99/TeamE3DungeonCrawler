@@ -7,7 +7,7 @@ public abstract class GameController {
 	
 	public abstract void refresh();
 
-	public void setPollTrackerApp(GuiMain app) {
+	public void setGuiMainApp(GuiMain app) {
 		this.app = app;
 		refresh();
 	}

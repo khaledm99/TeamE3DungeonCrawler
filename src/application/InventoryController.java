@@ -514,18 +514,7 @@ public class InventoryController extends GameController{
     	p1.addToInv(p1, p1.getWoodenSword());
     	p1.addToInv(p1, p1.getIronSword());
     	p1.addToInv(p1, p1.getFlamingSword());
-    	p1.addToInv(p1, p1.getSilverSword());
-    	p1.addToInv(p1, p1.getWoodenSword());
-    	p1.addToInv(p1, p1.getIronSword());
-    	p1.addToInv(p1, p1.getFlamingSword());
-    	p1.addToInv(p1, p1.getSilverSword());
-    	p1.addToInv(p1, p1.getWoodenSword());
-    	p1.addToInv(p1, p1.getSilverSword());
-    	p1.addToInv(p1, p1.getWoodenSword());
-    	p1.addToInv(p1, p1.getIronSword());
-    	p1.addToInv(p1, p1.getFlamingSword());
-    	p1.addToInv(p1, p1.getSilverSword());
-    	p1.addToInv(p1, p1.getWoodenSword());
+    	
     	
     	
     	/*
@@ -1336,16 +1325,9 @@ public class InventoryController extends GameController{
 
           for(int i = 0; i < ItemObjectListView.getItems().size(); i++) {
         	 EquippedArray[i] = ItemObjectListView.getItems().get(i);
-             setEquippedList(EquippedArray);
-             
-          }
-          
-          
-	 
-
+             setEquippedList(EquippedArray);    
+          } 
     }    
-    
-    
 }
 
 

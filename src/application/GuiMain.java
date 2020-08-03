@@ -53,7 +53,7 @@ public class GuiMain extends Application {
 			TabPane root = loader.load(new FileInputStream("src/view/Inventory.fxml"));
 			GameController controller = (GameController)loader.getController();
 			controller.refresh();
-			controller.setPollTrackerApp(this);
+			controller.setGuiMainApp(this);
 			Scene scene = new Scene(root,401,900);
 			primaryStage.setScene(scene);
 			//System.out.println(primaryStage.getWidth());
