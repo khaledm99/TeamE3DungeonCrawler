@@ -18,8 +18,81 @@ public class Inventory {
 	private static Weapon ironSword = new Weapon("Iron Sword",5,20);
 	private static Weapon silverSword = new Weapon("Silver Sword",10,15);
 	private static Weapon flamingSword = new Weapon("Flaming Sword", 20, 30);
+	private static Weapon rustySword = new Weapon("Rusty Sword", 15, 5);
 	private static Armor leatherArmor = new Armor("Leather Armor", 10, 10);
+	private static Armor armorScraps = new Armor("Armor Scraps", 5, 10);
+	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 10, 15);
+	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 20, 15);
+	private static Potion HPUltraPotion = new Potion("Ultra HP Potion", 20, 1);
 	private static Potion HPpotion = new Potion("HP Potion", 10, 1);
+	private static Potion staminaPotion = new Potion("Stamina Potion", 10, 1);
+	private static Potion ultraStaminaPotion = new Potion("Ultra Stamina Potion", 20, 1);
+	public Potion getHPUltraPotion() {
+		return HPUltraPotion;
+	}
+	public Potion getUltraStaminaPotion() {
+		return ultraStaminaPotion;
+	}
+	public Armor getArmorScraps() {
+		return armorScraps;
+	}
+	public Armor getRustyIronArmor() {
+		return rustyIronArmor;
+	}
+	public Armor getshinyIronArmor() {
+		return shinyIronArmor;
+	}
+	public Potion getStaminaPotion() {
+		return staminaPotion;
+	}
+	public Potion getHPPotion() {
+		return HPpotion;
+	}
+	public Armor getLeatherArmor()
+	{
+		return leatherArmor;
+	}
+	public Weapon getRustySword() {
+		return rustySword;
+	}
+	public Weapon getWoodenSword()
+	{
+		return woodenSword;
+	}
+	
+	public Weapon getIronSword()
+	{
+		return ironSword;
+	}
+	public Weapon getSilverSword()
+	{
+		return silverSword;
+	}
+	public Weapon getFlamingSword()
+	{
+		return flamingSword;
+	}
+	public Item getEmpty()
+	{
+		return Empty;
+	}
+	public Item[] getInvList()
+	{
+		return this.invList;
+	}
+	public String getInvName()
+	{
+		return this.name;
+	}
+	
+	public void setEquippedList(Item[] aList) {
+		this.equippedList = aList;
+	}
+	public Item[] getEquippedList() {
+		return equippedList;
+		
+	}
+	
 
 	public Inventory(String name)
 	{
@@ -101,51 +174,7 @@ public class Inventory {
 		}
 	}
 	
-	public Potion getHPPotion() {
-		return HPpotion;
-	}
-	public Armor getLeatherArmor()
-	{
-		return leatherArmor;
-	}
-	
-	public Weapon getWoodenSword()
-	{
-		return woodenSword;
-	}
-	
-	public Weapon getIronSword()
-	{
-		return ironSword;
-	}
-	public Weapon getSilverSword()
-	{
-		return silverSword;
-	}
-	public Weapon getFlamingSword()
-	{
-		return flamingSword;
-	}
-	public Item getEmpty()
-	{
-		return Empty;
-	}
-	public Item[] getInvList()
-	{
-		return this.invList;
-	}
-	public String getInvName()
-	{
-		return this.name;
-	}
-	
-	public void setEquippedList(Item[] aList) {
-		this.equippedList = aList;
-	}
-	public Item[] getEquippedList() {
-		return equippedList;
-		
-	}
+
 	public void getInventory()
 	{
 		int spaceLeft = 0;
