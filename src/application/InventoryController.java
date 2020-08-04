@@ -1,5 +1,9 @@
 package application;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -484,28 +488,23 @@ public class InventoryController extends GameController{
         assert Slot8 != null : "fx:id=\"Slot8\" was not injected: check your FXML file 'Inventory.fxml'.";
         assert Slot9 != null : "fx:id=\"Slot9\" was not injected: check your FXML file 'Inventory.fxml'.";     
         assert StaminaProgressBar != null : "fx:id=\"StaminaProgressBar\" was not injected: check your FXML file 'Inventory.fxml'.";
-
+        
     } 
     @Override
     public void refresh() {
     	//the inventory set up here will be moved once we continue working on those classes
-    	//So far I set up the inventory of "Xavier" and set his HP. Ideally this is done initially in Main.
+    	//So far I set up the inventory of "Player" and set their HP.
         MaxEquippedLabel.setText("----Max Items Equipped----");
         MaxEquippedLabel.setOpacity(0);
-    	String playerName;
-    	Entity Xavier = new Entity();
-    	Xavier.setHp(10);
-    	Xavier.setName("Xavier");
-    	playerName = Xavier.getName();
-    	double healthBar = Xavier.getHp() / Double.valueOf(TotalHPLabel.getText());
-    	HealthLeftLabel.setText(Xavier.getHp() + "");
+        
+    	double healthBar = getPlayer().getHp() / Double.valueOf(TotalHPLabel.getText());
+    	HealthLeftLabel.setText(getPlayer().getHp() + "");
     	HealthBarProgressBar.setProgress(healthBar);
     	
+    	Inventory p1 = getInv();
+    	p1.setEquippedList(getEquippedList());
     	
-
-    	
-    	Inventory p1 = new Inventory(playerName);
-    	
+    	/*
     	p1.addToInv(p1, p1.getLeatherArmor());
     	p1.addToInv(p1, p1.getHPPotion());
     	p1.addToInv(p1, p1.getIronSword());
@@ -514,7 +513,7 @@ public class InventoryController extends GameController{
     	p1.addToInv(p1, p1.getWoodenSword());
     	p1.addToInv(p1, p1.getIronSword());
     	p1.addToInv(p1, p1.getFlamingSword());
-    	
+    	*/
     	
     	
     	/*
@@ -547,7 +546,7 @@ public class InventoryController extends GameController{
         int armorCount = 0;
         int weaponCount = 0;
         int potionCount = 0;
-        Item[] EquippedArray = new Item[5];
+        
         
         /*
          * The following code implements button presses and adds the type Item objects to 
@@ -558,22 +557,24 @@ public class InventoryController extends GameController{
          * Added mouse enter and exit functionality to allow user to check stats of Items
          * 
          */
-        
+       Item Empty = p1.getEmpty();
         Slot0.setOnMouseClicked((event) -> {
         	if(Slot0.getText() != "Empty") {
-        		if (ItemObjectListView.getItems().size() <5) {
-        			if (p1.getInvList()[1].getItemType() == "Weapon") {
-  	    				ItemObjectListView.getItems().add(0,p1.getInvList()[1]);
-  	        			StringEquippedListView.getItems().add(0,p1.getInvList()[1].getName());
-  	    			}
-  	    			else {
-        			ItemObjectListView.getItems().addAll(p1.getInvList()[0]);
-        			StringEquippedListView.getItems().addAll(p1.getInvList()[0].getName());
-  	    			}
-        			refresh();
-  	    		 }
-        		else {MaxEquippedLabel.setOpacity(1);}
-  	    	 }
+        		if (ItemObjectListView.getItems().size() <6) {
+        			if (p1.getInvList()[0].getItemType() == "Weapon") { 				
+  	    					ItemObjectListView.getItems().add(0,p1.getInvList()[0]);
+  	    					StringEquippedListView.getItems().add(0,p1.getInvList()[0].getName());
+  	        			
+        			}
+    			else {
+    			ItemObjectListView.getItems().addAll(p1.getInvList()[0]);
+    			StringEquippedListView.getItems().addAll(p1.getInvList()[0].getName());
+    			}
+    			refresh();
+        	}
+    		 
+    		else {MaxEquippedLabel.setOpacity(1);}
+        	}
   	     });
     	
         Slot0.setOnMouseEntered((event) -> {
@@ -597,7 +598,7 @@ public class InventoryController extends GameController{
                 
           Slot1.setOnAction((event) -> {
   	    	 if(Slot1.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[1].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[1]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[1].getName());
@@ -607,7 +608,7 @@ public class InventoryController extends GameController{
         			StringEquippedListView.getItems().addAll(p1.getInvList()[1].getName());
   	    			}
         			refresh();
-  	    		 }
+  	    		}
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
   	     });
@@ -633,7 +634,7 @@ public class InventoryController extends GameController{
          
           Slot2.setOnAction((event) -> {
   	    	 if(Slot2.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[2].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[2]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[2].getName());
@@ -669,7 +670,7 @@ public class InventoryController extends GameController{
             
           Slot3.setOnAction((event) -> {
   	    	 if(Slot3.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[3].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[3]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[3].getName());
@@ -705,7 +706,7 @@ public class InventoryController extends GameController{
            
           Slot4.setOnAction((event) -> {
   	    	 if(Slot4.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[4].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[4]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[4].getName());
@@ -741,7 +742,7 @@ public class InventoryController extends GameController{
           
           Slot5.setOnAction((event) -> {
   	    	 if(Slot5.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[5].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[5]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[5].getName());
@@ -777,7 +778,7 @@ public class InventoryController extends GameController{
           
           Slot6.setOnAction((event) -> {
   	    	 if(Slot6.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[6].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[6]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[6].getName());
@@ -813,7 +814,7 @@ public class InventoryController extends GameController{
             
           Slot7.setOnAction((event) -> {
   	    	 if(Slot7.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[7].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[7]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[7].getName());
@@ -849,7 +850,7 @@ public class InventoryController extends GameController{
             });
           Slot8.setOnAction((event) -> {
   	    	 if(Slot8.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[8].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[8]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[8].getName());
@@ -885,7 +886,7 @@ public class InventoryController extends GameController{
            
           Slot9.setOnAction((event) -> {
   	    	 if(Slot9.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[9].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[9]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[9].getName());
@@ -921,7 +922,7 @@ public class InventoryController extends GameController{
             
           Slot10.setOnAction((event) -> {
   	    	 if(Slot10.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[10].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[10]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[10].getName());
@@ -956,7 +957,7 @@ public class InventoryController extends GameController{
             });
           Slot11.setOnAction((event) -> {
   	    	 if(Slot11.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[11].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[11]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[11].getName());
@@ -991,7 +992,7 @@ public class InventoryController extends GameController{
           
           Slot12.setOnAction((event) -> {
   	    	 if(Slot12.getText() != "Empty") {
-  	    		if (ItemObjectListView.getItems().size() <5) {
+  	    		if (ItemObjectListView.getItems().size() <6) {
   	    			if (p1.getInvList()[12].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[12]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[12].getName());
@@ -1026,7 +1027,7 @@ public class InventoryController extends GameController{
           
           Slot13.setOnAction((event) -> {
    	    	 if(Slot13.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[13].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[13]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[13].getName());
@@ -1061,7 +1062,7 @@ public class InventoryController extends GameController{
           
           Slot14.setOnAction((event) -> {
    	    	 if(Slot14.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[14].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[14]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[14].getName());
@@ -1096,7 +1097,7 @@ public class InventoryController extends GameController{
           
           Slot15.setOnAction((event) -> {
    	    	 if(Slot15.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[15].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[15]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[15].getName());
@@ -1131,7 +1132,7 @@ public class InventoryController extends GameController{
           
           Slot16.setOnAction((event) -> {
    	    	 if(Slot16.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[16].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[16]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[16].getName());
@@ -1166,7 +1167,7 @@ public class InventoryController extends GameController{
           
           Slot17.setOnAction((event) -> {
    	    	 if(Slot17.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[17].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[17]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[17].getName());
@@ -1201,7 +1202,7 @@ public class InventoryController extends GameController{
           
           Slot18.setOnAction((event) -> {
    	    	 if(Slot18.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[18].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[18]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[18].getName());
@@ -1236,7 +1237,7 @@ public class InventoryController extends GameController{
           
           Slot19.setOnAction((event) -> {
    	    	 if(Slot19.getText() != "Empty") {
-   	    		if (ItemObjectListView.getItems().size() <5) {
+   	    		if (ItemObjectListView.getItems().size() <6) {
    	    			if (p1.getInvList()[19].getItemType() == "Weapon") {
   	    				ItemObjectListView.getItems().add(0,p1.getInvList()[19]);
   	        			StringEquippedListView.getItems().add(0,p1.getInvList()[19].getName());
@@ -1308,7 +1309,6 @@ public class InventoryController extends GameController{
         	  }
           }
           
-          
         //Listview "un-equipping"
           StringEquippedListView.setOnMouseClicked((event) ->  {
         	  int unEquipIndex = StringEquippedListView.getSelectionModel().getSelectedIndex();
@@ -1319,15 +1319,60 @@ public class InventoryController extends GameController{
         	  if (MaxEquippedLabel.getOpacity() == 1) {
         		  MaxEquippedLabel.setOpacity(0);
         	  }
+        	  refresh();
           });
-         
-  		//setting the equipped list in GUI main for others to use.
+          
+          
+          ArrayList<Item> EquippedArrayList = new ArrayList<Item>();
+          for(int i = 0; i < 5;i++) {
+          	EquippedArrayList.add(Empty);
+          }
+          for(int i = 0; i < ItemObjectListView.getItems().size();i++) {
+          	if (ItemObjectListView.getItems().get(i).getItemType() == "Armor") {
+          		if (EquippedArrayList.get(2) == Empty && EquippedArrayList.get(2) != ItemObjectListView.getItems().get(i)) {
+          			EquippedArrayList.set(2, ItemObjectListView.getItems().get(i));
+          		}
+          		else {
+          			EquippedArrayList.add(2, ItemObjectListView.getItems().get(i));
+          		}
+          	}
+          	else if (ItemObjectListView.getItems().get(i).getItemType() == "Weapon") {
+          		if (EquippedArrayList.get(0) == Empty && EquippedArrayList.get(0) != ItemObjectListView.getItems().get(i)) {
+          			EquippedArrayList.set(0,ItemObjectListView.getItems().get(i));
+          		}
+          		else if (EquippedArrayList.get(1) != ItemObjectListView.getItems().get(i) 
+          				&& EquippedArrayList.get(0) != ItemObjectListView.getItems().get(i)){
+          			EquippedArrayList.set(1,ItemObjectListView.getItems().get(i));
+          		}
+          	}
+          	else if (ItemObjectListView.getItems().get(i).getItemType() == "Potion") {
+          		if (EquippedArrayList.get(3) == Empty && EquippedArrayList.get(3) != ItemObjectListView.getItems().get(i)) {
+          		EquippedArrayList.set(3,ItemObjectListView.getItems().get(i));
+          		}
+          		else if (EquippedArrayList.get(4) != ItemObjectListView.getItems().get(i)
+          				&& EquippedArrayList.get(3) != ItemObjectListView.getItems().get(i)) {
+              		EquippedArrayList.set(4,ItemObjectListView.getItems().get(i));
+          		}
+          	}
 
-          for(int i = 0; i < ItemObjectListView.getItems().size(); i++) {
-        	 EquippedArray[i] = ItemObjectListView.getItems().get(i);
-             setEquippedList(EquippedArray);    
-          } 
-    }    
+          }	
+          
+          StringEquippedListView.getItems().clear();
+          ItemObjectListView.getItems().clear();
+          Item[] EquippedArray = new Item[5];
+          for(int i = 0; i < 5; i++) {
+          	StringEquippedListView.getItems().addAll(EquippedArrayList.get(i).getName());
+          	ItemObjectListView.getItems().addAll(EquippedArrayList.get(i));
+            //Changing arraylist into normal array for setEquippedList method
+          	EquippedArray[i] = EquippedArrayList.get(i);
+          	}
+          setEquippedList(EquippedArray);
+          
+
+          
+          
+        
+    }
 }
 
 

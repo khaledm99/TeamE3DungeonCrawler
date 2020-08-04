@@ -14,29 +14,34 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import model.Entity;
+import model.Inventory;
 import model.Item;
+import model.Player;
 
 
 public class GuiMain extends Application {
 	
 	public static final String FXML_FILES_LOCATION = "src/view/";
 	
-	private Item[] p1Inventory;
+	private Player player = new Player(6,8,"Xavier");
 	
-	private Entity playerName;
+	private Inventory p1Inventory = new Inventory(player.getName());
 	
 	private Item[] p1EquippedList;
 	
-	public Item[] getP1Inv(){
+	public Inventory getP1Inv(){
 		return p1Inventory;
 	}
 	
-	public void setP1Inv(Item[] anInvList) {
+	public void setP1Inv(Inventory anInvList) {
 		p1Inventory = anInvList;
 	}
 	
-	public Entity getP1Name() {
-		return playerName;
+	public Player getP1() {
+		return player;
+	}
+	public void setP1(Player aPlayer) {
+		player = aPlayer;
 	}
 	
 	public void setEquippedList(Item[] aList) {
@@ -46,13 +51,15 @@ public class GuiMain extends Application {
 	public Item[] getEquippedList() {
 		return p1EquippedList;
 	}
+	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(); //focus here
 			TabPane root = loader.load(new FileInputStream("src/view/Inventory.fxml"));
 			GameController controller = (GameController)loader.getController();
-			controller.refresh();
+			//controller.refresh();
 			controller.setGuiMainApp(this);
 			Scene scene = new Scene(root,401,900);
 			primaryStage.setScene(scene);
@@ -66,6 +73,7 @@ public class GuiMain extends Application {
 	}
 	
 	public static void main(String[] args) {
+		
 		launch(args);
 	}
 
