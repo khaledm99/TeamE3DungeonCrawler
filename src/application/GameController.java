@@ -1,6 +1,8 @@
 package application;
 import model.Entity;
+import model.Inventory;
 import model.Item;
+import model.Player;
 
 public abstract class GameController {
 	private GuiMain app;
@@ -11,18 +13,18 @@ public abstract class GameController {
 		this.app = app;
 		refresh();
 	}
-	
-	protected Item[] getInvList() {
+	protected Inventory getInv() {
 		return app.getP1Inv();
 	}
-	protected void setInvList(Item[] anInvList) {
+	protected void setInvList(Inventory anInvList) {
 		app.setP1Inv(anInvList);
 	}
-	
-	protected Entity getPlayerName() {
-		return app.getP1Name();
+	protected Player getPlayer() {
+		return app.getP1();
 	}
-	
+	protected void setPlayer(Player aPlayer) {
+		app.setP1(aPlayer);
+	}
 	protected void setEquippedList(Item[] aList) {
 		app.setEquippedList(aList);
 	}
