@@ -111,7 +111,7 @@ public class Main {
 			
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") ) {
 				playerStats.clearConsole();
-				testmap = map.renderNext(player, skeletonOne, playerInput); 
+				testmap = map.renderNext(player, skeletonOne, playerInput, playerInv); 
 				System.out.println(testmap);
 			}
 			else {

@@ -135,13 +135,13 @@ public class Map {
 	 * Additionally, checks if the player is moving into a wall or if the player is moving into an enemy.
 	 * If the player moves into an enemy, initializes a combat encounter.
 	 */
-	public String renderNext(Player player, Enemy enemy, String direction) {
+	public String renderNext(Player player, Enemy enemy, String direction, Inventory inv) {
 		if (direction.equals("up")) {
 			if (layout[player.getYcoord()-1][player.getXcoord()] != "#") {
 				player.moveUp(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					combat.combatInit(enemy, player, inv);
 				}
 			}
 		}
@@ -150,7 +150,7 @@ public class Map {
 				player.moveDown(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					combat.combatInit(enemy, player, inv);
 				}	
 			}
 		}
@@ -159,7 +159,7 @@ public class Map {
 				player.moveLeft(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					combat.combatInit(enemy, player, inv);
 				}
 			}
 		}
@@ -168,7 +168,7 @@ public class Map {
 				player.moveRight(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					combat.combatInit(enemy, player, inv);
 				}
 			}
 		}

@@ -26,6 +26,7 @@ public class Player extends Entity {
 	 */
 	public Player(int xcoord, int ycoord, String name) {
 		this.setHp(20);
+		this.setStamina(20);
 		this.setXcoord(xcoord);
 		this.setYcoord(ycoord);
 		this.setName(name);
@@ -35,6 +36,7 @@ public class Player extends Entity {
 		this.xp = 0;
 		this.killCount = 0;
 	}
+	
 	// Getter method for xp
 	public int getXp() {
 		return xp;

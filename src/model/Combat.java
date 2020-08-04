@@ -1,7 +1,7 @@
 package model;
 
-import java.util.Random;
 import java.util.Scanner;
+
 
 /**
  * Public Class: Combat
@@ -17,6 +17,8 @@ public class Combat {
 	
 	private int playersRemainingHP;
 	private int enemysRemainingHP;
+	private int playersRemainingStamina;
+	private int enemysRemainingStamina;
 	private String enemyName;
 	private Enemy combatEnemy;
 	private Player combatPlayer;
@@ -46,13 +48,15 @@ public class Combat {
  * @param enemy
  * @param player
  */
-	public void combatInit(Enemy enemy, Player player) {
+	public void combatInit(Enemy enemy, Player player, Inventory inv) {
 		
 		combatEnemy = enemy;
 		combatPlayer = player;
 		enemyName = enemy.getName();
 		enemysRemainingHP = enemy.getHp();
+		enemysRemainingStamina = enemy.getStamina();
 		playersRemainingHP = player.getHp();
+		playersRemainingStamina = player.getStamina();
 		Scanner init = new Scanner(System.in);
 		System.out.println("You have encountered a " + enemyName + "!" + "\n");
 		System.out.println("The " + enemyName + " acts with hostile intent, but you still have time to run" + "\n");
@@ -61,7 +65,7 @@ public class Combat {
 		
 		if (decision == 1) {
 			System.out.println("You ready your weapon, prepared to stand your ground..." + "\n");
-			combatRun(enemy, player);
+			combatRun(enemy, player, inv);
 		} else if (decision == 2) {
 			System.out.println("You step back cautiously, determined to avoid trouble");
 		}
@@ -81,93 +85,136 @@ public class Combat {
  * @param enemy
  * @param player
  */
-	public void combatRun(Enemy enemy, Player player) {
+	public void combatRun(Enemy enemy, Player player, Inventory inv) {
 		
-		Scanner invSelc = new Scanner(System.in);
-		Inventory p1 = new Inventory("p1");
-		p1.addToInv(p1, p1.getIronSword());
-		p1.getInventory();
-		System.out.println("Choose your weapon..." +"\n");
-		System.out.println("Select an inventory slot (Enter one): " + "\n");
-		int weaponDecision = invSelc.nextInt();
-		int weaponDamage = p1.getInvList()[weaponDecision].getDamage();
-		String weaponName = p1.getInvList()[weaponDecision].getName();
-		
-		Random rand = new Random();
+		consoleClear = new Userinterface();
+		int weaponDamage = inv.getEquippedList()[0].getDamage();
+		String weaponName = inv.getEquippedList()[0].getName();
+		int armourDefence = inv.getEquippedList()[2].getArmorHP();
+		String armourName = inv.getEquippedList()[2].getName();
+		int potionHealing = inv.getEquippedList()[3].getPotionHP();
+		String potionName = inv.getEquippedList()[3].getName();
+			
 		System.out.println("");
 		System.out.println("----------------------------------------------------------");
-		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack...");
+		System.out.println("FIGHT!" + "\n" + "You and the " + enemyName + " close in on each other, poised to attack..." + "\n");
 		boolean quit = false;
 		Scanner playerMove = new Scanner(System.in);
-		int enemyMove;
 		
 		while (quit == false) {
 			System.out.println(enemyName + "'s remaining hit points: " + enemysRemainingHP + "\n");
 			System.out.println("Your remaining hit points: " + playersRemainingHP + "\n");
-			System.out.println("Choose your next move:" + "\n");
-			System.out.println("1: Heavy attack" + "\n" + "2: Light attack" + "\n" + "3: Block" + "\n" + "4: Flee");
-			int playermoveDecision = playerMove.nextInt();
-			enemyMove = rand.nextInt(3) + 1;
+			System.out.println("Your stamina: " + playersRemainingStamina + "/" + player.getStamina());
+			System.out.println("Enemy's stamina: " + enemysRemainingStamina + "/" + enemy.getStamina());
+			System.out.println("Make your next move:" + "\n");
+			System.out.println("Enter 0 to defend");
+			System.out.println("Enter 1-" + playersRemainingStamina + " to attack");
+			System.out.println("Enter -1  to use a potion");
+			System.out.println("Enter -2 to flee" + "\n");
+			int playerAttackDecision = playerMove.nextInt();		
+			// String playerOtherChoice = playerMove.next();
 			
-			consoleClear = new Userinterface();
 			consoleClear.clearConsole();
 			
-			if (playermoveDecision == 1 && enemyMove == 1) {
-				System.out.println("You strike agressively with your " + weaponName +  ", but the " + enemyName + " does the same!" + "\n");
-				System.out.println("Your ferocious blows cancel each other out, and you each recoil to reset your posture..." + "\n");
-			}
-			
-			else if (playermoveDecision == 2 && enemyMove == 2) {
-				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses." + "\n");
-				System.out.println("They do the same, deflecting your prods with quick, light motions." + "\n");
-			}
-			
-			else if (playermoveDecision == 3 && enemyMove == 3) {
-				System.out.println("You and the " + enemyName + " each take a defensive position, eyeing each other's movements..." + "\n");
-			}
-			
-			else if (playermoveDecision == 1 && enemyMove == 2) {
-				System.out.println("You make a heavy strike against the " + enemyName + "\n");
-				System.out.println("The " + enemyName + " makes a light jab, but is overpowered by your agressive blow, taking " + weaponDamage  +" damage!" + "\n");
-				enemysRemainingHP -= weaponDamage;
-			}
-			
-			else if (playermoveDecision == 1 && enemyMove == 3) {
-				System.out.println("You make a heavy strike against the " + enemyName + ", but they fall into a defensive block, deflecting your " + weaponName + "!" + "\n");
-				System.out.println("While off-balance, the " + enemyName + " counterstrikes you, dealing 2 damage!" + "\n");
-				playersRemainingHP -= 2;
-			}
-			
-			else if (playermoveDecision == 2 && enemyMove == 1) {
-				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses." + "\n");
-				System.out.println("However, the " + enemyName + " makes a powerful strike, overpowering you and dealing 2 damage!" + "\n");
-				playersRemainingHP -= 2;
-			}
-			
-			else if (playermoveDecision == 2 && enemyMove == 3) {
-				System.out.println("You make a cautious attack, prodding the " + enemyName + "'s defenses." + "\n");
-				System.out.println("The " + enemyName + " falls into a defensive position, but your careful attack finds a weak spot!" + "\n");
-				System.out.println("You strike the " + enemyName + " in its weak spot, dealing 5 damage!" + "\n");
-				enemysRemainingHP -= weaponDamage;
-			}
-			
-			else if (playermoveDecision == 3 && enemyMove == 1) {
-				System.out.println("You fall into a defensive stance, prepared to block" + "\n");
-				System.out.println("The " + enemyName + " makes a strong attack, but you deflect its blow and quickly counterstrike, dealing 5 damage!" + "\n");
-				enemysRemainingHP -= weaponDamage;
-			}
-			
-			else if (playermoveDecision == 3 && enemyMove == 2) {
-				System.out.println("You fall into a defensive stance, prepared to block" + "\n");
-				System.out.println("The " + enemyName + " makes a careful jab, using finesse to aim through your defense" + "\n");
-				System.out.println("The " + enemyName + " strikes you in your weak spot, dealing 5 damage!" + "\n");
-			}
-			
-			else if (playermoveDecision == 4) {
+			if(playerAttackDecision == -2) {
 				System.out.println("You break off your attack and flee, having overestimated your combat abilities" + "\n");
-				System.out.println("As you turn and run, the " + enemyName + " takes the opportunity to deliver a parting blow, dealing 2 damage!" + "\n");
-				playersRemainingHP -= 2;
+				System.out.println("As you turn and run, the " + enemyName + " takes the opportunity to deliver a parting blow, dealing 3 damage!" + "\n");
+				playersRemainingHP -= 3;
 				quit = true;
+				
+			} else if (playerAttackDecision == -1) {
+				
+				if (potionHealing == 0) {
+					System.out.println("You pull out an empty bottle. You have already cosnumed your potion!" + "\n");
+				
+				} else {
+				System.out.println("You back off to hastily quaff your " + potionName + ", healing yourself for " + potionHealing + " hit points!" + "\n");
+				playersRemainingHP += potionHealing;
+				enemysRemainingStamina += 5;
+				potionHealing = 0;
+				if (playersRemainingHP > 20) {
+					playersRemainingHP = 20;
+				}
+				}
+				
+			} else {
+				int enemyMove = enemy.combatMoveSet(enemysRemainingStamina, playersRemainingStamina);
+				if (playerAttackDecision > playersRemainingStamina) {
+					playerAttackDecision = playersRemainingStamina;
+				}
+				if (playerAttackDecision == 0) {
+					if (enemyMove == 0) {
+						System.out.println("You and the " + enemyName + " both take a defensive position, eyeing each other carefully..." + "\n");
+						playersRemainingStamina += 5;
+						enemysRemainingStamina += 5;
+					} else {
+						System.out.println("The " + enemyName + " launches into an attack, but you take a defensive position, deflecting most of the blow!" + "\n");
+						playersRemainingHP -=1;
+						playersRemainingStamina += 5;
+						enemysRemainingStamina -= enemyMove;
+						enemysRemainingStamina += 2;
+					}
+				} else {
+					if (playerAttackDecision == enemyMove) {
+						System.out.println("You both attack with equal force, matching the other's strength and swordplay...");
+						System.out.println("After a harsh melee, you both retreat to reset your posture");
+						playersRemainingHP -= 1;
+						enemysRemainingHP-= 1;
+						playersRemainingStamina -= playerAttackDecision;
+						playersRemainingStamina += 2;
+						enemysRemainingStamina -= enemyMove;
+						enemysRemainingStamina += 2;
+						
+					} else if (playerAttackDecision > enemyMove) {
+						if (enemyMove == 0) {
+							System.out.println("You launch into an attack, but the " + enemyName + " takes a defensive position, deflecting most of the blow" + "\n");
+							enemysRemainingHP -=1;
+							enemysRemainingStamina += 5;
+							playersRemainingStamina -= playerAttackDecision;
+							playersRemainingStamina += 2;
+						} else if ((playerAttackDecision - enemyMove) <= 5) {
+							System.out.println("You and the " + enemyName + " swing at each other, weapons clashing with deadly force...");
+							System.out.println("The " + enemyName + " is overpowered by your blows and you land a glancing hit!" + "\n");
+							enemysRemainingHP -= (weaponDamage - 2);
+							enemysRemainingStamina -= enemyMove;
+							enemysRemainingStamina += 2;
+							playersRemainingStamina -= playerAttackDecision;
+							playersRemainingStamina +=2;
+						} else if ((playerAttackDecision - enemyMove) > 5){
+							System.out.println("The " + enemyName + " moves to swing, but you catch them off guard with a powerful attack...");
+							System.out.println("You brush past their defense and land a devastating blow with your " + weaponName + "!" + "\n");
+							enemysRemainingHP -= weaponDamage;
+							enemysRemainingStamina -= enemyMove;
+							enemysRemainingStamina += 2;
+							playersRemainingStamina -= playerAttackDecision;
+							playersRemainingStamina += 2;
+						}
+					} else if (playerAttackDecision < enemyMove) {
+						if ((enemyMove - playerAttackDecision) <=5) {
+							System.out.println("You and the " + enemyName + " swing at each other, weapons clashing with deadly force...");
+							System.out.println("The " + enemyName + " overpowers you and lands a glancing hit!" + "\n");
+							playersRemainingHP -= ((enemy.getDamage() - 2) - armourDefence);
+							enemysRemainingStamina -= enemyMove;
+							enemysRemainingStamina += 2;
+							playersRemainingStamina -= playerAttackDecision;
+							playersRemainingStamina +=2;
+						} else if ((enemyMove - playerAttackDecision) > 5) {
+							System.out.println("You make an attack, but the " + enemyName + " catches you off guard with a powerful attack...");
+							System.out.println("They brush past your defense and land a devastating blow!" + "\n");
+							playersRemainingHP -= (enemy.getDamage() - armourDefence);
+							enemysRemainingStamina -= enemyMove;
+							enemysRemainingStamina += 2;
+							playersRemainingStamina -= playerAttackDecision;
+							playersRemainingStamina += 2;
+						}
+					}
+				}
+			}
+			if (playersRemainingStamina > 20) {
+				playersRemainingStamina = 20;
+			}
+			if (enemysRemainingStamina > 20) {
+				enemysRemainingStamina = 20;
 			}
 			
 			if (playersRemainingHP <= 0) {
@@ -179,10 +226,9 @@ public class Combat {
 				quit = true;
 			}
 		}
-		
 		combatEnd(enemy, player);
 	}
-	
+			
 	/**
 	 * Public method: combatEnd
 	 * This method is invoked when a player flees or one of the combatants dies within the run method.
@@ -196,7 +242,6 @@ public class Combat {
 		
 		if (playersRemainingHP == 0) {
 			System.out.println("You were defeated by the " + enemyName + "!" + "\n");
-			//System.out.println(enemyName + "'s remaining hit points: " + enemysRemainingHP + "\n");
 			System.out.println("----------------------------------------------------------");
 			player.setHp(0);
 			enemy.setHp(enemysRemainingHP);
