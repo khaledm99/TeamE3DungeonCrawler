@@ -14,13 +14,13 @@ public class Inventory {
 	
 	//The following are various items to be picked up in-game
 	private static Item Empty = new Item();
-	private static Weapon woodenSword = new Weapon("Wooden Sword",5,10);
+	private static Weapon woodenSword = new Weapon("Wooden Sword",1,10);
 	private static Weapon ironSword = new Weapon("Iron Sword",5,20);
 	private static Weapon silverSword = new Weapon("Silver Sword",10,15);
 	private static Weapon flamingSword = new Weapon("Flaming Sword", 20, 30);
 	private static Weapon rustySword = new Weapon("Rusty Sword", 15, 5);
 	private static Armor leatherArmor = new Armor("Leather Armor", 10, 10);
-	private static Armor armorScraps = new Armor("Armor Scraps", 1, 10);
+	private static Armor armorScraps = new Armor("Armor Scraps", 5, 10);
 	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 10, 15);
 	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 20, 15);
 	private static Potion HPUltraPotion = new Potion("Ultra HP Potion", 20, 1);
@@ -160,6 +160,7 @@ public class Inventory {
 			invList[invElement++] = getFlamingSword();
 			invList[invElement++] = getShinyIronArmor();
 			invList[invElement++] = getHPUltraPotion();
+			invList[invElement++] = getSilverSword();
 			invList[invElement++] = getSilverSword();
 			invList[invElement++] = getHPPotion();
 			invList[invElement++] = getStaminaPotion();
