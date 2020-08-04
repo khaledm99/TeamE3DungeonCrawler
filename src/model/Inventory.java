@@ -94,8 +94,14 @@ public class Inventory {
 		
 	}
 	public void equipItem(int anIndex) {
+		Boolean alreadyEquipped = false;
 		if (anIndex <= this.invList.length && this.invList[anIndex].getItemType() != "Empty") {
-			//System.out.println(this.invList[anIndex].getName() + " equipped");
+			for(int i = 0; i < getEquippedList().length; i++) {
+				if (this.invList[anIndex] == equippedList[i]) {
+					alreadyEquipped = true;
+				}
+			}
+			if (alreadyEquipped == false) {
 			if (this.invList[anIndex].getItemType() == "Weapon") {
 				if (equippedList[0] == null) {
 					equippedList[0] = this.invList[anIndex];
@@ -117,7 +123,10 @@ public class Inventory {
 			}
 			setEquippedList(equippedList);
 			}
-		
+			else {
+				System.out.println("Item already equipped");
+			}
+		}
 		else {
 			System.out.println("Make sure you equip an Item in the list");
 		}
