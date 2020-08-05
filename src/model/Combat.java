@@ -92,8 +92,12 @@ public class Combat {
 		String weaponName = inv.getEquippedList()[0].getName();
 		int armourDefence = inv.getEquippedList()[2].getArmorHP();
 		String armourName = inv.getEquippedList()[2].getName();
-		int potionHealing = inv.getEquippedList()[3].getPotionHP();
-		String potionName = inv.getEquippedList()[3].getName();
+		int healingPotion = inv.getEquippedList()[3].getPotionHP();
+		String potion1Name = inv.getEquippedList()[3].getName();
+		int staminaPotion = inv.getEquippedList()[4].getPotionHP();
+		String potion2Name = inv.getEquippedList()[4].getName();
+		int staminaBuff = 0;
+		int staminaDuration = 0;
 			
 		System.out.println("");
 		System.out.println("----------------------------------------------------------");
@@ -123,18 +127,40 @@ public class Combat {
 				quit = true;
 				
 			} else if (playerAttackDecision == -1) {
-				
-				if (potionHealing == 0) {
-					System.out.println("You pull out an empty bottle. You have already cosnumed your potion!" + "\n");
-				
+				System.out.println("Enter 1 to drink a healing potion or 2 to drink a stamina potion" + "\n");
+				int potionChoice = playerMove.nextInt();
+			
+				if (potionChoice == 1) {
+					
+					if (healingPotion == 0) {
+						System.out.println("You pull out an empty bottle. You have already cosnumed your healing potion!" + "\n");
+					
+					} else {
+					System.out.println("You back off to hastily quaff your " + potion1Name + ", healing yourself for " + healingPotion + " hit points!" + "\n");
+					playersRemainingHP += healingPotion;
+					enemysRemainingStamina += 5;
+					healingPotion = 0;
+					
+					if (playersRemainingHP > 20) {
+						playersRemainingHP = 20;
+					}
+					}
+					
 				} else {
-				System.out.println("You back off to hastily quaff your " + potionName + ", healing yourself for " + potionHealing + " hit points!" + "\n");
-				playersRemainingHP += potionHealing;
-				enemysRemainingStamina += 5;
-				potionHealing = 0;
-				if (playersRemainingHP > 20) {
-					playersRemainingHP = 20;
-				}
+					if (staminaPotion == 0) {
+						System.out.println("You pull out an empty bottle. You have already cosnumed your stamina potion!" + "\n");
+					
+					} else {
+					System.out.println("You back off to hastily quaff your " + potion2Name + ", giving yourself " + staminaPotion + " extra stamina regen!" + "\n");
+					staminaBuff = staminaPotion;
+					staminaDuration = 5;
+					enemysRemainingStamina += 5;
+					staminaPotion = 0;
+					if (playersRemainingHP > 20) {
+						playersRemainingHP = 20;
+					}
+					}
+					
 				}
 				
 			} else {
@@ -145,12 +171,12 @@ public class Combat {
 				if (playerAttackDecision == 0) {
 					if (enemyMove == 0) {
 						System.out.println("You and the " + enemyName + " both take a defensive position, eyeing each other carefully..." + "\n");
-						playersRemainingStamina += 5;
+						playersRemainingStamina += 5 + staminaBuff;
 						enemysRemainingStamina += 5;
 					} else {
 						System.out.println("The " + enemyName + " launches into an attack, but you take a defensive position, deflecting most of the blow!" + "\n");
 						playersRemainingHP -=1;
-						playersRemainingStamina += 5;
+						playersRemainingStamina += 5 + staminaBuff;
 						enemysRemainingStamina -= enemyMove;
 						enemysRemainingStamina += 2;
 					}
@@ -161,7 +187,7 @@ public class Combat {
 						playersRemainingHP -= 1;
 						enemysRemainingHP-= 1;
 						playersRemainingStamina -= playerAttackDecision;
-						playersRemainingStamina += 2;
+						playersRemainingStamina += 2 + staminaBuff;
 						enemysRemainingStamina -= enemyMove;
 						enemysRemainingStamina += 2;
 						
@@ -171,7 +197,7 @@ public class Combat {
 							enemysRemainingHP -=1;
 							enemysRemainingStamina += 5;
 							playersRemainingStamina -= playerAttackDecision;
-							playersRemainingStamina += 2;
+							playersRemainingStamina += 2 + staminaBuff;
 						} else if ((playerAttackDecision - enemyMove) <= 5) {
 							System.out.println("You and the " + enemyName + " swing at each other, weapons clashing with deadly force...");
 							System.out.println("The " + enemyName + " is overpowered by your blows and you land a glancing hit!" + "\n");
@@ -179,7 +205,7 @@ public class Combat {
 							enemysRemainingStamina -= enemyMove;
 							enemysRemainingStamina += 2;
 							playersRemainingStamina -= playerAttackDecision;
-							playersRemainingStamina +=2;
+							playersRemainingStamina += 2 + staminaBuff;
 						} else if ((playerAttackDecision - enemyMove) > 5){
 							System.out.println("The " + enemyName + " moves to swing, but you catch them off guard with a powerful attack...");
 							System.out.println("You brush past their defense and land a devastating blow with your " + weaponName + "!" + "\n");
@@ -187,7 +213,7 @@ public class Combat {
 							enemysRemainingStamina -= enemyMove;
 							enemysRemainingStamina += 2;
 							playersRemainingStamina -= playerAttackDecision;
-							playersRemainingStamina += 2;
+							playersRemainingStamina += 2 + staminaBuff;
 						}
 					} else if (playerAttackDecision < enemyMove) {
 						if ((enemyMove - playerAttackDecision) <=5) {
@@ -197,7 +223,7 @@ public class Combat {
 							enemysRemainingStamina -= enemyMove;
 							enemysRemainingStamina += 2;
 							playersRemainingStamina -= playerAttackDecision;
-							playersRemainingStamina +=2;
+							playersRemainingStamina +=2 + staminaBuff;
 						} else if ((enemyMove - playerAttackDecision) > 5) {
 							System.out.println("You make an attack, but the " + enemyName + " catches you off guard with a powerful attack...");
 							System.out.println("They brush past your defense and land a devastating blow!" + "\n");
@@ -205,10 +231,15 @@ public class Combat {
 							enemysRemainingStamina -= enemyMove;
 							enemysRemainingStamina += 2;
 							playersRemainingStamina -= playerAttackDecision;
-							playersRemainingStamina += 2;
+							playersRemainingStamina += 2 + staminaBuff;
 						}
 					}
 				}
+			}
+			staminaDuration -= 1;
+			
+			if (staminaDuration == 0) {
+				staminaBuff = 0;
 			}
 			if (playersRemainingStamina > 20) {
 				playersRemainingStamina = 20;
