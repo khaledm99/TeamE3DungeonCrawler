@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.FlowPane?>
 
-<TabPane prefHeight="952.0" prefWidth="416.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #081820; -fx-border-width: 3; -fx-visibility: 0;" styleClass="floating" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
+<TabPane prefHeight="820.0" prefWidth="403.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #081820; -fx-border-width: 3; -fx-visibility: 0;" styleClass="floating" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
    <tabs>
       <Tab closable="false" style="-fx-background-color: #88C070; -fx-border-width: 0;" text="Inventory">
          <content>
-            <StackPane alignment="TOP_LEFT" prefHeight="902.0" prefWidth="605.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #E0F8D0;">
+            <StackPane alignment="TOP_LEFT" prefHeight="807.0" prefWidth="406.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #E0F8D0;">
                <children>
-                  <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="619.0" style="-fx-background-color: #E0F8D0;">
+                  <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="400.0" style="-fx-background-color: #E0F8D0;">
                      <children>
-                        <HBox maxHeight="-Infinity" prefHeight="900.0" prefWidth="1156.0">
+                        <HBox maxHeight="-Infinity" prefHeight="900.0" prefWidth="617.0">
                            <children>
                               <VBox fillWidth="false" prefHeight="801.0" prefWidth="400.0">
                                  <children>
-                                    <VBox prefHeight="221.0" prefWidth="342.0">
+                                    <VBox prefHeight="0.0" prefWidth="342.0">
                                        <children>
                                           <Label fx:id="HealthLabel" text="----Health----" textFill="#081820">
                                              <VBox.margin>
@@ -211,7 +211,7 @@
                                     </ListView>
                                     <Label fx:id="MaxEquippedLabel" opacity="0.0" text="----Max Items Equipped----" textFill="#081820">
                                        <VBox.margin>
-                                          <Insets bottom="60.0" left="10.0" top="10.0" />
+                                          <Insets bottom="101.0" left="10.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
                                  </children>
@@ -227,13 +227,13 @@
                         </HBox>
                      </children>
                   </FlowPane>
-                  <StackPane alignment="CENTER_LEFT" mouseTransparent="true" prefHeight="885.0" prefWidth="1013.0" style="-fx-border-color: #E0F8D0;">
+                  <StackPane alignment="CENTER_LEFT" mouseTransparent="true" prefHeight="754.0" prefWidth="404.0" style="-fx-border-color: #E0F8D0;">
                      <children>
-                        <VBox prefHeight="898.0" prefWidth="354.0">
+                        <VBox prefHeight="719.0" prefWidth="402.0">
                            <children>
                               <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" top="220.0" />
+                                    <Insets bottom="15.0" top="90.0" />
                                  </VBox.margin>
                                  <children>
                                     <VBox fx:id="VboxSlot0" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
@@ -512,7 +512,7 @@
                                     </VBox>
                                  </children>
                                  <VBox.margin>
-                                    <Insets bottom="6.0" />
+                                    <Insets bottom="15.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
@@ -654,7 +654,7 @@
                                     </VBox>
                                  </children>
                                  <VBox.margin>
-                                    <Insets bottom="5.0" />
+                                    <Insets bottom="15.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">

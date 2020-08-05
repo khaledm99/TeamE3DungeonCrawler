@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="view" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootViewController">
+<children>
+      <HBox fillHeight="false" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+        <fx:include fx:id="mainScreen" source="MainScreen.fxml" />
+    	<fx:include fx:id="inventory" source="Inventory.fxml" />         
+         </children>
+      </HBox>
+</children>
+</AnchorPane>
