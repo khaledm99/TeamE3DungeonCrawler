@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.FlowPane?>
 
-<TabPane prefHeight="820.0" prefWidth="403.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #081820; -fx-border-width: 3; -fx-visibility: 0;" styleClass="floating" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
+<TabPane prefHeight="820.0" prefWidth="407.0" style="-fx-background-color: #081820; -fx-border-color: #081820; -fx-border-width: 5; -fx-visibility: 0;" styleClass="floating" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
    <tabs>
-      <Tab closable="false" style="-fx-background-color: #88C070; -fx-border-width: 0;" text="Inventory">
+      <Tab closable="false" style="-fx-background-color: #88C070; -fx-border-width: 0; -fx-font-size: 10; -fx-font-family: &quot;Early GameBoy&quot;;" text="Inventory">
          <content>
             <StackPane alignment="TOP_LEFT" prefHeight="807.0" prefWidth="406.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #E0F8D0;">
                <children>
@@ -21,9 +22,9 @@
                            <children>
                               <VBox fillWidth="false" prefHeight="801.0" prefWidth="400.0">
                                  <children>
-                                    <VBox prefHeight="0.0" prefWidth="342.0">
+                                    <VBox prefHeight="0.0" prefWidth="342.0" style="-fx-font-family: &quot;Early GamBoy&quot;;">
                                        <children>
-                                          <Label fx:id="HealthLabel" text="----Health----" textFill="#081820">
+                                          <Label fx:id="HealthLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Health----" textFill="#081820">
                                              <VBox.margin>
                                                 <Insets left="5.0" />
                                              </VBox.margin>
@@ -35,16 +36,16 @@
                                                       <Insets left="5.0" />
                                                    </HBox.margin>
                                                 </ProgressBar>
-                                                <Label fx:id="HealthLeftLabel" text="x" textFill="#081820">
+                                                <Label fx:id="HealthLeftLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="/" textFill="#081820" />
-                                                <Label fx:id="TotalHPLabel" text="20" textFill="#081820" />
+                                                <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="/" textFill="#081820" />
+                                                <Label fx:id="TotalHPLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="20" textFill="#081820" />
                                              </children>
                                           </HBox>
-                                          <Label text="----Stamina----" textFill="#081820">
+                                          <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Stamina----" textFill="#081820">
                                              <VBox.margin>
                                                 <Insets left="5.0" />
                                              </VBox.margin>
@@ -56,39 +57,39 @@
                                                       <Insets left="5.0" />
                                                    </HBox.margin>
                                                 </ProgressBar>
-                                                <Label fx:id="StaminaLeftLabel" text="x" textFill="#081820">
+                                                <Label fx:id="StaminaLeftLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="/20" textFill="#081820" />
+                                                <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="/20" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
                                     <HBox prefHeight="100.0" prefWidth="621.0">
                                        <children>
-                                          <Button fx:id="Slot0" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotZeroSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot0" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotZeroSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot1" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotOneSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot1" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotOneSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot2" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTwoSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot2" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTwoSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot3" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThreeSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot3" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThreeSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot4" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot4" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="10.0" />
                                              </HBox.margin>
@@ -100,27 +101,27 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="608.0">
                                        <children>
-                                          <Button fx:id="Slot5" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFiveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot5" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFiveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot6" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot6" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot7" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot7" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot8" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot8" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot9" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot9" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="10.0" />
                                              </HBox.margin>
@@ -132,27 +133,27 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="610.0">
                                        <children>
-                                          <Button fx:id="Slot10" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot10" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot11" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotElevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot11" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotElevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot12" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTweleveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot12" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTweleveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot13" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThirteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot13" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThirteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot14" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot14" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="10.0" />
                                              </HBox.margin>
@@ -164,27 +165,27 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="612.0">
                                        <children>
-                                          <Button fx:id="Slot15" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFifteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot15" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFifteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot16" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot16" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot17" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSeventeenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot17" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSeventeenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot18" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot18" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="Slot19" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                          <Button fx:id="Slot19" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
                                              <HBox.margin>
                                                 <Insets right="10.0" />
                                              </HBox.margin>
@@ -194,12 +195,12 @@
                                           <Insets />
                                        </VBox.margin>
                                     </HBox>
-                                    <Label text="----Currently Equipped----" textFill="#081820">
+                                    <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Currently Equipped----" textFill="#081820">
                                        <VBox.margin>
                                           <Insets left="5.0" top="16.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label text="Select to unequip" textFill="#081820">
+                                    <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Select to unequip" textFill="#081820">
                                        <VBox.margin>
                                           <Insets left="5.0" />
                                        </VBox.margin>
@@ -209,7 +210,7 @@
                                           <Insets bottom="20.0" right="10.0" />
                                        </VBox.margin>
                                     </ListView>
-                                    <Label fx:id="MaxEquippedLabel" opacity="0.0" text="----Max Items Equipped----" textFill="#081820">
+                                    <Label fx:id="MaxEquippedLabel" opacity="0.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Max Items Equipped----" textFill="#081820">
                                        <VBox.margin>
                                           <Insets bottom="101.0" left="10.0" top="10.0" />
                                        </VBox.margin>
@@ -219,7 +220,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </VBox>
-                              <ListView fx:id="ItemObjectListView" editable="true" prefHeight="200.0" prefWidth="200.0" visible="false" />
+                              <ListView fx:id="ItemObjectListView" editable="true" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" visible="false" />
                            </children>
                            <FlowPane.margin>
                               <Insets />
@@ -240,22 +241,22 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgLabelSlot0" text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="DUR" textFill="#081820" underline="true" />
+                                                <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgSlot0" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                                <Label fx:id="DmgSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="5.0" right="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="DurSlot0" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                                <Label fx:id="DurSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -267,22 +268,22 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgLabelSlot1" text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot1" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="DUR" textFill="#081820" underline="true" />
+                                                <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgSlot01" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                                <Label fx:id="DmgSlot01" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="5.0" right="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="DurSlot01" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                                <Label fx:id="DurSlot01" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -294,22 +295,22 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgLabelSlot2" text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot2" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="DUR" textFill="#081820" underline="true" />
+                                                <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgSlot02" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                                <Label fx:id="DmgSlot02" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="5.0" right="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="DurSlot02" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                                <Label fx:id="DurSlot02" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -321,22 +322,22 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgLabelSlot3" text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot3" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="DUR" textFill="#081820" underline="true" />
+                                                <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgSlot03" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                                <Label fx:id="DmgSlot03" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="5.0" right="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="DurSlot03" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                                <Label fx:id="DurSlot03" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -348,22 +349,22 @@
                                        <children>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgLabelSlot4" text="DMG" textFill="#081820" underline="true">
+                                                <Label fx:id="DmgLabelSlot4" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label text="DUR" textFill="#081820" underline="true" />
+                                                <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="103.0">
                                              <children>
-                                                <Label fx:id="DmgSlot04" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                                <Label fx:id="DmgSlot04" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
                                                    <HBox.margin>
                                                       <Insets left="5.0" right="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="DurSlot04" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                                <Label fx:id="DurSlot04" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -373,7 +374,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
+                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
                                  <children>
                                     <VBox fx:id="VboxSlot5" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
                                        <children>
@@ -515,7 +516,7 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
+                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
                                  <children>
                                     <VBox fx:id="VboxSlot10" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
                                        <children>
@@ -657,7 +658,7 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
+                              <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
                                  <children>
                                     <VBox fx:id="VboxSlot15" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
                                        <children>
