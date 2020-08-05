@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="272.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="statsWindow" prefHeight="272.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserInterfaceController">
    <children>
       <VBox layoutX="4.0" layoutY="52.0" prefHeight="263.0" prefWidth="400.0">
          <children>
@@ -48,7 +48,7 @@
                   <Label fx:id="playerLvlLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                   <Label fx:id="killCountLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                   <Label fx:id="playerCoinsLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                  <Label fx:id="playerXPlabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Label fx:id="playerXPLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets top="30.0" />
                      </GridPane.margin>
@@ -57,5 +57,10 @@
             </GridPane>
          </children>
       </VBox>
+      <Label fx:id="statsTitle" layoutX="136.0" layoutY="33.0" text="Player Stats">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
