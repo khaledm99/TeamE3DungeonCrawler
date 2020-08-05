@@ -15,6 +15,8 @@ public class Inventory {
 	private static Item ironSword = new Item("Iron Sword",5,20);
 	private static Item silverSword = new Item("Silver Sword",10,15);
 	private static Item flamingSword = new Item("Flaming Sword", 20, 30);
+	
+	
 
 	public Inventory(String name)
 	{
