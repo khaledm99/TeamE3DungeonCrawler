@@ -1,9 +1,6 @@
 package application;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +11,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import model.Inventory;
 import model.Item;
-import model.Entity;
 
 public class InventoryController extends GameController{
 
@@ -459,6 +455,7 @@ public class InventoryController extends GameController{
 
     @FXML
     void initialize() {
+    	refresh();
         assert HealthLeftLabel != null : "fx:id=\"HealthLeftLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
         assert TotalHPLabel != null : "fx:id=\"TotalHPLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
         assert StaminaLeftLabel != null : "fx:id=\"StaminaLeftLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
