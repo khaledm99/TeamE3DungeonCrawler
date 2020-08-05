@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import model.Entity;
@@ -57,15 +58,24 @@ public class GuiMain extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(); //focus here
+			FXMLLoader loader2 = new FXMLLoader(); //focus here
+
 			TabPane root = loader.load(new FileInputStream("src/view/Inventory.fxml"));
+			AnchorPane root1 = loader2.load(new FileInputStream("src/view/MainScreen.fxml"));
 			GameController controller = (GameController)loader.getController();
 			//controller.refresh();
 			controller.setGuiMainApp(this);
-			Scene scene = new Scene(root,401,900);
+			
+			Stage secondaryStage = new Stage();
+			
+			Scene scene = new Scene(root,401,800);
+			Scene scene1 = new Scene(root1,200,200);
 			primaryStage.setScene(scene);
+			secondaryStage.setScene(scene1);
 			//System.out.println(primaryStage.getWidth());
 			//System.out.println(primaryStage.getHeight());
 			primaryStage.show();
+			secondaryStage.show();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

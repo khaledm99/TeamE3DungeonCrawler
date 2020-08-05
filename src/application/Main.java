@@ -33,9 +33,9 @@ public class Main {
 		//to "Xavier" for a fuller inventory XL
 
 		// Displays the start screen
-		//Start menu = new Start();
-		//menu.startScreen();
-		//playerStats.clearConsole();
+		Start menu = new Start();
+		player.setName(menu.startScreen());
+		playerStats.clearConsole();
 			
 		Map map = new Map(); // Creates the map
 		try {
