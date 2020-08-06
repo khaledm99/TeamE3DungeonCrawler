@@ -259,7 +259,8 @@ public class CombatController extends GameController {
  
 	@Override
 	public void refresh() {
-	  	playersRemainingHP = getPlayer().getHp();
+	  if (refreshCounter != 1) {
+		playersRemainingHP = getPlayer().getHp();
     	enemysRemainingHP = application.GuiMain.getEnemy().getHp();
     	playersRemainingStamina = getPlayer().getStamina();
     	enemysRemainingStamina = application.GuiMain.getEnemy().getStamina();
@@ -281,17 +282,16 @@ public class CombatController extends GameController {
     	enemyHP.setProgress(enemysRemainingHP / 20.0);
     	playerStam.setProgress(playersRemainingStamina / 20.0);
     	enemyStam.setProgress(enemysRemainingStamina / 20.0);
-    	
-    	
-	    	getPlayer().setHp(playersRemainingHP);
-			application.GuiMain.getEnemy().setHp(enemysRemainingHP);
-			if (enemysRemainingHP < 1) {
-				application.GuiMain.getEnemy().setDead(true);
-				getPlayer().setKillCount(getPlayer().getKillCount() + 1);
-				getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
-				getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
-			}
-		
+	  }
+    	getPlayer().setHp(playersRemainingHP);
+		application.GuiMain.getEnemy().setHp(enemysRemainingHP);
+		if (enemysRemainingHP < 1) {
+			application.GuiMain.getEnemy().setDead(true);
+			getPlayer().setKillCount(getPlayer().getKillCount() + 1);
+			getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
+			getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
+		}
+		refreshCounter = 1;
 	}
 
 }
