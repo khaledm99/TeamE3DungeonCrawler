@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,7 +9,6 @@
 
 <Pane fx:id="view" prefHeight="800.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-<<<<<<< HEAD
       <TextArea fx:id="mapWindow" prefHeight="444.0" prefWidth="793.0" style="-fx-font-size: 30; -fx-control-inner-background: #e0f8d0; -fx-text-fill: #346856; -fx-font-family: icomoon;">
          <font>
             <Font name="Consolas" size="30.0" />
@@ -18,11 +18,6 @@
             <Font name="Consolas" size="15.0" />
          </font></TextArea>
       <GridPane alignment="CENTER" layoutX="427.0" layoutY="457.0" prefHeight="331.0" prefWidth="367.0">
-=======
-      <TextArea fx:id="mapWindow" prefHeight="444.0" prefWidth="793.0" />
-      <TextArea fx:id="eventOutput" layoutY="444.0" prefHeight="355.0" prefWidth="427.0" />
-      <GridPane layoutX="427.0" layoutY="457.0" prefHeight="331.0" prefWidth="367.0">
->>>>>>> 64237a70bfcd5c06bbef3b4fd0a9eeb60c451a90
          <children>
             <Button fx:id="DownButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#DownClick" prefHeight="96.0" prefWidth="96.0" rotate="180.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
