@@ -58,9 +58,7 @@ public class GuiMain extends Application {
 	public static Boolean getOnEnemy() {
 		return onEnemy;
 	}
-	public static void setCombat(Boolean result) {
-		onEnemy = result;
-	}
+	
 	public static void setOnEnemy(Boolean result) {
 		onEnemy = result;
 	}

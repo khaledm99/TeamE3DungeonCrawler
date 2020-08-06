@@ -1,7 +1,9 @@
 package application;
 import model.Inventory;
 import model.Item;
+import model.Map;
 import model.Player;
+import model.Combat;
 import model.Enemy;
 
 public abstract class GameController {
@@ -34,13 +36,14 @@ public abstract class GameController {
 	protected Item[] getEquippedList() {
 		return application.GuiMain.getEquippedList();
 	}
-	
-	protected Boolean getCombatScreen() {
-		if (application.GuiMain.getOnEnemy()) {
-			refresh();
-		}
+	protected Boolean getOnEnemy() {
 		return application.GuiMain.getOnEnemy();
 	}
+	
+	//protected Combat getCombatScreen() {
+	//	return application.GuiMain.get;
+	
+	//}
 
 	
 	

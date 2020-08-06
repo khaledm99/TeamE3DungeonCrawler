@@ -3,10 +3,14 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class MainController extends GameController {
 	
@@ -82,15 +86,25 @@ public class MainController extends GameController {
     }
     
 	@Override
-	public void refresh() {		
-		System.out.println(counter);
-		if (counter <= 15) {
+	public void refresh() {	
+		if (getOnEnemy()) {
+			try {
+				FXMLLoader parentLoader = new FXMLLoader();
+				parentLoader.setLocation(getClass().getResource("../view/Combat.fxml"));
+				Parent root = parentLoader.load();
+				Scene scene = new Scene(root,1200,800);
+				Stage stage = new Stage();
+				stage.setScene(scene);
+				stage.show();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		mapWindow.clear();
 		String nextmap = application.GuiMain.getNextRender(direction);
 		mapWindow.setText(nextmap);
 
-		}
-		counter++;
 	}
-
 }
+
+

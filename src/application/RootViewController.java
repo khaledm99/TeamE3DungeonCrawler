@@ -29,7 +29,7 @@ public class RootViewController extends GameController {
 			new Tab("ui", ui)
 			);
 	@FXML
-    private StackPane combatStack;
+    private static StackPane combatStack;
 	
 	@FXML
 	private Pane combat;
@@ -52,6 +52,13 @@ public class RootViewController extends GameController {
 		Font.loadFont(getClass().getResourceAsStream("../resource/icomoon.ttf"),1);
 	}
 	
+	/*static void combatStart() {
+		System.out.println("in rootview controller combatStart()");
+		if (getCombatScreen() == true) {
+			combatStack.setOpacity(1);
+			combatStack.setMouseTransparent(false);
+		}
+	}*/
 	public Parent getView() {
 	     return view;
 	}
@@ -59,14 +66,9 @@ public class RootViewController extends GameController {
 	
 	@Override
 	public void refresh() {
-		System.out.println(getCombatScreen());
-		if (getCombatScreen() == true) {
-			combatStack.setOpacity(1);
-			combatStack.setMouseTransparent(false);
-		}
-		
 		
 	}
+
 }
 		
 

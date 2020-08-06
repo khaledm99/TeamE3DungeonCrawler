@@ -143,14 +143,14 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
-						application.GuiMain.setOnEnemy(false);
 
 					}
 					else {
 						application.GuiMain.setOnEnemy(true);
 					}
-						
-					
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
@@ -161,13 +161,16 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
-						application.GuiMain.setOnEnemy(false);
+						
 
 					}
 					else {
 						application.GuiMain.setOnEnemy(true);
 					}
-				}	
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
+				}
 			}
 		}
 		else if (direction.equals("left")) {
@@ -177,12 +180,15 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
-						application.GuiMain.setOnEnemy(false);
+						
 
 					}
 					else {
 						application.GuiMain.setOnEnemy(true);
 					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
@@ -193,11 +199,15 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
-						application.GuiMain.setOnEnemy(false);
+						
+
 					}
 					else {
 						application.GuiMain.setOnEnemy(true);
 					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
