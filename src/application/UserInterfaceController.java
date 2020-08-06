@@ -94,7 +94,7 @@ public class UserInterfaceController extends GameController {
     
 	@FXML 
 	void initialize() {
-	
+		this.currentPlayerId = getPlayer().getName();
 		playerNameLabel.setText(this.currentPlayerId);
 		killCountLabel.setText(Integer.toString(this.currentPlayerKillCount));
 		playerCoinsLabel.setText(Integer.toString(this.currentPlayerCoins));
@@ -141,7 +141,7 @@ public class UserInterfaceController extends GameController {
 		// TODO Auto-generated method stub
 		
 		uiInitializer(getPlayer());
-		
+		/*
 		//Where to bind property bindings?
 		playerNameLabel.setText(this.currentPlayerId);
 		killCountLabel.textProperty().bind(killCount.asString());
@@ -149,6 +149,7 @@ public class UserInterfaceController extends GameController {
 		playerLvlLabel.textProperty().bind(playerLvl.asString());
 		playerXPLabel.textProperty().bind(xpLabel.asString());
 		healthBarLabel.setText(replaceHealthBarCharacters(this.healthBar));
+		*/
 	}
 
 }

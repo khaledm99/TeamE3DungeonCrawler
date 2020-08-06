@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 
@@ -27,7 +28,6 @@ public class CombatController extends GameController {
 	private int weaponDamage;
 	private int enemyDamage;
 	private String enemyName;
-	private int refreshCounter;
 	
     @FXML
     private Slider stamSlider;
@@ -52,6 +52,7 @@ public class CombatController extends GameController {
 
     @FXML
     private Button fleeButton;
+    
 
     @FXML
     private ProgressBar enemyHP;
@@ -68,17 +69,18 @@ public class CombatController extends GameController {
     	hpPotionAmount = 1;
     	stamPotionAmount = 1;
     	staminaBuff = 0;
-    	/* healPotion = getEquippedList()[3].getPotionHP();
+    	healPotion = getEquippedList()[3].getPotionHP();
     	stamPotion = getEquippedList()[4].getPotionHP();
     	armourDefence = getEquippedList()[2].getArmorHP();
     	weaponDamage = getEquippedList()[0].getDamage();
-    	*/
+    	/*
     	healPotion = 10;
     	stamPotion = 3;
     	armourDefence = 2;
     	weaponDamage = 5;
-    	enemyDamage = application.GuiMain.getEnemy().getDamage();
-    	enemyName = application.GuiMain.getEnemy().getName();
+    	*/
+    	enemyDamage = getEnemy().getDamage();
+    	enemyName = getEnemy().getName();
     	
     	playerHP.setProgress(playersRemainingHP / 20.0);
     	enemyHP.setProgress(enemysRemainingHP / 20.0);
@@ -123,6 +125,8 @@ public class CombatController extends GameController {
     @FXML
     public void flee(ActionEvent event) {
     	refresh();
+    	Stage stage = (Stage) fleeButton.getScene().getWindow();
+    	stage.close();
     }
     
     @FXML
@@ -208,10 +212,10 @@ public class CombatController extends GameController {
     @FXML
     public void update() {
     	stamSlider.setValue(0);
-    	stamSlider.setMax(playersRemainingStamina);
     	if (playersRemainingStamina > 20) {
     		playersRemainingStamina = 20;
     	}
+    	stamSlider.setMax(playersRemainingStamina);
     	if (enemysRemainingStamina > 20) {
     		enemysRemainingStamina = 20;
     	}
@@ -237,61 +241,40 @@ public class CombatController extends GameController {
     }
     
     public int combatMoveSet(int remainingStamina, int playerStamina) {
-		if (playerStamina > remainingStamina ) {
-			if ((playerStamina - remainingStamina) <= 10) {
-				return remainingStamina;
-			} else if (playerStamina - remainingStamina > 10)
+    	if(enemysRemainingStamina / getEnemy().getStamina() < 0.3) {
+    		return 0;
+		    } else if (playerStamina > remainingStamina ) {
+					if ((playerStamina - remainingStamina) <= 10) {
+						return remainingStamina;
+					} else if (playerStamina - remainingStamina > 10)
+						return 0;
+				} else if (playerStamina < remainingStamina) {
+					if (playerStamina < 5) {
+						return 5;
+					} else if ((remainingStamina - playerStamina) <= 5) {
+						return remainingStamina;
+					} else if ((remainingStamina - playerStamina) > 5) {
+						return playerStamina + 1;
+					}
+				} else if (playerStamina == remainingStamina) {
+					return remainingStamina;
+				}
 				return 0;
-		} else if (playerStamina < remainingStamina) {
-			if (playerStamina < 5) {
-				return 5;
-			} else if ((remainingStamina - playerStamina) <= 5) {
-				return remainingStamina;
-			} else if ((remainingStamina - playerStamina) > 5) {
-				return playerStamina + 1;
-			}
-		} else if (playerStamina == remainingStamina) {
-			return remainingStamina;
-		}
-		return 0;
 	}
 	
  
 	@Override
 	public void refresh() {
-	  if (refreshCounter != 1) {
-		playersRemainingHP = getPlayer().getHp();
-    	enemysRemainingHP = application.GuiMain.getEnemy().getHp();
-    	playersRemainingStamina = getPlayer().getStamina();
-    	enemysRemainingStamina = application.GuiMain.getEnemy().getStamina();
-    	hpPotionAmount = 1;
-    	stamPotionAmount = 1;
-    	staminaBuff = 0;
-    	/* healPotion = getEquippedList()[3].getPotionHP();
-    	stamPotion = getEquippedList()[4].getPotionHP();
-    	armourDefence = getEquippedList()[2].getArmorHP();
-    	weaponDamage = getEquippedList()[0].getDamage();
-    	*/
-    	healPotion = 10;
-    	stamPotion = 3;
-    	armourDefence = 2;
-    	weaponDamage = 5;
-    	enemyDamage = application.GuiMain.getEnemy().getDamage();
-    	enemyName = application.GuiMain.getEnemy().getName();
-    	playerHP.setProgress(playersRemainingHP / 20.0);
-    	enemyHP.setProgress(enemysRemainingHP / 20.0);
-    	playerStam.setProgress(playersRemainingStamina / 20.0);
-    	enemyStam.setProgress(enemysRemainingStamina / 20.0);
-	  }
-    	getPlayer().setHp(playersRemainingHP);
-		application.GuiMain.getEnemy().setHp(enemysRemainingHP);
+		getPlayer().setHp(playersRemainingHP);
+		getEnemy().setHp(enemysRemainingHP);
 		if (enemysRemainingHP < 1) {
-			application.GuiMain.getEnemy().setDead(true);
+			getEnemy().setDead(true);
 			getPlayer().setKillCount(getPlayer().getKillCount() + 1);
 			getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
 			getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
-		}
-		refreshCounter = 1;
-	}
+			Stage stage = (Stage) fleeButton.getScene().getWindow();
+	    	stage.close();		}
+		
+}
 
 }

@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="view" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootViewController">
-<children>
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootViewController">
+   <children>
       <HBox fillHeight="false" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
         	<fx:include fx:id="mainScreen" source="MainScreen.fxml" />
@@ -29,5 +29,14 @@
          </TabPane>       
         </children>
       </HBox>
-</children>
-</AnchorPane>
+      <StackPane fx:id="combatStack" mouseTransparent="true" opacity="0.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+					<fx:include fx:id="combat" source="Combat.fxml" />
+               </children></HBox>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>

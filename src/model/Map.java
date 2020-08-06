@@ -63,7 +63,7 @@ public class Map {
 	
 	public void readMap(String file) throws IOException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		String is = classloader.getResource(file).getFile();
+		//String is = classloader.getResource(file).getFile();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
 		
@@ -143,9 +143,14 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+
 					}
-						
-					
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
@@ -156,8 +161,16 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						
+
 					}
-				}	
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
+				}
 			}
 		}
 		else if (direction.equals("left")) {
@@ -167,7 +180,15 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						
+
 					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
@@ -178,7 +199,15 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						
+
 					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
