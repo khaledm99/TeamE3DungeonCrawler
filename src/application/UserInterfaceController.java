@@ -12,8 +12,24 @@ import javafx.scene.layout.AnchorPane;
 import model.Player;
 import model.Userinterface;
 
-public class UserInterfaceController extends GameController {
+/**
+ * Classname: UserInterfaceController
+ *
+ * Version: 0
+ * 
+ * Author: Homing Wat
+ * 
+ * Description:	This class functions as the userinterface GUI controller. As inputs it takes the current players coins,
+ * 				health, xp, killcount and level from the 'Player' class and produces a visual representation
+ * 				of the stats and current progress in the game at current point of time.
+ * 				
+ * 				NOTE: at this time the stats does not update in current game time due to refresh issues (this will be addressed in the
+ * 				final iteration)  
+ * 
+ */
 
+public class UserInterfaceController extends GameController {
+	
 	private String currentPlayerId; 
 	
 	private Player currentPlayer;
@@ -32,6 +48,7 @@ public class UserInterfaceController extends GameController {
 	
 	private String healthBar;
 	
+	//Bindings
 	IntegerProperty coins = new SimpleIntegerProperty(this.currentPlayerCoins);
 	IntegerProperty health = new SimpleIntegerProperty(this.currentPlayerHealth);
 	IntegerProperty killCount = new SimpleIntegerProperty(this.currentPlayerKillCount);
@@ -99,11 +116,19 @@ public class UserInterfaceController extends GameController {
 		killCountLabel.setText(Integer.toString(this.currentPlayerKillCount));
 		playerCoinsLabel.setText(Integer.toString(this.currentPlayerCoins));
 		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
-		//healthBarLabel.setText(this.healthBar);
+		healthBarLabel.setText(Integer.toString(this.currentPlayerHealth));
 		playerXPLabel.setText(Double.toString(this.currentPlayerXP));
 		 
 	}
     
+	
+	/**
+	 * replaceHealthBarCharacters method. This method takes the String array healthBarArray this take healtbar String generated
+	 * by the Userinterface class and replaces the '=' characters to '<' which resembles hearts in font our game uses
+	 * @param healthBarString 
+	 * @return heartHealthBar
+	 * 
+	 */
 	private String replaceHealthBarCharacters (String healthBarString) {
 		
 		char[] currentHealthBar = healthBarString.toCharArray();
@@ -121,6 +146,12 @@ public class UserInterfaceController extends GameController {
 		
 	}
 	
+	
+	/**
+	 * uiInitializer method. This method takes the player stats variables and assigns them to instance variables of this 
+	 * class. It is the instance variables which are displayed on the labels.
+	 * @param currentPlayer
+	 */
 	public void uiInitializer(Player currentPlayer) {
 
 			this.currentPlayerCoins = currentPlayer.getCoins();
@@ -134,7 +165,11 @@ public class UserInterfaceController extends GameController {
 	
 	    }
 	
-
+	
+	/**
+	 * refresh method. This method is called upon when updating the player stats. For the next iteration we will be implementing
+	 * this method more actively in order to update the players stats in real time.
+	 */
 	@Override
 	public void refresh() {
 		
