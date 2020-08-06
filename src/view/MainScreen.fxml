@@ -9,9 +9,9 @@
 
 <Pane fx:id="view" prefHeight="800.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextArea fx:id="mapWindow" prefHeight="444.0" prefWidth="793.0">
+      <TextArea fx:id="mapWindow" prefHeight="444.0" prefWidth="793.0" style="-fx-font-size: 30; -fx-control-inner-background: #e0f8d0; -fx-text-fill: #346856; -fx-font-family: icomoon;">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="30.0" />
          </font></TextArea>
       <TextArea fx:id="eventOutput" layoutY="444.0" prefHeight="355.0" prefWidth="427.0">
          <font>

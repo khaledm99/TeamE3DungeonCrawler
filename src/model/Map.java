@@ -137,38 +137,48 @@ public class Map {
 	 */
 	public String renderNext(Player player, Enemy enemy, String direction, Inventory inv) {
 		if (direction.equals("up")) {
-			if (layout[player.getYcoord()-1][player.getXcoord()] != "#") {
+			if (!layout[player.getYcoord()-1][player.getXcoord()].equals("#")) {
 				player.moveUp(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player, inv);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+					}
+						
+					
 				}
 			}
 		}
 		else if (direction.equals("down")) {
-			if (layout[player.getYcoord()+1][player.getXcoord()] != "#") {
+			if (!layout[player.getYcoord()+1][player.getXcoord()].equals("#")) {
 				player.moveDown(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player, inv);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+					}
 				}	
 			}
 		}
 		else if (direction.equals("left")) {
-			if (layout[player.getYcoord()][player.getXcoord()-1] != "#") {
+			if (!layout[player.getYcoord()][player.getXcoord()-1].equals("#")) {
 				player.moveLeft(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player, inv);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+					}
 				}
 			}
 		}
 		else if (direction.equals("right")) {
-			if (layout[player.getYcoord()][player.getXcoord()+1] != "#") {
+			if (!layout[player.getYcoord()][player.getXcoord()+1].equals("#")) {
 				player.moveRight(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player, inv);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+					}
 				}
 			}
 		}

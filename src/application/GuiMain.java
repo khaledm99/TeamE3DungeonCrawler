@@ -17,7 +17,7 @@ import model.Userinterface;
 public class GuiMain extends Application {
 	public static final String FXML_FILES_LOCATION = "src/view/";
 	
-	private static Player player = new Player(6,8,"Xavier");
+	private static Player player = new Player(6,8,"Xavier", true);
 	
 	private static Inventory p1Inventory = new Inventory(player.getName());
 	

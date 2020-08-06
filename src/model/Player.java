@@ -17,6 +17,7 @@ public class Player extends Entity {
 	private int xp;
 	private int coins;
 	private int killCount;
+	private Boolean isGUI = false;
 
 	/**
 	 * Player constructor.
@@ -24,7 +25,7 @@ public class Player extends Entity {
 	 * @param ycoord: initial y-coordinate
 	 * @param name: player name
 	 */
-	public Player(int xcoord, int ycoord, String name) {
+	public Player(int xcoord, int ycoord, String name, Boolean ui) {
 		this.setHp(20);
 		this.setStamina(20);
 		this.setXcoord(xcoord);
@@ -35,6 +36,7 @@ public class Player extends Entity {
 		this.coins = 5;
 		this.xp = 0;
 		this.killCount = 0;
+		this.isGUI = ui;
 	}
 	
 	// Getter method for xp
@@ -86,4 +88,14 @@ public class Player extends Entity {
 	public void setCoins(int coins) {
 		this.coins = coins;
 	}
+	
+	public Boolean getUI() {
+		return isGUI;
+	}
+	
+	public void setUI(Boolean value) {
+		this.isGUI = value;
+	}
+	
+	
 }
