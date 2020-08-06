@@ -14,7 +14,7 @@
       <Button fx:id="healButton" layoutX="15.0" layoutY="582.0" mnemonicParsing="false" onAction="#healPotion" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Healing Potion" />
       <Button fx:id="staminaButton" layoutX="12.0" layoutY="654.0" mnemonicParsing="false" onAction="#staminaPotion" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Stamina Potion" />
       <Button fx:id="fleeButton" layoutX="14.0" layoutY="725.0" mnemonicParsing="false" onAction="#flee" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Flee!" />
-      <Label fx:id="combatText" alignment="CENTER" layoutX="223.0" layoutY="575.0" prefHeight="209.0" prefWidth="754.0" style="-fx-border-style: solid; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #E0F8D0;" text="Make your next move...">
+      <Label fx:id="combatText" alignment="CENTER" layoutX="223.0" layoutY="575.0" prefHeight="209.0" prefWidth="754.0" style="-fx-border-style: solid; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #E0F8D0;" text="Make your next move..." wrapText="true">
          <font>
             <Font size="14.0" />
          </font></Label>
