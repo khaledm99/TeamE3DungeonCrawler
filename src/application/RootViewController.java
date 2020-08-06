@@ -38,7 +38,7 @@ public class RootViewController extends GameController {
 	@FXML
 	void initialize() {
 		Font.loadFont(getClass().getResourceAsStream("../resource/Early GameBoy.ttf"),1);
-
+		Font.loadFont(getClass().getResourceAsStream("../resource/icomoon.ttf"),1);
 	}
 	
 	public Parent getView() {

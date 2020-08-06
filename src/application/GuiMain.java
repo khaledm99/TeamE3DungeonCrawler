@@ -6,19 +6,53 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import model.Enemy;
 import model.Inventory;
 import model.Item;
+import model.Map;
 import model.Player;
+import model.Userinterface;
 
 
 public class GuiMain extends Application {
 	public static final String FXML_FILES_LOCATION = "src/view/";
 	
-	private static Player player = new Player(6,8,"Xavier");
+	private static Player player = new Player(6,8,"Xavier", true);
 	
 	private static Inventory p1Inventory = new Inventory(player.getName());
 	
 	private static Item[] p1EquippedList;
+	
+	private static Map map = new Map();
+	
+	private static Userinterface playerStats = new Userinterface(player);
+	
+	private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
+	
+	public static Userinterface getUI() {
+		return playerStats;
+	}
+	
+	public static String getRender(Map torender) {
+		return torender.render(player, skeletonOne);
+	}
+	
+	public static String getNextRender(String direction) {
+		return map.renderNext(player, skeletonOne, direction, p1Inventory);
+	}
+	
+	public static Enemy getEnemy() {
+		return skeletonOne;
+	}
+	
+	public static Map getMap() {
+		try {
+			map.readMap("resource/test.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
 	
 	public static Inventory getP1Inv(){
 		return p1Inventory;
