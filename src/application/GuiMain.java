@@ -31,6 +31,8 @@ public class GuiMain extends Application {
 	
 	private static Boolean onEnemy = false;
 	
+	private static Boolean pageRefresh = true;
+
 	public static Userinterface getUI() {
 		return playerStats;
 	}
@@ -86,6 +88,13 @@ public class GuiMain extends Application {
 		return p1EquippedList;
 	}
 	
+	public static Boolean getPageRefresh() {
+		return pageRefresh;
+	}
+	
+	public static void setPageRefresh(Boolean update) {
+		pageRefresh = update;
+	}
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -109,6 +118,9 @@ public class GuiMain extends Application {
 		
 		launch(args);
 	}
+
+	
+	
 
 	
 

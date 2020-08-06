@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 
 public class MainController extends GameController {
 	
-	public static int counter = 0;
+	public Stage stage = new Stage();
+
 
     private String direction = "";
 	
@@ -93,7 +94,6 @@ public class MainController extends GameController {
 				parentLoader.setLocation(getClass().getResource("../view/Combat.fxml"));
 				Parent root = parentLoader.load();
 				Scene scene = new Scene(root,1200,800);
-				Stage stage = new Stage();
 				stage.setScene(scene);
 				stage.show();
 			} catch (IOException e1) {

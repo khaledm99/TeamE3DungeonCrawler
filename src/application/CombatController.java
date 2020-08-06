@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 
@@ -51,6 +52,7 @@ public class CombatController extends GameController {
 
     @FXML
     private Button fleeButton;
+    
 
     @FXML
     private ProgressBar enemyHP;
@@ -123,6 +125,8 @@ public class CombatController extends GameController {
     @FXML
     public void flee(ActionEvent event) {
     	refresh();
+    	Stage stage = (Stage) fleeButton.getScene().getWindow();
+    	stage.close();
     }
     
     @FXML
@@ -261,14 +265,16 @@ public class CombatController extends GameController {
  
 	@Override
 	public void refresh() {
-	getPlayer().setHp(playersRemainingHP);
-	getEnemy().setHp(enemysRemainingHP);
-	if (enemysRemainingHP < 1) {
-		getEnemy().setDead(true);
-		getPlayer().setKillCount(getPlayer().getKillCount() + 1);
-		getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
-		getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
-	}
+		getPlayer().setHp(playersRemainingHP);
+		getEnemy().setHp(enemysRemainingHP);
+		if (enemysRemainingHP < 1) {
+			getEnemy().setDead(true);
+			getPlayer().setKillCount(getPlayer().getKillCount() + 1);
+			getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
+			getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
+			Stage stage = (Stage) fleeButton.getScene().getWindow();
+	    	stage.close();		}
+		
 }
 
 }

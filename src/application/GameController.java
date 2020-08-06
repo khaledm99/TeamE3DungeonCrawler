@@ -8,6 +8,7 @@ import model.Enemy;
 
 public abstract class GameController {
 	protected GuiMain app;
+	protected InventoryController inv;
 	
 	public abstract void refresh();
 
@@ -38,6 +39,10 @@ public abstract class GameController {
 	}
 	protected Boolean getOnEnemy() {
 		return application.GuiMain.getOnEnemy();
+	}
+	public void setInvCon(InventoryController inv) {
+		this.inv = inv;
+		refresh();
 	}
 	
 	//protected Combat getCombatScreen() {

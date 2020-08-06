@@ -344,110 +344,117 @@ public class InventoryController extends GameController{
     private Label TotalHPLabel;
     
     @FXML ProgressBar StaminaProgressBar;
-	    
+    
+    @FXML
+	private Button refreshButton;
+    
     @FXML
     void slotZeroSelected(MouseEvent event) {
         
-    	}
+    }
 
     @FXML
     void slotOneSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotTwoSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotThreeSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotFourSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotFiveSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotSixSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotSevenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotEightSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotNineSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotTenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotElevenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotTweleveSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotThirteenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotFourteenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotFifteenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotSixteenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotSeventeenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotEightteenSelected(MouseEvent event) {
-
+    	
     }
 
     @FXML
     void slotNineteenSelected(MouseEvent event) {
-
+    	
     }
     
     @FXML
     void equipListSelected(MouseEvent event) {
 
+    }
+    @FXML
+    void refreshHandler(MouseEvent event) {
+    	refresh();
     }
     
 
@@ -489,6 +496,7 @@ public class InventoryController extends GameController{
     } 
     @Override
     public void refresh() {
+    	//System.out.println("Inv refresh check");
     	//the inventory set up here will be moved once we continue working on those classes
     	//So far I set up the inventory of "Player" and set their HP.
         MaxEquippedLabel.setText("----Max Items Equipped----");
@@ -567,11 +575,11 @@ public class InventoryController extends GameController{
     			ItemObjectListView.getItems().addAll(p1.getInvList()[0]);
     			StringEquippedListView.getItems().addAll(p1.getInvList()[0].getName());
     			}
-    			refresh();
         	}
     		 
     		else {MaxEquippedLabel.setOpacity(1);}
         	}
+        	refresh();
   	     });
     	
         Slot0.setOnMouseEntered((event) -> {
@@ -588,6 +596,7 @@ public class InventoryController extends GameController{
           			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
           		}
         	}
+        	
         });
         Slot0.setOnMouseExited((event) -> {
         	VboxSlot0.setOpacity(0);        	
@@ -604,10 +613,11 @@ public class InventoryController extends GameController{
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[1]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[1].getName());
   	    			}
-        			refresh();
+        			
   	    		}
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
+  	    	refresh();
   	     });
           
           Slot1.setOnMouseEntered((event) -> {
@@ -640,10 +650,10 @@ public class InventoryController extends GameController{
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[2]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[2].getName());
   	    			}
-        			refresh();
   	    		 }
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
+  	    	refresh();
   	     });
            
           Slot2.setOnMouseEntered((event) -> {
@@ -676,10 +686,10 @@ public class InventoryController extends GameController{
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[3]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[3].getName());
   	    			}
-        			refresh();
   	    		 }
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
+  	    	refresh();
   	     });
           
           Slot3.setOnMouseEntered((event) -> {
@@ -712,10 +722,10 @@ public class InventoryController extends GameController{
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[4]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[4].getName());
   	    			}
-        			refresh();
   	    		 }
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
+  	    	refresh();
   	     });
           
           Slot4.setOnMouseEntered((event) -> {
@@ -748,10 +758,10 @@ public class InventoryController extends GameController{
   	    		 	ItemObjectListView.getItems().addAll(p1.getInvList()[5]);
         			StringEquippedListView.getItems().addAll(p1.getInvList()[5].getName());
   	    			}
-        			refresh();
   	    		 }
         		else {MaxEquippedLabel.setOpacity(1);}
   	    	 }
+  	    	refresh();
   	     });
            
           Slot5.setOnMouseEntered((event) -> {
@@ -1370,6 +1380,10 @@ public class InventoryController extends GameController{
           
         
     }
+    
+	
+	
+	
 }
 
 
