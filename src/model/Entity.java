@@ -1,3 +1,5 @@
+package model;
+
 /**
  * Classname: Entity
  * 
@@ -12,6 +14,7 @@
 public class Entity {
 	
 	private int hp;
+	private int stamina;
 	private int xcoord;
 	private int ycoord;
 	private String name;
@@ -22,6 +25,16 @@ public class Entity {
 	// Getter method for hp
 	public int getHp() {
 		return hp;
+	}
+	
+	// Getter method for stamina
+	public int getStamina() {
+		return stamina;
+	}
+	
+	// Setter method for stamina
+	public void setStamina(int stamina) {
+		this.stamina = stamina;
 	}
 
 	// Setter method for hp

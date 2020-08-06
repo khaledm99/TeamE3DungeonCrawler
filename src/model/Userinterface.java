@@ -1,3 +1,5 @@
+package model;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -107,7 +109,7 @@ public class Userinterface {
 	 * current player health instance variable.  
 	 * @return healthBarString
 	 */
-	private String healthBarStringCreator () {
+	public String healthBarStringCreator () {
 		
 		int nrOfHealthBars;
 		int size = healthBarArray.length;

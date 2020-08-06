@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.FlowPane?>
+
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
+   <children>
+      <StackPane alignment="TOP_LEFT" prefHeight="807.0" prefWidth="384.0" style="-fx-background-color: #E0F8D0; -fx-border-color: #E0F8D0;">
+         <children>
+            <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="393.0" style="-fx-background-color: #E0F8D0;">
+               <children>
+                  <HBox maxHeight="-Infinity" prefHeight="900.0" prefWidth="617.0">
+                     <children>
+                        <VBox fillWidth="false" prefHeight="801.0" prefWidth="400.0">
+                           <children>
+                              <VBox maxHeight="-Infinity" prefHeight="80.0" prefWidth="342.0" style="-fx-font-family: &quot;Early GamBoy&quot;;">
+                                 <children>
+                                    <Label fx:id="HealthLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Health----" textFill="#081820">
+                                       <VBox.margin>
+                                          <Insets left="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="44.0" prefWidth="376.0">
+                                       <children>
+                                          <ProgressBar fx:id="HealthBarProgressBar" prefWidth="200.0" progress="0.72" style="-fx-accent: #E0F8D0; -fx-control-inner-background: #88C070; -fx-border-color: #081820; -fx-border-width: 3;">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </ProgressBar>
+                                          <Label fx:id="HealthLeftLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="/" textFill="#081820" />
+                                          <Label fx:id="TotalHPLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="20" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="RefreshButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#refreshHandler" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10; -fx-background-color: #88C070;" text="Beta Refresh">
+                                       <VBox.margin>
+                                          <Insets left="125.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="100.0" prefWidth="621.0">
+                                 <children>
+                                    <Button fx:id="Slot0" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotZeroSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot1" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotOneSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot2" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTwoSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot3" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThreeSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot4" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="608.0">
+                                 <children>
+                                    <Button fx:id="Slot5" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFiveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot6" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot7" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot8" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot9" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="610.0">
+                                 <children>
+                                    <Button fx:id="Slot10" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot11" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotElevenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot12" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotTweleveSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot13" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotThirteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot14" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFourteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="612.0">
+                                 <children>
+                                    <Button fx:id="Slot15" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotFifteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot16" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSixteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot17" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotSeventeenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot18" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotEightteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="Slot19" alignment="BOTTOM_CENTER" mnemonicParsing="false" onMouseClicked="#slotNineteenSelected" prefHeight="100.0" prefWidth="100.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #88C070; -fx-border-color: #081820; -fx-border-width: 3;" text="Button" textAlignment="CENTER" textFill="#081820" textOverrun="CLIP" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Currently Equipped----" textFill="#081820">
+                                 <VBox.margin>
+                                    <Insets left="5.0" top="16.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Select to unequip" textFill="#081820">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ListView fx:id="StringEquippedListView" editable="true" onMouseClicked="#equipListSelected" prefHeight="140.0" prefWidth="597.0" style="-fx-background-color: #88C070; -fx-control-inner-background: #88C070; -fx-selection-bar: #E0F8D0; -fx-border-color: #081820; -fx-border-width: 3;">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" right="10.0" />
+                                 </VBox.margin>
+                              </ListView>
+                              <Label fx:id="MaxEquippedLabel" opacity="0.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="----Max Items Equipped----" textFill="#081820">
+                                 <VBox.margin>
+                                    <Insets bottom="101.0" left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <ListView fx:id="ItemObjectListView" editable="true" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" visible="false" />
+                     </children>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </HBox>
+               </children>
+            </FlowPane>
+            <StackPane alignment="CENTER_LEFT" mouseTransparent="true" prefHeight="754.0" prefWidth="404.0" style="-fx-border-color: #E0F8D0;">
+               <children>
+                  <VBox prefHeight="719.0" prefWidth="402.0">
+                     <children>
+                        <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0">
+                           <children>
+                              <VBox fx:id="VboxSlot0" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot1" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot1" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot01" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot01" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot2" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot2" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot02" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot02" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="7.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot3" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot3" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot03" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot03" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot4" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot4" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot04" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot04" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="90.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
+                           <children>
+                              <VBox fx:id="VboxSlot5" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot5" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot05" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot05" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot6" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot6" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot06" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot06" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot7" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot7" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot07" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot07" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="7.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot8" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot8" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot08" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot08" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot9" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot9" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot09" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot09" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
+                           <children>
+                              <VBox fx:id="VboxSlot10" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot10" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot10" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot10" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot11" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot11" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot11" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot11" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot12" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot12" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot12" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot12" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="7.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot13" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot13" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot13" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot13" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot14" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot14" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot14" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot14" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;">
+                           <children>
+                              <VBox fx:id="VboxSlot15" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot15" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot15" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot15" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot16" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot16" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot16" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot16" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot17" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot17" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot17" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot17" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="7.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot18" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot18" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot18" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot18" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="VboxSlot19" opacity="0.0" prefHeight="108.0" prefWidth="103.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgLabelSlot19" text="DMG" textFill="#081820" underline="true">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="DUR" textFill="#081820" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="0.0" prefWidth="103.0">
+                                       <children>
+                                          <Label fx:id="DmgSlot19" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="DurSlot19" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="11.0" right="6.0" top="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </children>
+      </StackPane>
+   </children>
+</Pane>

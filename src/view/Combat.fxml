@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #88C070;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CombatController">
+   <children>
+      <Button fx:id="healButton" layoutX="15.0" layoutY="582.0" mnemonicParsing="false" onAction="#healPotion" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Healing Potion" />
+      <Button fx:id="staminaButton" layoutX="12.0" layoutY="654.0" mnemonicParsing="false" onAction="#staminaPotion" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Stamina Potion" />
+      <Button fx:id="fleeButton" layoutX="14.0" layoutY="725.0" mnemonicParsing="false" onAction="#flee" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Flee!" />
+      <Label fx:id="combatText" alignment="CENTER" layoutX="223.0" layoutY="575.0" prefHeight="209.0" prefWidth="754.0" style="-fx-border-style: solid; -fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #E0F8D0;" text="Make your next move..." wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Slider fx:id="stamSlider" blockIncrement="1.0" layoutX="163.0" layoutY="435.0" majorTickUnit="2.0" max="20.0" minorTickCount="1" prefHeight="85.0" prefWidth="874.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-color: #416a2f; -fx-control-inner-background: #E0F8D0;" />
+      <ProgressBar fx:id="playerStam" layoutX="-166.0" layoutY="210.0" prefHeight="36.0" prefWidth="406.0" progress="1.0" rotate="270.0" style="-fx-border-color: #081820; -fx-border-width: 3; -fx-accent: #E0F8D0; -fx-control-inner-background: #568e3e;" />
+      <ProgressBar fx:id="enemyStam" layoutX="957.0" layoutY="210.0" prefHeight="36.0" prefWidth="406.0" progress="1.0" rotate="270.0" style="-fx-border-color: #081820; -fx-border-width: 3; -fx-accent: #E0F8D0; -fx-control-inner-background: #568e3e;" />
+      <ProgressBar fx:id="playerHP" layoutX="95.0" layoutY="14.0" prefHeight="36.0" prefWidth="400.0" progress="1.0" style="-fx-border-color: #081820; -fx-border-width: 3; -fx-accent: #E0F8D0; -fx-control-inner-background: #568e3e;" />
+      <ProgressBar fx:id="enemyHP" layoutX="711.0" layoutY="14.0" prefHeight="36.0" prefWidth="400.0" progress="1.0" style="-fx-accent: #E0F8D0; -fx-border-width: 3; -fx-control-inner-background: #568e3e; -fx-border-color: #081820;" />
+      <Circle fill="DODGERBLUE" layoutX="295.0" layoutY="229.0" radius="71.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #568e3e;" />
+      <Sphere radius="0.77" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="142.0" layoutX="840.0" layoutY="157.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #568e3e;" width="142.0" />
+      <Button fx:id="playerMoveButton" layoutX="565.0" layoutY="512.0" mnemonicParsing="false" onAction="#playerMoveButton" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Go!" />
+      <Label layoutX="231.0" layoutY="16.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Your HP" />
+      <Label layoutX="857.0" layoutY="15.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy HP" />
+      <Label layoutX="63.0" layoutY="400.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Your Stamina" />
+      <Label layoutX="263.0" layoutY="212.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Player" />
+      <Label layoutX="876.0" layoutY="212.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy" />
+      <Label layoutX="963.0" layoutY="400.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy Stamina" />
+   </children>
+</Pane>

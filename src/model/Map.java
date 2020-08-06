@@ -1,3 +1,11 @@
+package model;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Classname: Map
  * 
@@ -14,7 +22,7 @@ public class Map {
 	
 	private int width;
 	private int height;
-	private String name;
+	private int level;
 	// Map layout is stored in a nested array where each "cell" of the map is a single character String, to allow for a working coordinates system.
 	private String[][] layout = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
 					      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
@@ -45,12 +53,43 @@ public class Map {
 		return this.height;
 	}
 	
-	public String getName() {
-		return this.name;
+	public int getLevel() {
+		return this.level;
 	}
 	
 	public String[][] getLayout() {
 		return this.layout;
+	}
+	
+	public void readMap(String file) throws IOException {
+		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+		//String is = classloader.getResource(file).getFile();
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line = reader.readLine();
+		
+		this.level = Integer.parseInt(line);
+		line = reader.readLine();
+		this.width = Integer.parseInt(line.substring(6));
+		line = reader.readLine();
+		this.height = Integer.parseInt(line.substring(7));
+		
+		this.layout = new String[height][width];
+
+		line = reader.readLine();
+		while (line != null) {
+			for (int y = 0; y < layout.length; y++) {
+			
+				int c = 0;
+				for (int x = 0; x < layout[y].length; x++) {
+					layout[y][x] = Character.toString(line.charAt(c));
+					c++;
+					}
+				line = reader.readLine();		
+			}
+		}
+		
+		
+
 	}
 	
 	/**
@@ -96,40 +135,79 @@ public class Map {
 	 * Additionally, checks if the player is moving into a wall or if the player is moving into an enemy.
 	 * If the player moves into an enemy, initializes a combat encounter.
 	 */
-	public String renderNext(Player player, Enemy enemy, String direction) {
+	public String renderNext(Player player, Enemy enemy, String direction, Inventory inv) {
 		if (direction.equals("up")) {
-			if (layout[player.getYcoord()-1][player.getXcoord()] != "#") {
+			if (!layout[player.getYcoord()-1][player.getXcoord()].equals("#")) {
 				player.moveUp(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
 		else if (direction.equals("down")) {
-			if (layout[player.getYcoord()+1][player.getXcoord()] != "#") {
+			if (!layout[player.getYcoord()+1][player.getXcoord()].equals("#")) {
 				player.moveDown(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
-				}	
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+						
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
+				}
 			}
 		}
 		else if (direction.equals("left")) {
-			if (layout[player.getYcoord()][player.getXcoord()-1] != "#") {
+			if (!layout[player.getYcoord()][player.getXcoord()-1].equals("#")) {
 				player.moveLeft(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+						
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
 		else if (direction.equals("right")) {
-			if (layout[player.getYcoord()][player.getXcoord()+1] != "#") {
+			if (!layout[player.getYcoord()][player.getXcoord()+1].equals("#")) {
 				player.moveRight(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
-					combat.combatInit(enemy, player);
+					if (!player.getUI()) {
+						combat.combatInit(enemy, player, inv);
+						
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
+					}
+				}
+				else {
+					application.GuiMain.setOnEnemy(false);
 				}
 			}
 		}
