@@ -9,11 +9,11 @@
 
 <Pane fx:id="view" prefHeight="800.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextArea fx:id="mapWindow" prefHeight="444.0" prefWidth="793.0" style="-fx-font-size: 30; -fx-control-inner-background: #e0f8d0; -fx-text-fill: #346856; -fx-font-family: icomoon;">
+      <TextArea fx:id="mapWindow" editable="false" prefHeight="444.0" prefWidth="793.0" style="-fx-font-size: 25; -fx-control-inner-background: #e0f8d0; -fx-border-color: #346856; -fx-border-width: 5; -fx-padding: 0; -fx-vbar-policy: never; -fx-text-fill: #346856; -fx-font-family: icomoon;">
          <font>
             <Font name="Consolas" size="30.0" />
          </font></TextArea>
-      <TextArea fx:id="eventOutput" layoutY="444.0" prefHeight="355.0" prefWidth="427.0">
+      <TextArea fx:id="eventOutput" layoutY="444.0" prefHeight="355.0" prefWidth="427.0" style="-fx-control-inner-background: #e0f8d0; -fx-border-color: #346856; -fx-border-width: 5;">
          <font>
             <Font name="Consolas" size="15.0" />
          </font></TextArea>
@@ -39,7 +39,7 @@
                   <Insets left="14.0" right="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="UseButton" mnemonicParsing="false" onAction="#UseClick" prefHeight="96.0" prefWidth="96.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="UseButton" alignment="CENTER_RIGHT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#UseClick" prefHeight="96.0" prefWidth="96.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="14.0" right="10.0" top="10.0" />
                </GridPane.margin>

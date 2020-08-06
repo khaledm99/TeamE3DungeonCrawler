@@ -68,10 +68,12 @@ public class MainController extends GameController {
     	eventOutput.setEditable(false);
     	
     	Image img = new Image("resource/Arrow.png"); 
+    	Image useimg = new Image("resource/UseButton.png");
     	UpButton.setGraphic(new ImageView(img));
     	DownButton.setGraphic(new ImageView(img));
     	LeftButton.setGraphic(new ImageView(img));
     	RightButton.setGraphic(new ImageView(img));
+    	UseButton.setGraphic(new ImageView(useimg));
     	
     	String initmap = application.GuiMain.getRender(application.GuiMain.getMap());
     	mapWindow.setText(initmap);
