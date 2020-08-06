@@ -9,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MainController extends GameController {
+	
+	public static int counter = 0;
 
     private String direction = "";
 	
@@ -80,10 +82,15 @@ public class MainController extends GameController {
     }
     
 	@Override
-	public void refresh() {
+	public void refresh() {		
+		System.out.println(counter);
+		if (counter <= 15) {
 		mapWindow.clear();
 		String nextmap = application.GuiMain.getNextRender(direction);
 		mapWindow.setText(nextmap);
+
+		}
+		counter++;
 	}
 
 }

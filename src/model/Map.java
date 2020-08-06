@@ -63,7 +63,7 @@ public class Map {
 	
 	public void readMap(String file) throws IOException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		String is = classloader.getResource(file).getFile();
+		//String is = classloader.getResource(file).getFile();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
 		
@@ -143,6 +143,11 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						application.GuiMain.setOnEnemy(false);
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
 					}
 						
 					
@@ -156,6 +161,11 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						application.GuiMain.setOnEnemy(false);
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
 					}
 				}	
 			}
@@ -167,6 +177,11 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						application.GuiMain.setOnEnemy(false);
+
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
 					}
 				}
 			}
@@ -178,6 +193,10 @@ public class Map {
 					combat = new Combat();
 					if (!player.getUI()) {
 						combat.combatInit(enemy, player, inv);
+						application.GuiMain.setOnEnemy(false);
+					}
+					else {
+						application.GuiMain.setOnEnemy(true);
 					}
 				}
 			}

@@ -2,6 +2,7 @@ package application;
 import model.Inventory;
 import model.Item;
 import model.Player;
+import model.Enemy;
 
 public abstract class GameController {
 	protected GuiMain app;
@@ -24,12 +25,23 @@ public abstract class GameController {
 	protected void setPlayer(Player aPlayer) {
 		application.GuiMain.setP1(aPlayer);
 	}
+	protected Enemy getEnemy() {
+		return application.GuiMain.getEnemy();
+	}
 	protected void setEquippedList(Item[] aList) {
 		application.GuiMain.setEquippedList(aList);
 	}
 	protected Item[] getEquippedList() {
 		return application.GuiMain.getEquippedList();
 	}
+	
+	protected Boolean getCombatScreen() {
+		if (application.GuiMain.getOnEnemy()) {
+			refresh();
+		}
+		return application.GuiMain.getOnEnemy();
+	}
+
 	
 	
 }

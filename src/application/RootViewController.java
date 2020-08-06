@@ -1,9 +1,12 @@
 package application;
+import java.awt.Button;
+
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;        
 
 public class RootViewController extends GameController {
@@ -25,6 +28,11 @@ public class RootViewController extends GameController {
 			new Tab("inv", inventory),
 			new Tab("ui", ui)
 			);
+	@FXML
+    private StackPane combatStack;
+	
+	@FXML
+	private Pane combat;
 	
 	@FXML
 	private InventoryController inventoryController;
@@ -34,6 +42,9 @@ public class RootViewController extends GameController {
 	
 	@FXML
 	private UserInterfaceController uiController;
+	
+	@FXML 
+	private CombatController combatController;
 	
 	@FXML
 	void initialize() {
@@ -45,8 +56,18 @@ public class RootViewController extends GameController {
 	     return view;
 	}
 	
+	
 	@Override
-	public void refresh() {}
+	public void refresh() {
+		System.out.println(getCombatScreen());
+		if (getCombatScreen() == true) {
+			combatStack.setOpacity(1);
+			combatStack.setMouseTransparent(false);
+		}
 		
+		
+	}
 }
+		
+
 	

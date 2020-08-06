@@ -29,6 +29,8 @@ public class GuiMain extends Application {
 	
 	private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
 	
+	private static Boolean onEnemy = false;
+	
 	public static Userinterface getUI() {
 		return playerStats;
 	}
@@ -52,6 +54,15 @@ public class GuiMain extends Application {
 			e.printStackTrace();
 		}
 		return map;
+	}
+	public static Boolean getOnEnemy() {
+		return onEnemy;
+	}
+	public static void setCombat(Boolean result) {
+		onEnemy = result;
+	}
+	public static void setOnEnemy(Boolean result) {
+		onEnemy = result;
 	}
 	
 	public static Inventory getP1Inv(){
@@ -84,8 +95,8 @@ public class GuiMain extends Application {
 			FXMLLoader parentLoader = new FXMLLoader();
 			parentLoader.setLocation(getClass().getResource("../view/MainView.fxml"));
 			Parent root = parentLoader.load();
-			//GameController controller = (GameController)parentLoader.getController();
-			//controller.setGuiMainApp(this);
+			GameController controller = (GameController)parentLoader.getController();
+			controller.setGuiMainApp(this);
 			//controller.refresh();
 			Scene scene = new Scene(root,1200,800);
 			primaryStage.setScene(scene);
@@ -100,6 +111,8 @@ public class GuiMain extends Application {
 		
 		launch(args);
 	}
+
+	
 
 	
 
