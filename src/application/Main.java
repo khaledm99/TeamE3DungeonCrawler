@@ -23,7 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Creates a new player object and sets its stats
-		Player player = new Player(6,8,"Player");
+		Player player = new Player(6,8,"Player", false);
 		
 		// Creates a new enemy object and sets its stats
 		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");

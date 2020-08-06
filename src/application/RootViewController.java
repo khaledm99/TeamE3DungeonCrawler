@@ -1,6 +1,7 @@
 package application;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;        
@@ -14,7 +15,16 @@ public class RootViewController extends GameController {
 	private Pane mainScreen;
 	
 	@FXML
-	private TabPane inventory;
+	private Pane inventory;
+	
+	@FXML
+	private Pane ui;
+	
+	@FXML 
+	private TabPane rootTabPane = new TabPane(
+			new Tab("inv", inventory),
+			new Tab("ui", ui)
+			);
 	
 	@FXML
 	private InventoryController inventoryController;
@@ -23,9 +33,12 @@ public class RootViewController extends GameController {
 	private MainController mainController; 
 	
 	@FXML
+	private UserInterfaceController uiController;
+	
+	@FXML
 	void initialize() {
 		Font.loadFont(getClass().getResourceAsStream("../resource/Early GameBoy.ttf"),1);
-
+		Font.loadFont(getClass().getResourceAsStream("../resource/icomoon.ttf"),1);
 	}
 	
 	public Parent getView() {

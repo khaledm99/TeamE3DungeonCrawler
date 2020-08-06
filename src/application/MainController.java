@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainController extends GameController {
 
@@ -64,6 +66,12 @@ public class MainController extends GameController {
     void initialize() {
     	mapWindow.setEditable(false);
     	eventOutput.setEditable(false);
+    	
+    	Image img = new Image("resource/Arrow.png"); 
+    	UpButton.setGraphic(new ImageView(img));
+    	DownButton.setGraphic(new ImageView(img));
+    	LeftButton.setGraphic(new ImageView(img));
+    	RightButton.setGraphic(new ImageView(img));
     	
     	String initmap = application.GuiMain.getRender(application.GuiMain.getMap());
     	mapWindow.setText(initmap);
