@@ -1,8 +1,6 @@
 package application;
-import model.Enemy;
 import model.Inventory;
 import model.Item;
-import model.Map;
 import model.Player;
 
 public abstract class GameController {
@@ -32,7 +30,6 @@ public abstract class GameController {
 	protected Item[] getEquippedList() {
 		return application.GuiMain.getEquippedList();
 	}
-	
 	
 	
 }
