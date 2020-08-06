@@ -8,6 +8,7 @@ public class Item {
 	protected String itemType;
 	protected int potionHP;
 	protected int value;
+	protected String imagePath;
 	
 	public Item(String name, String type, int value, int duribility) 
 	{
@@ -42,6 +43,10 @@ public class Item {
 	}
 	public int getDamage() {
 		return damage;
+	}
+	
+	public String getImagePath() {
+		return imagePath;
 	}
 	
 	public String getItemType() {

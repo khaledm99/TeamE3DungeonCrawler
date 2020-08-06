@@ -1,11 +1,14 @@
 package application;
 
+import java.io.File;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -349,6 +352,9 @@ public class InventoryController extends GameController{
 	private Button refreshButton;
     
     @FXML
+    private ImageView Slot0ImageView;
+    
+    @FXML
     void slotZeroSelected(MouseEvent event) {
         
     }
@@ -586,6 +592,9 @@ public class InventoryController extends GameController{
         	if (Slot0.getText() != "Empty") {
         		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
         		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
+        		File file = new File(p1.getInvList()[0].getImagePath());
+        		Image slot0Image = new Image(file.toURI().toString());
+        		Slot0ImageView.setImage(slot0Image);
         		VboxSlot0.setOpacity(1);    
         		if (p1.getInvList()[0].getItemType() == "Potion") {
           			DmgLabelSlot0.setText(" HP  ");
@@ -600,6 +609,7 @@ public class InventoryController extends GameController{
         });
         Slot0.setOnMouseExited((event) -> {
         	VboxSlot0.setOpacity(0);        	
+        
         });
                 
           Slot1.setOnAction((event) -> {
