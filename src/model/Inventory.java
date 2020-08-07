@@ -93,6 +93,13 @@ public class Inventory {
 		return equippedList;
 		
 	}
+	
+	public int usePotion() {
+		int potionHP = equippedList[3].getPotionHP();
+		dropFromInv(equippedList[3]);
+		unEquipItem(3);
+		return potionHP;
+	}
 	public void equipItem(int anIndex) {
 		Boolean alreadyEquipped = false;
 		if (anIndex <= this.invList.length && this.invList[anIndex].getItemType() != "Empty") {
@@ -138,10 +145,6 @@ public class Inventory {
 		}
 		setEquippedList(equippedList);
 	}
-	
-	
-	
-	
 
 	public Inventory(String name)
 	{
@@ -178,7 +181,6 @@ public class Inventory {
 		}
 	}
 
-	
 	public Inventory(Inventory toCopy)
 	{
 		name = toCopy.name;
@@ -205,13 +207,15 @@ public class Inventory {
 			}
 		}		
 	}
-		
-	public void dropFromInv(Inventory anInv, int aSlot)
+	
+	//first iteration drop function
+	/*	
+	public void dropFromInv(int aSlot)
 	{
-		if(anInv.invList[aSlot] != Empty)
+		if(this.invList[aSlot] != Empty)
 		{
-			anInv.invElement--;
-			anInv.invList[aSlot]=Empty;
+			this.invElement--;
+			this.invList[aSlot]=Empty;
 
 		}
 		else 
@@ -219,6 +223,17 @@ public class Inventory {
 			System.out.println("Slot " + aSlot + " already empty");
 		}
 		
+	}
+	*/
+	public void dropFromInv(Item anItem)
+	{
+		for(int aSlot = 0; aSlot < invList.length; aSlot++) {
+			if(this.invList[aSlot] == anItem) {
+				this.invElement--;
+				this.invList[aSlot]=Empty;
+				break;
+			}
+		}
 	}
 	
 	public void giveToInv(Inventory anInv, Item anItem)
