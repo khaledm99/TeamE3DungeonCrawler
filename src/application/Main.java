@@ -19,7 +19,7 @@ import model.Player;
 import model.Userinterface;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
 		
 		// Creates a new player object and sets its stats
@@ -55,6 +55,7 @@ public class Main {
 		playerInput = inputScanner.nextLine();
 		playerStats.clearConsole();
 		
+		
 		// This loop either moves the player and re-displays the map, displays the stats window, or quits depending on user input
 		while (!playerInput.equals("quit")) {
 			if (playerInput.equals("stats")) {
@@ -65,7 +66,7 @@ public class Main {
 				inputScanner.nextLine();
 				playerStats.clearConsole();
 				System.out.println(map.render(player, skeletonOne));
-				System.out.println("What would you like to do? (up, down, left, right, upstats, inventory, quit) ");
+				System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
 			}
@@ -73,7 +74,8 @@ public class Main {
 			else if (playerInput.equals("inventory") || playerInput.equals("inv")) {
 				playerStats.clearConsole();
 				playerInv.getInventory();
-				System.out.println("Type exit to return or type equip/unequip to equip/unequip items: ");
+				System.out.println("Type exit to return or type equip/unequip to equip/unequip items or Heal" + '\n'
+						+ "to use an equipped HP Potion: ");
 				playerInput = inputScanner.nextLine();
 				if (playerInput.equals("equip")) {
 					System.out.println("Select an Item to Equip or type exit to return: ");
@@ -102,6 +104,22 @@ public class Main {
 						System.out.println("Select an Item to unequip or type exit to return: ");
 						playerInput = inputScanner.nextLine();
 					}
+				}
+				else if (playerInput.equals("Heal") || playerInput.equals("heal")) {
+					if (playerInv.getEquippedList()[3] != null) {
+						System.out.print(playerInv.getEquippedList()[3].getName() + "used");
+						if (player.getHp() + playerInv.usePotion() <= 20) {
+							player.setHp(player.getHp() + playerInv.usePotion());
+						}
+						else {
+							player.setHp(20);
+						}
+					}
+					else {
+						playerInv.getInventory();
+						System.out.println("No potions equipped");
+					}
+					
 				}
 				System.out.println(map.render(player, skeletonOne));
 				System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
