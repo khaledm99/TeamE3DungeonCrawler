@@ -244,6 +244,7 @@
                                           <Label fx:id="DurSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot0ImageView" fitHeight="50.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="5.0" right="6.0" top="15.0" />
@@ -271,6 +272,7 @@
                                           <Label fx:id="DurSlot01" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot1ImageView" fitHeight="50.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -298,6 +300,7 @@
                                           <Label fx:id="DurSlot02" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot2ImageView" fitHeight="50.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="7.0" top="15.0" />
@@ -325,6 +328,7 @@
                                           <Label fx:id="DurSlot03" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot3ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="10.0" right="6.0" top="15.0" />
@@ -352,6 +356,7 @@
                                           <Label fx:id="DurSlot04" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot4ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -386,6 +391,7 @@
                                           <Label fx:id="DurSlot05" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot5ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="5.0" right="6.0" top="15.0" />
@@ -413,6 +419,7 @@
                                           <Label fx:id="DurSlot06" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot6ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -440,6 +447,7 @@
                                           <Label fx:id="DurSlot07" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot7ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="7.0" top="15.0" />
@@ -467,6 +475,7 @@
                                           <Label fx:id="DurSlot08" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot8ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="10.0" right="6.0" top="15.0" />
@@ -494,6 +503,7 @@
                                           <Label fx:id="DurSlot09" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot9ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -528,6 +538,7 @@
                                           <Label fx:id="DurSlot10" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot10ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="5.0" right="6.0" top="15.0" />
@@ -555,6 +566,7 @@
                                           <Label fx:id="DurSlot11" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot11ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -582,6 +594,7 @@
                                           <Label fx:id="DurSlot12" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot12ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="7.0" top="15.0" />
@@ -609,6 +622,7 @@
                                           <Label fx:id="DurSlot13" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot13ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="10.0" right="6.0" top="15.0" />
@@ -636,6 +650,7 @@
                                           <Label fx:id="DurSlot14" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot14ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -670,6 +685,7 @@
                                           <Label fx:id="DurSlot15" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot15ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="5.0" right="6.0" top="15.0" />
@@ -697,6 +713,7 @@
                                           <Label fx:id="DurSlot16" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot16ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
@@ -724,6 +741,7 @@
                                           <Label fx:id="DurSlot17" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot17ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="7.0" top="15.0" />
@@ -751,6 +769,7 @@
                                           <Label fx:id="DurSlot18" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot18ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="10.0" right="6.0" top="15.0" />
@@ -778,6 +797,7 @@
                                           <Label fx:id="DurSlot19" prefHeight="35.0" prefWidth="20.0" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot19ImageView" fitHeight="50.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="11.0" right="6.0" top="15.0" />
