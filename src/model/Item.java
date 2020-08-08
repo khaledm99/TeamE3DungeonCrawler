@@ -8,6 +8,8 @@ public class Item {
 	protected String itemType;
 	protected int potionHP;
 	protected int value;
+	protected int potionStam;
+	protected int keyValue;
 	
 	public Item(String name, String type, int value, int duribility) 
 	{
@@ -76,6 +78,22 @@ public class Item {
 	
 	public void setPotionHP(int potionHP) {
 		this.potionHP = potionHP;
+	}
+	
+	public int getPotionStam() {
+		return potionStam;
+	}
+	
+	public void setPotionStam(int potionStam) {
+		this.potionStam = potionStam;
+	}
+	
+	public int getKeyValue() {
+		return keyValue;
+	}
+	
+	public void setKeyValue(int keyValue) {
+		this.keyValue = keyValue;
 	}
 }
 	
