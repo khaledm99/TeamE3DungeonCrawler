@@ -107,7 +107,7 @@ public class Main {
 				}
 				else if (playerInput.equals("Heal") || playerInput.equals("heal")) {
 					if (playerInv.getEquippedList()[3] != null) {
-						System.out.print(playerInv.getEquippedList()[3].getName() + "used");
+						System.out.print(playerInv.getEquippedList()[3].getName() + " used");
 						if (player.getHp() + playerInv.usePotion() <= 20) {
 							player.setHp(player.getHp() + playerInv.usePotion());
 						}
