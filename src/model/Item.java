@@ -10,6 +10,7 @@ public class Item {
 	protected int value;
 	protected int potionStam;
 	protected int keyValue;
+	protected String imagePath;
 	
 	public Item(String name, String type, int value, int duribility) 
 	{
@@ -94,6 +95,10 @@ public class Item {
 	
 	public void setKeyValue(int keyValue) {
 		this.keyValue = keyValue;
+	}
+
+	public String getImagePath() {
+		return imagePath;
 	}
 }
 	

@@ -244,6 +244,7 @@
                                           <Label fx:id="DurSlot0" prefHeight="35.0" prefWidth="20.0" style="-fx-font-size: 8; -fx-font-family: &quot;Early GameBoy&quot;;" text="x" textFill="#081820" />
                                        </children>
                                     </HBox>
+                                    <ImageView fx:id="Slot0ImageView" fitHeight="50.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="5.0" right="6.0" top="15.0" />

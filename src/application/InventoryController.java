@@ -1,11 +1,13 @@
 package application;
 
+import java.io.File;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -352,7 +354,8 @@ public class InventoryController extends GameController{
     @FXML
     private Button UsePotionButton;
     
-    @FXML private ImageView Slot0ImageView;
+    @FXML
+    private ImageView Slot0ImageView;
     
     @FXML
     void slotZeroSelected(MouseEvent event) {
@@ -622,21 +625,28 @@ public class InventoryController extends GameController{
         	refresh();
   	     });
         Slot0.setOnMouseEntered((event) -> {
+        	System.out.println(p1.getInvList()[0].getImagePath());
+        	File file = new File(p1.getInvList()[0].getImagePath());
+        	Image slot0Image = new Image(file.toURI().toString());
         	if (Slot0.getText() != "Empty") {
         		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
         		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
+        		Slot0ImageView.setImage(slot0Image);
         		VboxSlot0.setOpacity(1);    
         		if (p1.getInvList()[0].getItemType() == "HP Potion") {
           			DmgLabelSlot0.setText(" HP  ");
           			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
+            		Slot0ImageView.setImage(slot0Image);
           		}
         		else if (p1.getInvList()[0].getItemType() == "Armor") {
           			DmgLabelSlot0.setText(" AP  ");
           			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+            		Slot0ImageView.setImage(slot0Image);
           		}
         		else if (p1.getInvList()[0].getItemType() == "Stam Potion") {
           			DmgLabelSlot0.setText(" SP  ");
           			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionStam()));
+            		Slot0ImageView.setImage(slot0Image);
           		}
         		
         	}

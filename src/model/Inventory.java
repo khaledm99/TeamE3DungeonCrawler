@@ -14,11 +14,11 @@ public class Inventory {
 	
 	//The following are various items to be picked up in-game
 	private static Item Empty = new Item();
-	private static Weapon woodenSword = new Weapon("Wooden Sword",5,10);
-	private static Weapon ironSword = new Weapon("Iron Sword",7,20);
-	private static Weapon silverSword = new Weapon("Silver Sword",15,15);
-	private static Weapon flamingSword = new Weapon("Flaming Sword", 30, 30);
-	private static Weapon rustySword = new Weapon("Rusty Sword", 12, 5);
+	private static Weapon woodenSword = new Weapon("Wooden Sword",5,10, "resource/WoodenSword.png");
+	private static Weapon ironSword = new Weapon("Iron Sword",7,20, "resource/IronSword.png");
+	private static Weapon silverSword = new Weapon("Silver Sword",15,15, "resource/SilverSword.png");
+	private static Weapon flamingSword = new Weapon("Flaming Sword", 30, 30, "resource/FlamingSword.png");
+	private static Weapon rustySword = new Weapon("Rusty Sword", 12, 5, "resource/RustySword.png");
 	private static Armor leatherArmor = new Armor("Leather Armor", 4, 10);
 	private static Armor armorScraps = new Armor("Armor Scraps", 2, 10);
 	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 6, 15);
