@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -730,30 +731,90 @@ public class InventoryController extends GameController{
   	     });
           
           Slot1.setOnMouseEntered((event) -> {
-          	File file = new File(p1.getInvList()[1].getImagePath());
-          	Image slot1Image = new Image(file.toURI().toString());
-          	if (Slot1.getText() != "Empty") {
-          		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
-          		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
-        		Slot1ImageView.setImage(slot1Image);
-          		VboxSlot1.setOpacity(1);    
-          		if (p1.getInvList()[1].getItemType() == "HP Potion") {
-          			DmgLabelSlot1.setText(" HP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          		else if (p1.getInvList()[1].getItemType() == "Armor") {
-          			DmgLabelSlot1.setText(" AP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
-          			DmgLabelSlot1.setText(" SP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          	}
-          });
+        	  try {
+        		  File file = new File(p1.getInvList()[1].getImagePath());
+        		  boolean exists = file.isFile(); 
+        		  if (exists) {
+        			 	Image slot1Image = new Image(file.toURI().toString());
+                      	if (Slot1.getText() != "Empty") {
+                      		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+                      		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+                    		Slot1ImageView.setImage(slot1Image);
+                      		VboxSlot1.setOpacity(1);    
+                      		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+                      			DmgLabelSlot1.setText(" HP  ");
+                      			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+                        		Slot1ImageView.setImage(slot1Image);
+                      		}
+                      		else if (p1.getInvList()[1].getItemType() == "Armor") {
+                      			DmgLabelSlot1.setText(" AP  ");
+                      			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+                        		Slot1ImageView.setImage(slot1Image);
+                      		}
+                      		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot1.setText(" SP  ");
+                      			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+                        		Slot1ImageView.setImage(slot1Image);
+                      		}
+                      	} 
+        			  
+        		  } else {
+        			  throw new FileNotFoundException();
+        		  }
+ 
+        	  } catch (NullPointerException e) {
+        		  System.out.println("Image path is null.");
+        		  File file = new File("resource/defaultImage.png");
+        		  Image slot1Image = new Image(file.toURI().toString());
+        		  if (Slot1.getText() != "Empty") {
+                		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+                		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+              		Slot1ImageView.setImage(slot1Image);
+                		VboxSlot1.setOpacity(1);    
+                		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+                			DmgLabelSlot1.setText(" HP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+                		else if (p1.getInvList()[1].getItemType() == "Armor") {
+                			DmgLabelSlot1.setText(" AP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+                		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+                			DmgLabelSlot1.setText(" SP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+                	}
+       
+        	  } catch (FileNotFoundException e) {
+        		  System.out.println("Image File does not exist in resource folder.");
+        		  File file = new File("resource/defaultImage.png");
+        		  Image slot1Image = new Image(file.toURI().toString());
+        		  if (Slot1.getText() != "Empty") {
+                		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+                		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+              		Slot1ImageView.setImage(slot1Image);
+                		VboxSlot1.setOpacity(1);    
+                		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+                			DmgLabelSlot1.setText(" HP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+                		else if (p1.getInvList()[1].getItemType() == "Armor") {
+                			DmgLabelSlot1.setText(" AP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+                		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+                			DmgLabelSlot1.setText(" SP  ");
+                			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+                  		Slot1ImageView.setImage(slot1Image);
+                		}
+			}
+          	
+          }});
           Slot1.setOnMouseExited((event) -> {
           	VboxSlot1.setOpacity(0);        	
           });         

@@ -22,7 +22,7 @@ public class Inventory {
 	private static Armor leatherArmor = new Armor("Leather Armor", 4, 10, "resource/LeatherArmor.png");
 	private static Armor armorScraps = new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
 	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 6, 15, "resource/RustyArmor.png");
-	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 10, 15, "resource/ShinyArmor.png");
+	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 10, 15, "resource/ShinyArmor1.png");
 	private static HpPotion HPUltraPotion = new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
 	private static HpPotion HPpotion = new HpPotion("HP Potion", 10, 1, "resource/HPPotion.png");
 	private static StamPotion staminaPotion = new StamPotion("Stamina Potion", 3, 1, "resource/StaminaPotion.png");
