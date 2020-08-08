@@ -23,15 +23,23 @@ public class Inventory {
 	private static Armor armorScraps = new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
 	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 6, 15, "resource/RustyArmor.png");
 	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 10, 15, "resource/ShinyArmor.png");
-	private static Potion HPUltraPotion = new Potion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
-	private static Potion HPpotion = new Potion("HP Potion", 10, 1, "resource/HPPotion.png");
-	private static Potion staminaPotion = new Potion("Stamina Potion", 3, 1, "resource/StaminaPotion.png");
-	private static Potion ultraStaminaPotion = new Potion("Ultra Stamina Potion", 6, 1, "resource/UltraStaminaPotion.png");
-	
-	public Potion getHPUltraPotion() {
+	private static HpPotion HPUltraPotion = new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
+	private static HpPotion HPpotion = new HpPotion("HP Potion", 10, 1, "resource/HPPotion.png");
+	private static StamPotion staminaPotion = new StamPotion("Stamina Potion", 3, 1, "resource/StaminaPotion.png");
+	private static StamPotion ultraStaminaPotion = new StamPotion("Ultra Stamina Potion", 6, 1, "resource/UltraStaminaPotion.png");;
+	private static Key silverKey = new Key("Silver Key", 1, 1);
+	private static Key goldKey = new Key("Gold Key", 2, 1);
+
+	public Key getSilverKey() {
+		return silverKey;
+	}
+	public Key getGoldKey() {
+		return goldKey;
+	}
+	public HpPotion getHPUltraPotion() {
 		return HPUltraPotion;
 	}
-	public Potion getUltraStaminaPotion() {
+	public StamPotion getUltraStaminaPotion() {
 		return ultraStaminaPotion;
 	}
 	public Armor getArmorScraps() {
@@ -43,10 +51,10 @@ public class Inventory {
 	public Armor getShinyIronArmor() {
 		return shinyIronArmor;
 	}
-	public Potion getStaminaPotion() {
+	public StamPotion getStaminaPotion() {
 		return staminaPotion;
 	}
-	public Potion getHPPotion() {
+	public HpPotion getHPPotion() {
 		return HPpotion;
 	}
 	public Armor getLeatherArmor()
@@ -81,6 +89,9 @@ public class Inventory {
 	{
 		return this.invList;
 	}
+	public void setInvList() {
+		
+	}
 	public String getInvName()
 	{
 		return this.name;
@@ -92,6 +103,13 @@ public class Inventory {
 	public Item[] getEquippedList() {
 		return equippedList;
 		
+	}
+	
+	public int usePotion() {
+		int potionHP = equippedList[3].getPotionHP();
+		dropFromInv(equippedList[3]);
+		unEquipItem(3);
+		return potionHP;
 	}
 	public void equipItem(int anIndex) {
 		Boolean alreadyEquipped = false;
@@ -113,14 +131,12 @@ public class Inventory {
 			else if (this.invList[anIndex].getItemType() == "Armor") {
 				equippedList[2] = this.invList[anIndex];
 			}
-			else if (this.invList[anIndex].getItemType() == "Potion") {
-				if (equippedList[3] == null) {
-					equippedList[3] = this.invList[anIndex];
+			else if (this.invList[anIndex].getItemType() == "HP Potion") {
+				equippedList[3] = this.invList[anIndex];
+			}	
+			else if (this.invList[anIndex].getItemType() == "Stam Potion") {
+				equippedList[4] = this.invList[anIndex];
 				}
-				else {
-					equippedList[4] = this.invList[anIndex];
-				}
-			}
 			setEquippedList(equippedList);
 			}
 			else {
@@ -134,14 +150,10 @@ public class Inventory {
 	
 	public void unEquipItem(int anIndex) {
 		if (anIndex <= getEquippedList().length && getEquippedList()[anIndex] != null) {
-			equippedList[anIndex] = null;
+			this.equippedList[anIndex] = null;
 		}
-		setEquippedList(equippedList);
+		setEquippedList(this.equippedList);
 	}
-	
-	
-	
-	
 
 	public Inventory(String name)
 	{
@@ -178,7 +190,6 @@ public class Inventory {
 		}
 	}
 
-	
 	public Inventory(Inventory toCopy)
 	{
 		name = toCopy.name;
@@ -205,13 +216,15 @@ public class Inventory {
 			}
 		}		
 	}
-		
-	public void dropFromInv(Inventory anInv, int aSlot)
+	
+	//first iteration drop function
+	/*	
+	public void dropFromInv(int aSlot)
 	{
-		if(anInv.invList[aSlot] != Empty)
+		if(this.invList[aSlot] != Empty)
 		{
-			anInv.invElement--;
-			anInv.invList[aSlot]=Empty;
+			this.invElement--;
+			this.invList[aSlot]=Empty;
 
 		}
 		else 
@@ -219,6 +232,25 @@ public class Inventory {
 			System.out.println("Slot " + aSlot + " already empty");
 		}
 		
+	}
+	*/
+	public void dropFromInv(Item anItem)
+	{
+		//System.out.println("in drop()");
+		for(int aSlot = 0; aSlot < invList.length; aSlot++) {
+			if(this.invList[aSlot] == anItem) {
+				this.invElement--;
+				this.invList[aSlot]=Empty;
+				break;
+			}
+		}
+	}
+	public void dropFromSlot(Item anItem, int aSlot) {
+		//System.out.println("in drop()");
+			if(this.invList[aSlot] == anItem) {
+				this.invElement--;
+				this.invList[aSlot]=Empty;
+				}
 	}
 	
 	public void giveToInv(Inventory anInv, Item anItem)
@@ -276,8 +308,12 @@ public class Inventory {
 				System.out.println(this.invList[i].getName() + " |AP: " + this.invList[i].getArmorHP()+" Duribililty: "
 			+ this.invList[i].getDuribility() +"| In Inventory slot "+ i);
 				}
-				else if(this.invList[i].getItemType() == "Potion") {
+				else if(this.invList[i].getItemType() == "HP Potion") {
 					System.out.println(this.invList[i].getName() + " |HP: " + this.invList[i].getPotionHP()+" Duribililty: "
+							+ this.invList[i].getDuribility() +"| In Inventory slot "+ i);
+				}
+				else if(this.invList[i].getItemType() == "Stam Potion") {
+					System.out.println(this.invList[i].getName() + " |SP: " + this.invList[i].getPotionStam()+" Duribililty: "
 							+ this.invList[i].getDuribility() +"| In Inventory slot "+ i);
 				}
 		}
@@ -293,4 +329,5 @@ public class Inventory {
 		}
 		System.out.println("------------------------------------------------------");
 	}
+	
 }

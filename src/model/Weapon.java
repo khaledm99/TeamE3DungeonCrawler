@@ -8,6 +8,7 @@ public class Weapon extends Item {
 		this.duribility = duribility;
 		this.itemType = "Weapon";
 		this.imagePath = imagePath;
+
 	}
 	
 	public int getWeaponDamage() {
