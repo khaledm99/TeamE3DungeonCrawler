@@ -13,7 +13,7 @@
       <HBox fillHeight="false" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
         	<fx:include fx:id="mainScreen" source="MainScreen.fxml" />
-            <TabPane fx:id="rootTabPane" prefHeight="800.0" prefWidth="408.0" style="-fx-background-color: #081820; -fx-border-color: #081820; -fx-border-width: 5;" styleClass="floating" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="rootTabPane" prefHeight="800.0" prefWidth="408.0" style="-fx-background-color: #081820; -fx-border-color: #081820; -fx-border-width: 4;" styleClass="floating" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                <Tab closable="false" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10; -fx-background-color: #88C070;" text="Inventory">
                   <content>
@@ -26,6 +26,9 @@
                    </content>
                 </Tab>
                </tabs>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
          </TabPane>       
         </children>
       </HBox>
