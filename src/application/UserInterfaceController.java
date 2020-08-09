@@ -1,9 +1,16 @@
 package application;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,6 +37,8 @@ import model.Userinterface;
 
 public class UserInterfaceController extends GameController {
 	
+	private ScheduledExecutorService executorService;
+	
 	private String currentPlayerId; 
 	
 	private Player currentPlayer;
@@ -38,23 +47,15 @@ public class UserInterfaceController extends GameController {
 	
 	private int currentPlayerHealth;
 	
-	private double currentPlayerXP;
+	private int currentPlayerXP;
 	
 	private int currentPlayerKillCount;
 	
 	private int currentPlayerLevel;
 	
-	private Userinterface gameUI;
+	private Userinterface gameUI = new Userinterface();
 	
-	private String healthBar;
-	
-	//Bindings
-	IntegerProperty coins = new SimpleIntegerProperty(this.currentPlayerCoins);
-	IntegerProperty health = new SimpleIntegerProperty(this.currentPlayerHealth);
-	IntegerProperty killCount = new SimpleIntegerProperty(this.currentPlayerKillCount);
-	IntegerProperty playerLvl = new SimpleIntegerProperty(this.currentPlayerLevel);
-	DoubleProperty xpLabel = new SimpleDoubleProperty(currentPlayerXP);
-	
+	private int counter = 0;
 	
 	
     @FXML
@@ -111,13 +112,17 @@ public class UserInterfaceController extends GameController {
     
 	@FXML 
 	void initialize() {
+		
+		this.gameUI.setPlayer(getPlayer());
+		initializeScheduler();
 		this.currentPlayerId = getPlayer().getName();
-		playerNameLabel.setText(this.currentPlayerId);
-		killCountLabel.setText(Integer.toString(this.currentPlayerKillCount));
-		playerCoinsLabel.setText(Integer.toString(this.currentPlayerCoins));
-		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
-		healthBarLabel.setText(Integer.toString(this.currentPlayerHealth));
-		playerXPLabel.setText(Double.toString(this.currentPlayerXP));
+		playerNameLabel.setText(getPlayer().getName());
+		killCountLabel.setText(Integer.toString(getPlayer().getKillCount()));
+		playerCoinsLabel.setText(Integer.toString(getPlayer().getCoins()));
+		playerLvlLabel.setText(Integer.toString(getPlayer().getLevel()));
+		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
+		playerXPLabel.setText(Integer.toString(getPlayer().getXp()));
+		
 		 
 	}
     
@@ -134,10 +139,15 @@ public class UserInterfaceController extends GameController {
 		char[] currentHealthBar = healthBarString.toCharArray();
 		
 		for(int i = 0; i < currentHealthBar.length; i++) {
+			
 			if (currentHealthBar[i] == '=') {
 				currentHealthBar[i] = '<';
 			}
-				
+			
+			if ((currentHealthBar[i] == '[') || (currentHealthBar[i] == ']')) {
+				currentHealthBar[i] = ' ';
+			}
+					
 		}
 		
 		String heartHealthBar = String.valueOf(currentHealthBar);
@@ -153,18 +163,38 @@ public class UserInterfaceController extends GameController {
 	 * @param currentPlayer
 	 */
 	public void uiInitializer(Player currentPlayer) {
-
+			
 			this.currentPlayerCoins = currentPlayer.getCoins();
 			this.currentPlayerKillCount = currentPlayer.getKillCount();
 			this.currentPlayerXP = currentPlayer.getXp();
 			this.currentPlayerHealth = currentPlayer.getHp();
 			this.currentPlayerLevel = currentPlayer.getLevel();
 			this.currentPlayer = currentPlayer;
-			this.gameUI = new Userinterface(currentPlayer);
-			this.healthBar = this.gameUI.healthBarStringCreator();
+			
 	
 	    }
 	
+	/**
+	 * initializeScheduler Method. Method which initializes the scheduler used to call stats update method recurrently ingame
+	 */
+	private void initializeScheduler() {
+		executorService = Executors.newSingleThreadScheduledExecutor();
+		executorService.scheduleAtFixedRate(this::loadData, 0, 1, TimeUnit.SECONDS);
+		 
+	}
+	
+	/**
+	 * loadData method. Method which executes the recurrent stats updates
+	 */
+	private void loadData() {
+		
+		Platform.runLater(() -> {;
+		
+		refresh();
+		
+		});
+		
+	}
 	
 	/**
 	 * refresh method. This method is called upon when updating the player stats. For the next iteration we will be implementing
@@ -173,18 +203,22 @@ public class UserInterfaceController extends GameController {
 	@Override
 	public void refresh() {
 		
+		
+		//DEBUGGING PURPOSES
+		System.out.println("UIupdates :" + counter + "s");
+		
 		// TODO Auto-generated method stub
 		
 		uiInitializer(getPlayer());
-		/*
-		//Where to bind property bindings?
-		playerNameLabel.setText(this.currentPlayerId);
-		killCountLabel.textProperty().bind(killCount.asString());
-		playerCoinsLabel.textProperty().bind(coins.asString());
-		playerLvlLabel.textProperty().bind(playerLvl.asString());
-		playerXPLabel.textProperty().bind(xpLabel.asString());
-		healthBarLabel.setText(replaceHealthBarCharacters(this.healthBar));
-		*/
+		this.gameUI.setPlayer((getPlayer()));
+		killCountLabel.setText(Integer.toString(this.currentPlayerKillCount));
+		playerCoinsLabel.setText(Integer.toString(this.currentPlayerCoins));
+		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
+		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
+		playerXPLabel.setText(Integer.toString(this.currentPlayerXP));
+		
+		//DEBUGGING PURPOSES
+		counter++;
 	}
 
 }
