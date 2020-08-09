@@ -656,14 +656,12 @@ public class InventoryController extends GameController{
 		        		usePotionGui();
 		        	}
 		        	StringEquippedListView.getItems().remove(3);
-		        	ItemObjectListView.getItems().remove(3);
-		        	
-		        	System.out.println("run");
+		        	ItemObjectListView.getItems().remove(3);		        	
 	       	}
 	       	refresh();
        });
        
-        Slot0.setOnMouseClicked((event) -> {
+        Slot0.setOnAction((event) -> {
         	if(Slot0.getText() != "Empty") {
         		if (ItemObjectListView.getItems().size() <6) {
         			if (p1.getInvList()[0].getItemType() == "Weapon") { 				
@@ -681,10 +679,11 @@ public class InventoryController extends GameController{
         	}
         	refresh();
   	     });
+        
         Slot0.setOnMouseEntered((event) -> {
-        	File file = new File(p1.getInvList()[0].getImagePath());
-        	Image slot0Image = new Image(file.toURI().toString());
         	if (Slot0.getText() != "Empty") {
+        		File file = new File(p1.getInvList()[0].getImagePath());
+            	Image slot0Image = new Image(file.toURI().toString());
         		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
         		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
         		Slot0ImageView.setImage(slot0Image);
@@ -730,9 +729,9 @@ public class InventoryController extends GameController{
   	     });
           
           Slot1.setOnMouseEntered((event) -> {
-          	File file = new File(p1.getInvList()[1].getImagePath());
-          	Image slot1Image = new Image(file.toURI().toString());
           	if (Slot1.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[1].getImagePath());
+              	Image slot1Image = new Image(file.toURI().toString());
           		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
           		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
         		Slot1ImageView.setImage(slot1Image);
@@ -781,9 +780,9 @@ public class InventoryController extends GameController{
   	     });
            
           Slot2.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[2].getImagePath());
-              	Image slot2Image = new Image(file.toURI().toString());
             	if (Slot2.getText() != "Empty") {
+            		File file = new File(p1.getInvList()[2].getImagePath());
+                  	Image slot2Image = new Image(file.toURI().toString());
             		DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getDamage()));
             		DurSlot02.setText(String.valueOf(p1.getInvList()[2].getDuribility()));
             		Slot2ImageView.setImage(slot2Image);
@@ -827,9 +826,9 @@ public class InventoryController extends GameController{
   	     });
           
           Slot3.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[3].getImagePath());
-              	Image slot3Image = new Image(file.toURI().toString());
           	if (Slot3.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[3].getImagePath());
+              	Image slot3Image = new Image(file.toURI().toString());
           		DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getDamage()));
           		DurSlot03.setText(String.valueOf(p1.getInvList()[3].getDuribility()));
         		Slot3ImageView.setImage(slot3Image);
@@ -873,9 +872,9 @@ public class InventoryController extends GameController{
   	     });
           
           Slot4.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[4].getImagePath());
-              	Image slot4Image = new Image(file.toURI().toString());
           	if (Slot4.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[4].getImagePath());
+              	Image slot4Image = new Image(file.toURI().toString());
           		DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getDamage()));
           		DurSlot04.setText(String.valueOf(p1.getInvList()[4].getDuribility()));
         		Slot4ImageView.setImage(slot4Image);
@@ -918,10 +917,10 @@ public class InventoryController extends GameController{
   	    	refresh();
   	     });
            
-          Slot5.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[5].getImagePath());
-              	Image slot5Image = new Image(file.toURI().toString());
+          Slot5.setOnMouseEntered((event) -> {            	
           	if (Slot5.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[5].getImagePath());
+              	Image slot5Image = new Image(file.toURI().toString());
           		DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getDamage()));
           		DurSlot05.setText(String.valueOf(p1.getInvList()[5].getDuribility()));
         		Slot5ImageView.setImage(slot5Image);
@@ -965,9 +964,9 @@ public class InventoryController extends GameController{
   	     });
          
           Slot6.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[6].getImagePath());
-              	Image slot6Image = new Image(file.toURI().toString());
             	if (Slot6.getText() != "Empty") {
+            		File file = new File(p1.getInvList()[6].getImagePath());
+                  	Image slot6Image = new Image(file.toURI().toString());
             		DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getDamage()));
             		DurSlot06.setText(String.valueOf(p1.getInvList()[6].getDuribility()));
             		Slot6ImageView.setImage(slot6Image);
@@ -1012,9 +1011,9 @@ public class InventoryController extends GameController{
   	     });
          
           Slot7.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[7].getImagePath());
-              	Image slot7Image = new Image(file.toURI().toString());
             	if (Slot7.getText() != "Empty") {
+            		File file = new File(p1.getInvList()[7].getImagePath());
+                  	Image slot7Image = new Image(file.toURI().toString());
             		DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getDamage()));
             		DurSlot07.setText(String.valueOf(p1.getInvList()[7].getDuribility()));
             		Slot7ImageView.setImage(slot7Image);
@@ -1057,9 +1056,9 @@ public class InventoryController extends GameController{
   	     });
           
           Slot8.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[8].getImagePath());
-              	Image slot8Image = new Image(file.toURI().toString());
           	if (Slot8.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[8].getImagePath());
+              	Image slot8Image = new Image(file.toURI().toString());
           		DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getDamage()));
           		DurSlot08.setText(String.valueOf(p1.getInvList()[8].getDuribility()));
               	Slot8ImageView.setImage(slot8Image);
@@ -1103,9 +1102,9 @@ public class InventoryController extends GameController{
   	     });
            
           Slot9.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[9].getImagePath());
-              	Image slot9Image = new Image(file.toURI().toString());
             	if (Slot9.getText() != "Empty") {
+            		File file = new File(p1.getInvList()[9].getImagePath());
+                  	Image slot9Image = new Image(file.toURI().toString());
             		DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getDamage()));
             		DurSlot09.setText(String.valueOf(p1.getInvList()[9].getDuribility()));
             		Slot9ImageView.setImage(slot9Image);
@@ -1149,9 +1148,9 @@ public class InventoryController extends GameController{
   	     });
           
           Slot10.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[10].getImagePath());
-              	Image slot10Image = new Image(file.toURI().toString());
             	if (Slot10.getText() != "Empty") {
+            		File file = new File(p1.getInvList()[10].getImagePath());
+                  	Image slot10Image = new Image(file.toURI().toString());
             		DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getDamage()));
             		DurSlot10.setText(String.valueOf(p1.getInvList()[10].getDuribility()));
             		Slot10ImageView.setImage(slot10Image);
@@ -1193,9 +1192,9 @@ public class InventoryController extends GameController{
   	    	 }
   	     });
           Slot11.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[11].getImagePath());
-              	Image slot11Image = new Image(file.toURI().toString());
           	if (Slot11.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[11].getImagePath());
+              	Image slot11Image = new Image(file.toURI().toString());
           		DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getDamage()));
           		DurSlot11.setText(String.valueOf(p1.getInvList()[11].getDuribility()));
             	Slot11ImageView.setImage(slot11Image);
@@ -1238,9 +1237,10 @@ public class InventoryController extends GameController{
   	    	 }
   	     });
           Slot12.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[12].getImagePath());
-              	Image slot12Image = new Image(file.toURI().toString());
           	if (Slot12.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[12].getImagePath());
+              	Image slot12Image = new Image(file.toURI().toString());
+            	Slot12ImageView.setImage(slot12Image);
           		DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getDamage()));
           		DurSlot12.setText(String.valueOf(p1.getInvList()[12].getDuribility()));
             	Slot12ImageView.setImage(slot12Image);
@@ -1283,9 +1283,9 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot13.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[13].getImagePath());
-              	Image slot13Image = new Image(file.toURI().toString());
           	if (Slot13.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[13].getImagePath());
+              	Image slot13Image = new Image(file.toURI().toString());
           		DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getDamage()));
           		DurSlot13.setText(String.valueOf(p1.getInvList()[13].getDuribility()));
             	Slot13ImageView.setImage(slot13Image);
@@ -1328,9 +1328,9 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot14.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[14].getImagePath());
-              	Image slot14Image = new Image(file.toURI().toString());
           	if (Slot14.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[14].getImagePath());
+              	Image slot14Image = new Image(file.toURI().toString());
           		DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getDamage()));
           		DurSlot14.setText(String.valueOf(p1.getInvList()[14].getDuribility()));
             	Slot14ImageView.setImage(slot14Image);
@@ -1373,9 +1373,9 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot15.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[15].getImagePath());
-              	Image slot15Image = new Image(file.toURI().toString());
           	if (Slot15.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[15].getImagePath());
+              	Image slot15Image = new Image(file.toURI().toString());
           		DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getDamage()));
           		DurSlot15.setText(String.valueOf(p1.getInvList()[15].getDuribility()));
             	Slot15ImageView.setImage(slot15Image);
@@ -1424,9 +1424,9 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot16.setOnMouseEntered((event) -> {
-            	File file = new File(p1.getInvList()[16].getImagePath());
-              	Image slot16Image = new Image(file.toURI().toString());
           	if (Slot16.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[16].getImagePath());
+              	Image slot16Image = new Image(file.toURI().toString());
           		DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getDamage()));
           		DurSlot16.setText(String.valueOf(p1.getInvList()[16].getDuribility()));
             	Slot16ImageView.setImage(slot16Image);
@@ -1470,6 +1470,9 @@ public class InventoryController extends GameController{
    	     });
           Slot17.setOnMouseEntered((event) -> {
           	if (Slot17.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[17].getImagePath());
+              	Image slot17Image = new Image(file.toURI().toString());
+            	Slot17ImageView.setImage(slot17Image);
           		DmgSlot17.setText(String.valueOf(p1.getInvList()[17].getDamage()));
           		DurSlot17.setText(String.valueOf(p1.getInvList()[17].getDuribility()));
           		VboxSlot17.setOpacity(1);   
@@ -1509,8 +1512,11 @@ public class InventoryController extends GameController{
    	     });
           Slot18.setOnMouseEntered((event) -> {
           	if (Slot18.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[18].getImagePath());
+              	Image slot18Image = new Image(file.toURI().toString());
           		DmgSlot18.setText(String.valueOf(p1.getInvList()[18].getDamage()));
           		DurSlot18.setText(String.valueOf(p1.getInvList()[18].getDuribility()));
+            	Slot18ImageView.setImage(slot18Image);
           		VboxSlot18.setOpacity(1);
           		if (p1.getInvList()[18].getItemType() == "HP Potion") {
           			DmgLabelSlot18.setText(" HP  ");
@@ -1548,6 +1554,9 @@ public class InventoryController extends GameController{
    	     });
           Slot19.setOnMouseEntered((event) -> {
           	if (Slot19.getText() != "Empty") {
+          		File file = new File(p1.getInvList()[19].getImagePath());
+              	Image slot19Image = new Image(file.toURI().toString());
+            	Slot19ImageView.setImage(slot19Image);
           		DmgSlot19.setText(String.valueOf(p1.getInvList()[19].getDamage()));
           		DurSlot19.setText(String.valueOf(p1.getInvList()[19].getDuribility()));
           		VboxSlot19.setOpacity(1);
