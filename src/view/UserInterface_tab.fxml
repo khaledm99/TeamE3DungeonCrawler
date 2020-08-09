@@ -31,23 +31,24 @@
                            </GridPane.margin>
                         </Label>
                         <Label fx:id="playerNameLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label fx:id="PlayerLvl" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player Level:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Label fx:id="playerHealth" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player Health:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label fx:id="playerXP" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player XP:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <ProgressBar fx:id="toggleXP" onMouseEntered="#toggleONProgress" onMouseExited="#toggleOFFProgress" opacity="0.5" prefHeight="18.0" prefWidth="127.0" progress="0.41" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                           <cursor>
-                              <Cursor fx:constant="NONE" />
-                           </cursor>
-                        </ProgressBar>
-                        <Label fx:id="playerCoins" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player Coins:" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                        <Label fx:id="playerKillcount" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player Killcount:" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                        <Label fx:id="healthBarLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="healthbar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="PlayerLvl" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Current Level:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="playerHealth" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text=" Health:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="playerXP" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="XP:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="playerCoins" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Current Coins:" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label fx:id="playerKillcount" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Killcount:" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin></Label>
+                        <Label fx:id="healthBarLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="healthbar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Label>
                         <Label fx:id="playerLvlLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Label fx:id="killCountLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                         <Label fx:id="playerCoinsLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                         <Label fx:id="playerXPLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                            <GridPane.margin>
-                              <Insets top="30.0" />
+                              <Insets />
                            </GridPane.margin>
                         </Label>
                      </children>
@@ -61,8 +62,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <VBox.margin>
                         <Insets top="25.0" />
