@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane fx:id="view" prefHeight="800.0" prefWidth="793.0" style="-fx-background-color: #e0f8d0; -fx-border-color: #081820; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <TextArea fx:id="mapWindow" editable="false" prefHeight="444.0" prefWidth="793.0" style="-fx-font-size: 25; -fx-control-inner-background: #e0f8d0; -fx-border-color: #081820; -fx-border-width: 5; -fx-padding: 0; -fx-vbar-policy: never; -fx-text-fill: #346856; -fx-font-family: icomoon;">
+         <font>
+            <Font name="Consolas" size="30.0" />
+         </font></TextArea>
+      <TextArea fx:id="eventOutput" layoutY="439.0" prefHeight="361.0" prefWidth="427.0" style="-fx-control-inner-background: #e0f8d0; -fx-border-color: #081820; -fx-border-width: 5;">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font></TextArea>
+      <GridPane alignment="CENTER" layoutX="417.0" layoutY="457.0" prefHeight="331.0" prefWidth="367.0">
+         <children>
+            <Button fx:id="DownButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#DownClick" prefHeight="96.0" prefWidth="96.0" rotate="180.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="14.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="RightButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#RightClick" prefHeight="96.0" prefWidth="96.0" rotate="90.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="14.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="UpButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#UpClick" prefHeight="96.0" prefWidth="96.0" scaleShape="false" style="-fx-padding: 0;" textAlignment="CENTER" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="14.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="LeftButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#LeftClick" prefHeight="96.0" prefWidth="96.0" rotate="270.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="14.0" right="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="UseButton" alignment="CENTER_RIGHT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#UseClick" prefHeight="96.0" prefWidth="96.0" scaleShape="false" style="-fx-padding: 0;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="14.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="0.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </GridPane>
+   </children>
+</Pane>

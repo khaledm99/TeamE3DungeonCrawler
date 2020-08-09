@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootViewController">
+   <children>
+      <HBox fillHeight="false" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+        	<fx:include fx:id="mainScreen" source="MainScreen.fxml" />
+            <TabPane fx:id="rootTabPane" prefHeight="800.0" prefWidth="408.0" style="-fx-background-color: #081820; -fx-border-color: #081820; -fx-border-width: 4;" styleClass="floating" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+               <Tab closable="false" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10; -fx-background-color: #88C070;" text="Inventory">
+                  <content>
+       				<fx:include fx:id="inventory" source="Inventory.fxml" />
+                  </content>
+                </Tab>
+                <Tab closable="false" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10; -fx-background-color: #88C070;" text="Stats">
+                   <content>
+       				<fx:include fx:id="ui" source="UserInterface_tab.fxml" />
+                   </content>
+                </Tab>
+               </tabs>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+         </TabPane>       
+        </children>
+      </HBox>
+      <StackPane fx:id="combatStack" mouseTransparent="true" opacity="0.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+					<fx:include fx:id="combat" source="Combat.fxml" />
+               </children></HBox>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>
