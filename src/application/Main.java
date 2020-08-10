@@ -12,6 +12,7 @@ package application;
 import java.io.IOException;
 import java.util.Scanner;
 
+import model.Chest;
 import model.Door;
 import model.Enemy;
 import model.Inventory;
@@ -30,19 +31,19 @@ public class Main {
 		// Creates a new enemy object and sets its stats
 		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
-		WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt")};
 		
 		
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
 		//to "Xavier" for a fuller inventory XL
+		WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, playerInv.getRustySword()), new Chest("Chest One", 0, 1, 1, 1, playerInv.getSilverKey())};
 
 		// Displays the start screen
 		//Start menu = new Start();
-		//menu.startScreen();
-		//playerStats.clearConsole();
-			
+		//player.setName(menu.startScreen());
+		playerStats.clearConsole();
+
 		Map map = new Map(); // Creates the map
 		try {
 			map.readMap("resource/test.txt", player);
@@ -57,7 +58,7 @@ public class Main {
 		String testmap = map.render(player, skeletonOne);
 		//System.out.println(map.getName());
 		System.out.println(testmap);
-		System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
+		System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 		playerInput = inputScanner.nextLine();
 		playerStats.clearConsole();
 		
@@ -72,7 +73,7 @@ public class Main {
 				inputScanner.nextLine();
 				playerStats.clearConsole();
 				System.out.println(map.render(player, skeletonOne));
-				System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
+				System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
 			}
@@ -128,25 +129,27 @@ public class Main {
 					
 				}
 				System.out.println(map.render(player, skeletonOne));
-				System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
+				System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
 			}
 			else if (playerInput.equals("use")) {
 				playerStats.clearConsole();
+				
+				int exists = 3;
 				for (int i = 0; i < worldItems.length; i++) {
 					 	
-						if (worldItems[i].checkSurroundings(player) && (worldItems[i].getFloor() == map.getLevel())){
+					if (worldItems[i].checkSurroundings(player) && (worldItems[i].getFloor() == map.getLevel()) && WorldItem.keyCheck(playerInv, worldItems[i])){
 							System.out.println(worldItems[i].onUse(playerInv, map, player));
 							System.out.println(map.getLevel());
 						}
-						else {
-							System.out.println("Nothing to use...");
-						}
-						System.out.println(map.render(player, skeletonOne));
-					
-					
+						else 
+							exists--;
 				}
+				if (exists == 0) {
+					System.out.println("Nothing to use...");
+				}
+				System.out.println(map.render(player, skeletonOne));
 			}
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") || playerInput.equals("use") ) {
 				playerStats.clearConsole();
@@ -157,7 +160,7 @@ public class Main {
 			else {
 				System.out.println("Please input a valid command");
 			}
-			System.out.println("What would you like to do? (up, down, left, right, stats, inventory, quit) ");
+			System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 			playerInput = inputScanner.nextLine();
 		}
 		System.out.println("Finished");

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import model.Chest;
 import model.Door;
 import model.Enemy;
 import model.Inventory;
@@ -20,10 +21,10 @@ public class GuiMain extends Application {
 	public static final String FXML_FILES_LOCATION = "src/view/";
 	
 	private static Player player = new Player(6,8,"Xavier", true);
-	
-	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt")};
-	
+		
 	private static Inventory p1Inventory = new Inventory(player.getName());
+	
+	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, p1Inventory.getRustySword()), new Chest("Chest One", 0, 2, 1, 1, p1Inventory.getSilverKey())};
 	
 	private static Item[] p1EquippedList;
 	
@@ -54,6 +55,10 @@ public class GuiMain extends Application {
 	}
 	
 	public static Map getMap() {
+		return map;
+	}
+	
+	public static Map readMap() {
 		try {
 			map.readMap("resource/test.txt", player);
 		} catch (IOException e) {

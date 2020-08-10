@@ -7,7 +7,13 @@ import javafx.scene.control.TextField;
 
 public class StartController extends GameController{
 
-    @FXML
+    private String name = "Chosen Undead";
+    
+    public String getName() {
+    	return this.name;
+    }
+    
+	@FXML
     private Button startButton;
 
     @FXML
@@ -18,12 +24,14 @@ public class StartController extends GameController{
 
     @FXML
     void setName(ActionEvent event) {
-
+    	if (!nameField.getText().equals("")) {
+    		name = nameField.getText();
+    	}
     }
 
     @FXML
     void startClick(ActionEvent event) {
-
+    	
     }
 
     @FXML

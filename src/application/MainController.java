@@ -68,15 +68,20 @@ public class MainController extends GameController {
 
     @FXML
     void UseClick(ActionEvent event) {
+    	int exists = 3;
     	for (int i = 0; i < worldItems.length; i++) {
 		 	
 			if (worldItems[i].checkSurroundings(getPlayer()) && (worldItems[i].getFloor() == application.GuiMain.getMap().getLevel())){
-				worldItems[i].onUse(getInv(), application.GuiMain.getMap(), getPlayer());
+				eventOutput.setText(worldItems[i].onUse(getInv(), application.GuiMain.getMap(), getPlayer()));
 			}
 			else {
+				exists--;
 			}
     	}
-		direction = "use";	
+		if (exists == 0) {
+			eventOutput.setText("Nothing to use...");
+		}
+    	direction = "use";	
     	refresh();
     }
     
@@ -93,7 +98,7 @@ public class MainController extends GameController {
     	RightButton.setGraphic(new ImageView(img));
     	UseButton.setGraphic(new ImageView(useimg));
     	
-    	String initmap = application.GuiMain.getRender(application.GuiMain.getMap());
+    	String initmap = application.GuiMain.getRender(application.GuiMain.readMap());
     	mapWindow.setText(initmap);
     }
     

@@ -30,6 +30,22 @@ public class WorldItem extends Item{
 		this.floor = floor;
 	}
 	
+	public static boolean keyCheck(Inventory inv, WorldItem worldItem) {
+		if (worldItem.getKeyValue() == 0) {
+			System.out.println("No key necessary");
+			return true;	
+		}
+		for (int items = 0; items < inv.getInvList().length; items++) {
+			if (inv.getInvList()[items].getKeyValue() == worldItem.getKeyValue()) {
+				System.out.println("Has key");
+				return true;
+			}
+			
+		}
+		System.out.println("Key needed");
+		return false;
+	}
+	
 	public boolean checkSurroundings(Player player) {
 		if ((player.getXcoord()-1 == this.xcoord) && (player.getYcoord() == this.ycoord)) {
 			return true;

@@ -5,11 +5,11 @@ import model.Userinterface;
 
 public class Start {
 
-	private String name;
+	private String name = "Chosen Undead";
 	private Userinterface printer = new Userinterface();
 	private Scanner choiceInput = new Scanner(System.in);
 	
-	public void startScreen() {
+	public String startScreen() {
 		System.out.println("---------------------------");
 		System.out.println("TOMB OF THE ABYSSWALKER");
 		System.out.println("---------------------------");
@@ -28,14 +28,19 @@ public class Start {
 		}
 		
 		else {
+			System.out.println("Enter your hero's name: ");
+			choice = choiceInput.nextLine();
+			if (!choice.equals(""))
+				name = choice;
+		
 			String embark = "You are the Chosen Undead, chosen to gather\n"
 					+ "the lord souls and link the First Flame,\n"
 					+ "thus extending the Age of Fire.\nIn order to do so, you must enter the\n"
 					+ "     TOMB OF THE ABYSSWALKER\nand retrieve the profaned Ring of the Abysswalker.\n"
 					+ "May the fire light your path... ";
 			printer.slowPrint(embark);
-			
 		}
+		return name;
 	}
 }
 	
