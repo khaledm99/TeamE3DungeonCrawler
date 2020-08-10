@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -681,30 +682,91 @@ public class InventoryController extends GameController{
   	     });
         
         Slot0.setOnMouseEntered((event) -> {
-        	if (Slot0.getText() != "Empty") {
+        	try {
         		File file = new File(p1.getInvList()[0].getImagePath());
-            	Image slot0Image = new Image(file.toURI().toString());
-        		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
-        		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
-        		Slot0ImageView.setImage(slot0Image);
-        		VboxSlot0.setOpacity(1);    
-        		if (p1.getInvList()[0].getItemType() == "HP Potion") {
-          			DmgLabelSlot0.setText(" HP  ");
-          			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
+        		boolean exists = file.isFile();
+        		if (exists) {
+        			Image slot0Image = new Image(file.toURI().toString());
+                	if (Slot0.getText() != "Empty") {
+                		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
+                		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
+                		Slot0ImageView.setImage(slot0Image);
+                		VboxSlot0.setOpacity(1);    
+                		if (p1.getInvList()[0].getItemType() == "HP Potion") {
+                  			DmgLabelSlot0.setText(" HP  ");
+                  			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
+                    		Slot0ImageView.setImage(slot0Image);
+                  		}
+                		else if (p1.getInvList()[0].getItemType() == "Armor") {
+                  			DmgLabelSlot0.setText(" AP  ");
+                  			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+                    		Slot0ImageView.setImage(slot0Image);
+                  		}
+                		else if (p1.getInvList()[0].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot0.setText(" SP  ");
+                  			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionStam()));
+                    		Slot0ImageView.setImage(slot0Image);
+                  		}
+                		
+                	}
+        		} else {
+        			throw new FileNotFoundException();
+        		}
+        	} catch (NullPointerException e) {
+        		e.printStackTrace();
+        		File file = new File("resource/defaultImage.png");
+    			Image slot0Image = new Image(file.toURI().toString());
+    				if (Slot0.getText() != "Empty") {
+            		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
+            		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
             		Slot0ImageView.setImage(slot0Image);
-          		}
-        		else if (p1.getInvList()[0].getItemType() == "Armor") {
-          			DmgLabelSlot0.setText(" AP  ");
-          			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+            		VboxSlot0.setOpacity(1);    
+            		if (p1.getInvList()[0].getItemType() == "HP Potion") {
+              			DmgLabelSlot0.setText(" HP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		else if (p1.getInvList()[0].getItemType() == "Armor") {
+              			DmgLabelSlot0.setText(" AP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		else if (p1.getInvList()[0].getItemType() == "Stam Potion") {
+              			DmgLabelSlot0.setText(" SP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionStam()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		
+            	}
+
+        	} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				File file = new File("resource/defaultImage.png");
+    			Image slot0Image = new Image(file.toURI().toString());
+    				if (Slot0.getText() != "Empty") {
+            		DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getDamage()));
+            		DurSlot0.setText(String.valueOf(p1.getInvList()[0].getDuribility()));
             		Slot0ImageView.setImage(slot0Image);
-          		}
-        		else if (p1.getInvList()[0].getItemType() == "Stam Potion") {
-          			DmgLabelSlot0.setText(" SP  ");
-          			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionStam()));
-            		Slot0ImageView.setImage(slot0Image);
-          		}
-        		
-        	}
+            		VboxSlot0.setOpacity(1);    
+            		if (p1.getInvList()[0].getItemType() == "HP Potion") {
+              			DmgLabelSlot0.setText(" HP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionHP()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		else if (p1.getInvList()[0].getItemType() == "Armor") {
+              			DmgLabelSlot0.setText(" AP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getArmorHP()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		else if (p1.getInvList()[0].getItemType() == "Stam Potion") {
+              			DmgLabelSlot0.setText(" SP  ");
+              			DmgSlot0.setText(String.valueOf(p1.getInvList()[0].getPotionStam()));
+                		Slot0ImageView.setImage(slot0Image);
+              		}
+            		
+            	}
+			}
+
         });
         
         Slot0.setOnMouseExited((event) -> {
@@ -729,29 +791,85 @@ public class InventoryController extends GameController{
   	     });
           
           Slot1.setOnMouseEntered((event) -> {
-          	if (Slot1.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[1].getImagePath());
-              	Image slot1Image = new Image(file.toURI().toString());
-          		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
-          		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
-        		Slot1ImageView.setImage(slot1Image);
-          		VboxSlot1.setOpacity(1);    
-          		if (p1.getInvList()[1].getItemType() == "HP Potion") {
-          			DmgLabelSlot1.setText(" HP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          		else if (p1.getInvList()[1].getItemType() == "Armor") {
-          			DmgLabelSlot1.setText(" AP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
-          			DmgLabelSlot1.setText(" SP  ");
-          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
-            		Slot1ImageView.setImage(slot1Image);
-          		}
-          	}
+        	  try {
+        		  File file = new File(p1.getInvList()[1].getImagePath());
+        		  boolean exists = file.isFile();
+        		  if (exists) {
+        			  Image slot1Image = new Image(file.toURI().toString());
+        			  if (Slot1.getText() != "Empty") {
+        	          		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+        	          		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+        	        		Slot1ImageView.setImage(slot1Image);
+        	          		VboxSlot1.setOpacity(1);    
+        	          		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+        	          			DmgLabelSlot1.setText(" HP  ");
+        	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+        	            		Slot1ImageView.setImage(slot1Image);
+        	          		}
+        	          		else if (p1.getInvList()[1].getItemType() == "Armor") {
+        	          			DmgLabelSlot1.setText(" AP  ");
+        	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+        	            		Slot1ImageView.setImage(slot1Image);
+        	          		}
+        	          		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+        	          			DmgLabelSlot1.setText(" SP  ");
+        	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+        	            		Slot1ImageView.setImage(slot1Image);
+        	          		}
+        	          	}
+        		  } else {
+        			  throw new FileNotFoundException();
+        		  }
+        	  } catch(NullPointerException e) {
+          		  File file = new File("resource/defaultImage.png");
+    			  Image slot1Image = new Image(file.toURI().toString());
+    			  if (Slot1.getText() != "Empty") {
+  	          		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+  	          		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+  	        		Slot1ImageView.setImage(slot1Image);
+  	          		VboxSlot1.setOpacity(1);    
+  	          		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+  	          			DmgLabelSlot1.setText(" HP  ");
+  	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+  	            		Slot1ImageView.setImage(slot1Image);
+  	          		}
+  	          		else if (p1.getInvList()[1].getItemType() == "Armor") {
+  	          			DmgLabelSlot1.setText(" AP  ");
+  	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+  	            		Slot1ImageView.setImage(slot1Image);
+  	          		}
+  	          		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+  	          			DmgLabelSlot1.setText(" SP  ");
+  	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+  	            		Slot1ImageView.setImage(slot1Image);
+  	          		}
+  	          	}
+        	  } catch (FileNotFoundException e) {
+          		  File file = new File("resource/defaultImage.png");
+    			  Image slot1Image = new Image(file.toURI().toString());
+    			  if (Slot1.getText() != "Empty") {
+    	          		DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getDamage()));
+    	          		DurSlot01.setText(String.valueOf(p1.getInvList()[1].getDuribility()));
+    	        		Slot1ImageView.setImage(slot1Image);
+    	          		VboxSlot1.setOpacity(1);    
+    	          		if (p1.getInvList()[1].getItemType() == "HP Potion") {
+    	          			DmgLabelSlot1.setText(" HP  ");
+    	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionHP()));
+    	            		Slot1ImageView.setImage(slot1Image);
+    	          		}
+    	          		else if (p1.getInvList()[1].getItemType() == "Armor") {
+    	          			DmgLabelSlot1.setText(" AP  ");
+    	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getArmorHP()));
+    	            		Slot1ImageView.setImage(slot1Image);
+    	          		}
+    	          		else if (p1.getInvList()[1].getItemType() == "Stam Potion") {
+    	          			DmgLabelSlot1.setText(" SP  ");
+    	          			DmgSlot01.setText(String.valueOf(p1.getInvList()[1].getPotionStam()));
+    	            		Slot1ImageView.setImage(slot1Image);
+    	          		}
+    	          	}
+        	  }
+          	
           });
           Slot1.setOnMouseExited((event) -> {
           	VboxSlot1.setOpacity(0);        	
@@ -780,30 +898,88 @@ public class InventoryController extends GameController{
   	     });
            
           Slot2.setOnMouseEntered((event) -> {
-            	if (Slot2.getText() != "Empty") {
-            		File file = new File(p1.getInvList()[2].getImagePath());
+        	  try {
+          		File file = new File(p1.getInvList()[2].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
                   	Image slot2Image = new Image(file.toURI().toString());
-            		DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getDamage()));
-            		DurSlot02.setText(String.valueOf(p1.getInvList()[2].getDuribility()));
+                	if (Slot2.getText() != "Empty") {
+                		DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getDamage()));
+                		DurSlot02.setText(String.valueOf(p1.getInvList()[2].getDuribility()));
+                		Slot2ImageView.setImage(slot2Image);
+                		VboxSlot2.setOpacity(1);    
+                		if (p1.getInvList()[2].getItemType() == "HP Potion") {
+                  			DmgLabelSlot2.setText(" HP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionHP()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                		else if (p1.getInvList()[2].getItemType() == "Armor") {
+                  			DmgLabelSlot2.setText(" AP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getArmorHP()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                		else if (p1.getInvList()[2].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot2.setText(" SP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionStam()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                	}	
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+ 
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
+                  	Image slot2Image = new Image(file.toURI().toString());
+                  	if (Slot2.getText() != "Empty") {
+                		DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getDamage()));
+                		DurSlot02.setText(String.valueOf(p1.getInvList()[2].getDuribility()));
+                		Slot2ImageView.setImage(slot2Image);
+                		VboxSlot2.setOpacity(1);    
+                		if (p1.getInvList()[2].getItemType() == "HP Potion") {
+                  			DmgLabelSlot2.setText(" HP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionHP()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                		else if (p1.getInvList()[2].getItemType() == "Armor") {
+                  			DmgLabelSlot2.setText(" AP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getArmorHP()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                		else if (p1.getInvList()[2].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot2.setText(" SP  ");
+                  			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionStam()));
+                    		Slot2ImageView.setImage(slot2Image);
+                  		}
+                	}	
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
+          		  Image slot2Image = new Image(file.toURI().toString());
+          	if (Slot2.getText() != "Empty") {
+        		DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getDamage()));
+        		DurSlot02.setText(String.valueOf(p1.getInvList()[2].getDuribility()));
+        		Slot2ImageView.setImage(slot2Image);
+        		VboxSlot2.setOpacity(1);    
+        		if (p1.getInvList()[2].getItemType() == "HP Potion") {
+          			DmgLabelSlot2.setText(" HP  ");
+          			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionHP()));
             		Slot2ImageView.setImage(slot2Image);
-            		VboxSlot2.setOpacity(1);    
-            		if (p1.getInvList()[2].getItemType() == "HP Potion") {
-              			DmgLabelSlot2.setText(" HP  ");
-              			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionHP()));
-                		Slot2ImageView.setImage(slot2Image);
-              		}
-            		else if (p1.getInvList()[2].getItemType() == "Armor") {
-              			DmgLabelSlot2.setText(" AP  ");
-              			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getArmorHP()));
-                		Slot2ImageView.setImage(slot2Image);
-              		}
-            		else if (p1.getInvList()[2].getItemType() == "Stam Potion") {
-              			DmgLabelSlot2.setText(" SP  ");
-              			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionStam()));
-                		Slot2ImageView.setImage(slot2Image);
-              		}
-            	}
-            });
+          		}
+        		else if (p1.getInvList()[2].getItemType() == "Armor") {
+          			DmgLabelSlot2.setText(" AP  ");
+          			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getArmorHP()));
+            		Slot2ImageView.setImage(slot2Image);
+          		}
+        		else if (p1.getInvList()[2].getItemType() == "Stam Potion") {
+          			DmgLabelSlot2.setText(" SP  ");
+          			DmgSlot02.setText(String.valueOf(p1.getInvList()[2].getPotionStam()));
+            		Slot2ImageView.setImage(slot2Image);
+          		}
+        	}	
+
+            }});
             Slot2.setOnMouseExited((event) -> {
             	VboxSlot2.setOpacity(0);        	
             });   
@@ -826,29 +1002,87 @@ public class InventoryController extends GameController{
   	     });
           
           Slot3.setOnMouseEntered((event) -> {
-          	if (Slot3.getText() != "Empty") {
+        	try {
           		File file = new File(p1.getInvList()[3].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
+                  	Image slot3Image = new Image(file.toURI().toString());
+                  	if (Slot3.getText() != "Empty") {
+                  		DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getDamage()));
+                  		DurSlot03.setText(String.valueOf(p1.getInvList()[3].getDuribility()));
+                		Slot3ImageView.setImage(slot3Image);
+                  		VboxSlot3.setOpacity(1);    
+                  		if (p1.getInvList()[3].getItemType() == "HP Potion") {
+                  			DmgLabelSlot3.setText(" HP  ");
+                  			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionHP()));
+                    		Slot3ImageView.setImage(slot3Image);
+                  		}
+                  		else if (p1.getInvList()[3].getItemType() == "Armor") {
+                  			DmgLabelSlot3.setText(" AP  ");
+                  			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getArmorHP()));
+                    		Slot3ImageView.setImage(slot3Image);
+                  		}
+                  		else if (p1.getInvList()[3].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot3.setText(" SP  ");
+                  			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionStam()));
+                    		Slot3ImageView.setImage(slot3Image);
+                  		}
+                  	}
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+        	} catch (NullPointerException e) {
+        		  e.printStackTrace();
+        		  File file = new File("resource/defaultImage.png");
               	Image slot3Image = new Image(file.toURI().toString());
-          		DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getDamage()));
-          		DurSlot03.setText(String.valueOf(p1.getInvList()[3].getDuribility()));
-        		Slot3ImageView.setImage(slot3Image);
-          		VboxSlot3.setOpacity(1);    
-          		if (p1.getInvList()[3].getItemType() == "HP Potion") {
-          			DmgLabelSlot3.setText(" HP  ");
-          			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionHP()));
+            	if (Slot3.getText() != "Empty") {
+              		DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getDamage()));
+              		DurSlot03.setText(String.valueOf(p1.getInvList()[3].getDuribility()));
             		Slot3ImageView.setImage(slot3Image);
-          		}
-          		else if (p1.getInvList()[3].getItemType() == "Armor") {
-          			DmgLabelSlot3.setText(" AP  ");
-          			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getArmorHP()));
+              		VboxSlot3.setOpacity(1);    
+              		if (p1.getInvList()[3].getItemType() == "HP Potion") {
+              			DmgLabelSlot3.setText(" HP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionHP()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              		else if (p1.getInvList()[3].getItemType() == "Armor") {
+              			DmgLabelSlot3.setText(" AP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getArmorHP()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              		else if (p1.getInvList()[3].getItemType() == "Stam Potion") {
+              			DmgLabelSlot3.setText(" SP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionStam()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              	}
+        	} catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+        		  File file = new File("resource/defaultImage.png");
+              	Image slot3Image = new Image(file.toURI().toString());
+            	if (Slot3.getText() != "Empty") {
+              		DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getDamage()));
+              		DurSlot03.setText(String.valueOf(p1.getInvList()[3].getDuribility()));
             		Slot3ImageView.setImage(slot3Image);
-          		}
-          		else if (p1.getInvList()[3].getItemType() == "Stam Potion") {
-          			DmgLabelSlot3.setText(" SP  ");
-          			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionStam()));
-            		Slot3ImageView.setImage(slot3Image);
-          		}
-          	}
+              		VboxSlot3.setOpacity(1);    
+              		if (p1.getInvList()[3].getItemType() == "HP Potion") {
+              			DmgLabelSlot3.setText(" HP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionHP()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              		else if (p1.getInvList()[3].getItemType() == "Armor") {
+              			DmgLabelSlot3.setText(" AP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getArmorHP()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              		else if (p1.getInvList()[3].getItemType() == "Stam Potion") {
+              			DmgLabelSlot3.setText(" SP  ");
+              			DmgSlot03.setText(String.valueOf(p1.getInvList()[3].getPotionStam()));
+                		Slot3ImageView.setImage(slot3Image);
+              		}
+              	}
+        	}
+          	
           });
           Slot3.setOnMouseExited((event) -> {
           	VboxSlot3.setOpacity(0);        	
@@ -872,29 +1106,87 @@ public class InventoryController extends GameController{
   	     });
           
           Slot4.setOnMouseEntered((event) -> {
-          	if (Slot4.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[4].getImagePath());
+        	  try {
+            		File file = new File(p1.getInvList()[4].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot4Image = new Image(file.toURI().toString());
+                      	if (Slot4.getText() != "Empty") {
+                      		DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getDamage()));
+                      		DurSlot04.setText(String.valueOf(p1.getInvList()[4].getDuribility()));
+                    		Slot4ImageView.setImage(slot4Image);
+                      		VboxSlot4.setOpacity(1);    
+                      		if (p1.getInvList()[4].getItemType() == "HP Potion") {
+                      			DmgLabelSlot4.setText(" HP  ");
+                      			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionHP()));
+                        		Slot4ImageView.setImage(slot4Image);
+                      		}
+                      		else if (p1.getInvList()[4].getItemType() == "Armor") {
+                      			DmgLabelSlot4.setText(" AP  ");
+                      			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getArmorHP()));
+                        		Slot4ImageView.setImage(slot4Image);
+                      		}
+                      		else if (p1.getInvList()[4].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot4.setText(" SP  ");
+                      			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionStam()));
+                        		Slot4ImageView.setImage(slot4Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch(NullPointerException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
               	Image slot4Image = new Image(file.toURI().toString());
-          		DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getDamage()));
-          		DurSlot04.setText(String.valueOf(p1.getInvList()[4].getDuribility()));
-        		Slot4ImageView.setImage(slot4Image);
-          		VboxSlot4.setOpacity(1);    
-          		if (p1.getInvList()[4].getItemType() == "HP Potion") {
-          			DmgLabelSlot4.setText(" HP  ");
-          			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionHP()));
+              	if (Slot4.getText() != "Empty") {
+              		DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getDamage()));
+              		DurSlot04.setText(String.valueOf(p1.getInvList()[4].getDuribility()));
             		Slot4ImageView.setImage(slot4Image);
-          		}
-          		else if (p1.getInvList()[4].getItemType() == "Armor") {
-          			DmgLabelSlot4.setText(" AP  ");
-          			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getArmorHP()));
-            		Slot4ImageView.setImage(slot4Image);
-          		}
-          		else if (p1.getInvList()[4].getItemType() == "Stam Potion") {
-          			DmgLabelSlot4.setText(" SP  ");
-          			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionStam()));
-            		Slot4ImageView.setImage(slot4Image);
-          		}
-          	}
+              		VboxSlot4.setOpacity(1);    
+              		if (p1.getInvList()[4].getItemType() == "HP Potion") {
+              			DmgLabelSlot4.setText(" HP  ");
+              			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionHP()));
+                		Slot4ImageView.setImage(slot4Image);
+              		}
+              		else if (p1.getInvList()[4].getItemType() == "Armor") {
+              			DmgLabelSlot4.setText(" AP  ");
+              			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getArmorHP()));
+                		Slot4ImageView.setImage(slot4Image);
+              		}
+              		else if (p1.getInvList()[4].getItemType() == "Stam Potion") {
+              			DmgLabelSlot4.setText(" SP  ");
+              			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionStam()));
+                		Slot4ImageView.setImage(slot4Image);
+              		}
+              	}
+        	  } catch(FileNotFoundException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
+                	Image slot4Image = new Image(file.toURI().toString());
+                	if (Slot4.getText() != "Empty") {
+                		DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getDamage()));
+                		DurSlot04.setText(String.valueOf(p1.getInvList()[4].getDuribility()));
+              		Slot4ImageView.setImage(slot4Image);
+                		VboxSlot4.setOpacity(1);    
+                		if (p1.getInvList()[4].getItemType() == "HP Potion") {
+                			DmgLabelSlot4.setText(" HP  ");
+                			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionHP()));
+                  		Slot4ImageView.setImage(slot4Image);
+                		}
+                		else if (p1.getInvList()[4].getItemType() == "Armor") {
+                			DmgLabelSlot4.setText(" AP  ");
+                			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getArmorHP()));
+                  		Slot4ImageView.setImage(slot4Image);
+                		}
+                		else if (p1.getInvList()[4].getItemType() == "Stam Potion") {
+                			DmgLabelSlot4.setText(" SP  ");
+                			DmgSlot04.setText(String.valueOf(p1.getInvList()[4].getPotionStam()));
+                  		Slot4ImageView.setImage(slot4Image);
+                		}
+                	}
+        	  }
+          	
           });
           Slot4.setOnMouseExited((event) -> {
           	VboxSlot4.setOpacity(0);        	
@@ -918,29 +1210,87 @@ public class InventoryController extends GameController{
   	     });
            
           Slot5.setOnMouseEntered((event) -> {            	
-          	if (Slot5.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[5].getImagePath());
+        	  try {
+            		File file = new File(p1.getInvList()[5].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot5Image = new Image(file.toURI().toString());
+                      	if (Slot5.getText() != "Empty") {
+                      		DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getDamage()));
+                      		DurSlot05.setText(String.valueOf(p1.getInvList()[5].getDuribility()));
+                    		Slot5ImageView.setImage(slot5Image);
+                      		VboxSlot5.setOpacity(1);    
+                      		if (p1.getInvList()[5].getItemType() == "HP Potion") {
+                      			DmgLabelSlot5.setText(" HP  ");
+                      			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionHP()));
+                        		Slot5ImageView.setImage(slot5Image);
+                      		}
+                      		else if (p1.getInvList()[5].getItemType() == "Armor") {
+                      			DmgLabelSlot5.setText(" AP  ");
+                      			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getArmorHP()));
+                        		Slot5ImageView.setImage(slot5Image);
+                      		}
+                      		else if (p1.getInvList()[5].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot5.setText(" SP  ");
+                      			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionStam()));
+                        		Slot5ImageView.setImage(slot5Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  }  catch(NullPointerException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
               	Image slot5Image = new Image(file.toURI().toString());
-          		DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getDamage()));
-          		DurSlot05.setText(String.valueOf(p1.getInvList()[5].getDuribility()));
-        		Slot5ImageView.setImage(slot5Image);
-          		VboxSlot5.setOpacity(1);    
-          		if (p1.getInvList()[5].getItemType() == "HP Potion") {
-          			DmgLabelSlot5.setText(" HP  ");
-          			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionHP()));
+              	if (Slot5.getText() != "Empty") {
+              		DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getDamage()));
+              		DurSlot05.setText(String.valueOf(p1.getInvList()[5].getDuribility()));
             		Slot5ImageView.setImage(slot5Image);
-          		}
-          		else if (p1.getInvList()[5].getItemType() == "Armor") {
-          			DmgLabelSlot5.setText(" AP  ");
-          			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getArmorHP()));
-            		Slot5ImageView.setImage(slot5Image);
-          		}
-          		else if (p1.getInvList()[5].getItemType() == "Stam Potion") {
-          			DmgLabelSlot5.setText(" SP  ");
-          			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionStam()));
-            		Slot5ImageView.setImage(slot5Image);
-          		}
-          	}
+              		VboxSlot5.setOpacity(1);    
+              		if (p1.getInvList()[5].getItemType() == "HP Potion") {
+              			DmgLabelSlot5.setText(" HP  ");
+              			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionHP()));
+                		Slot5ImageView.setImage(slot5Image);
+              		}
+              		else if (p1.getInvList()[5].getItemType() == "Armor") {
+              			DmgLabelSlot5.setText(" AP  ");
+              			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getArmorHP()));
+                		Slot5ImageView.setImage(slot5Image);
+              		}
+              		else if (p1.getInvList()[5].getItemType() == "Stam Potion") {
+              			DmgLabelSlot5.setText(" SP  ");
+              			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionStam()));
+                		Slot5ImageView.setImage(slot5Image);
+              		}
+              	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+          		  File file = new File("resource/defaultImage.png");
+                	Image slot5Image = new Image(file.toURI().toString());
+                	if (Slot5.getText() != "Empty") {
+                		DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getDamage()));
+                		DurSlot05.setText(String.valueOf(p1.getInvList()[5].getDuribility()));
+              		Slot5ImageView.setImage(slot5Image);
+                		VboxSlot5.setOpacity(1);    
+                		if (p1.getInvList()[5].getItemType() == "HP Potion") {
+                			DmgLabelSlot5.setText(" HP  ");
+                			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionHP()));
+                  		Slot5ImageView.setImage(slot5Image);
+                		}
+                		else if (p1.getInvList()[5].getItemType() == "Armor") {
+                			DmgLabelSlot5.setText(" AP  ");
+                			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getArmorHP()));
+                  		Slot5ImageView.setImage(slot5Image);
+                		}
+                		else if (p1.getInvList()[5].getItemType() == "Stam Potion") {
+                			DmgLabelSlot5.setText(" SP  ");
+                			DmgSlot05.setText(String.valueOf(p1.getInvList()[5].getPotionStam()));
+                  		Slot5ImageView.setImage(slot5Image);
+                		}
+                	}
+        	  }
+          	
           });
           Slot5.setOnMouseExited((event) -> {
           	VboxSlot5.setOpacity(0);        	
@@ -964,29 +1314,86 @@ public class InventoryController extends GameController{
   	     });
          
           Slot6.setOnMouseEntered((event) -> {
-            	if (Slot6.getText() != "Empty") {
-            		File file = new File(p1.getInvList()[6].getImagePath());
+        	  try {
+          		File file = new File(p1.getInvList()[6].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
                   	Image slot6Image = new Image(file.toURI().toString());
-            		DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getDamage()));
-            		DurSlot06.setText(String.valueOf(p1.getInvList()[6].getDuribility()));
-            		Slot6ImageView.setImage(slot6Image);
-            		VboxSlot6.setOpacity(1);    
-            		if (p1.getInvList()[6].getItemType() == "HP Potion") {
-              			DmgLabelSlot6.setText(" HP  ");
-              			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionHP()));
-              			Slot6ImageView.setImage(slot6Image);
-              		}
-              		else if (p1.getInvList()[6].getItemType() == "Armor") {
-              			DmgLabelSlot6.setText(" AP  ");
-              			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getArmorHP()));
-              			Slot6ImageView.setImage(slot6Image);
-              		}
-              		else if (p1.getInvList()[6].getItemType() == "Stam Potion") {
-              			DmgLabelSlot6.setText(" SP  ");
-              			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionStam()));
-              			Slot6ImageView.setImage(slot6Image);
-              		}
-            	}
+                  	if (Slot6.getText() != "Empty") {
+                		DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getDamage()));
+                		DurSlot06.setText(String.valueOf(p1.getInvList()[6].getDuribility()));
+                		Slot6ImageView.setImage(slot6Image);
+                		VboxSlot6.setOpacity(1);    
+                		if (p1.getInvList()[6].getItemType() == "HP Potion") {
+                  			DmgLabelSlot6.setText(" HP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Armor") {
+                  			DmgLabelSlot6.setText(" AP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getArmorHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot6.setText(" SP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionStam()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                	}
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+          		  	File file = new File("resource/defaultImage.png");
+                  	Image slot6Image = new Image(file.toURI().toString());
+                  	if (Slot6.getText() != "Empty") {
+                		DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getDamage()));
+                		DurSlot06.setText(String.valueOf(p1.getInvList()[6].getDuribility()));
+                		Slot6ImageView.setImage(slot6Image);
+                		VboxSlot6.setOpacity(1);    
+                		if (p1.getInvList()[6].getItemType() == "HP Potion") {
+                  			DmgLabelSlot6.setText(" HP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Armor") {
+                  			DmgLabelSlot6.setText(" AP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getArmorHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot6.setText(" SP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionStam()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+        		  	File file = new File("resource/defaultImage.png");
+                  	Image slot6Image = new Image(file.toURI().toString());
+                  	if (Slot6.getText() != "Empty") {
+                		DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getDamage()));
+                		DurSlot06.setText(String.valueOf(p1.getInvList()[6].getDuribility()));
+                		Slot6ImageView.setImage(slot6Image);
+                		VboxSlot6.setOpacity(1);    
+                		if (p1.getInvList()[6].getItemType() == "HP Potion") {
+                  			DmgLabelSlot6.setText(" HP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Armor") {
+                  			DmgLabelSlot6.setText(" AP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getArmorHP()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                  		else if (p1.getInvList()[6].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot6.setText(" SP  ");
+                  			DmgSlot06.setText(String.valueOf(p1.getInvList()[6].getPotionStam()));
+                  			Slot6ImageView.setImage(slot6Image);
+                  		}
+                	}
+        	  }
             });
             Slot6.setOnMouseExited((event) -> {
             	VboxSlot6.setOpacity(0);        	
@@ -1011,9 +1418,65 @@ public class InventoryController extends GameController{
   	     });
          
           Slot7.setOnMouseEntered((event) -> {
-            	if (Slot7.getText() != "Empty") {
-            		File file = new File(p1.getInvList()[7].getImagePath());
+        	  try {
+          		File file = new File(p1.getInvList()[7].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
                   	Image slot7Image = new Image(file.toURI().toString());
+                  	if (Slot7.getText() != "Empty") {
+                		DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getDamage()));
+                		DurSlot07.setText(String.valueOf(p1.getInvList()[7].getDuribility()));
+                		Slot7ImageView.setImage(slot7Image);
+                		VboxSlot7.setOpacity(1);    
+                		if (p1.getInvList()[7].getItemType() == "HP Potion") {
+                  			DmgLabelSlot7.setText(" HP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getPotionHP()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                  		else if (p1.getInvList()[7].getItemType() == "Armor") {
+                  			DmgLabelSlot7.setText(" AP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getArmorHP()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                  		else if (p1.getInvList()[7].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot7.setText(" SP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getPotionStam()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                	}
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	File file = new File("resource/defaultImage.png");
+                  	Image slot7Image = new Image(file.toURI().toString());
+                  	if (Slot7.getText() != "Empty") {
+                		DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getDamage()));
+                		DurSlot07.setText(String.valueOf(p1.getInvList()[7].getDuribility()));
+                		Slot7ImageView.setImage(slot7Image);
+                		VboxSlot7.setOpacity(1);    
+                		if (p1.getInvList()[7].getItemType() == "HP Potion") {
+                  			DmgLabelSlot7.setText(" HP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getPotionHP()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                  		else if (p1.getInvList()[7].getItemType() == "Armor") {
+                  			DmgLabelSlot7.setText(" AP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getArmorHP()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                  		else if (p1.getInvList()[7].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot7.setText(" SP  ");
+                  			DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getPotionStam()));
+                  			Slot7ImageView.setImage(slot7Image);
+                  		}
+                	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	File file = new File("resource/defaultImage.png");
+              	Image slot7Image = new Image(file.toURI().toString());
+              	if (Slot7.getText() != "Empty") {
             		DmgSlot07.setText(String.valueOf(p1.getInvList()[7].getDamage()));
             		DurSlot07.setText(String.valueOf(p1.getInvList()[7].getDuribility()));
             		Slot7ImageView.setImage(slot7Image);
@@ -1034,6 +1497,8 @@ public class InventoryController extends GameController{
               			Slot7ImageView.setImage(slot7Image);
               		}
             	}
+        	  }
+            	
             });
             Slot7.setOnMouseExited((event) -> {
             	VboxSlot7.setOpacity(0);        	
@@ -1056,29 +1521,87 @@ public class InventoryController extends GameController{
   	     });
           
           Slot8.setOnMouseEntered((event) -> {
-          	if (Slot8.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[8].getImagePath());
-              	Image slot8Image = new Image(file.toURI().toString());
-          		DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getDamage()));
-          		DurSlot08.setText(String.valueOf(p1.getInvList()[8].getDuribility()));
-              	Slot8ImageView.setImage(slot8Image);
-          		VboxSlot8.setOpacity(1);  
-          		if (p1.getInvList()[8].getItemType() == "HP Potion") {
-          			DmgLabelSlot8.setText(" HP  ");
-          			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionHP()));
-          			Slot8ImageView.setImage(slot8Image);
-          		}
-          		else if (p1.getInvList()[8].getItemType() == "Armor") {
-          			DmgLabelSlot8.setText(" AP  ");
-          			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getArmorHP()));
-          			Slot8ImageView.setImage(slot8Image);
-          		}
-          		else if (p1.getInvList()[8].getItemType() == "Stam Potion") {
-          			DmgLabelSlot8.setText(" SP  ");
-          			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionStam()));
-          			Slot8ImageView.setImage(slot8Image);
-          		}
-          	}
+        	  try {
+            	File file = new File(p1.getInvList()[8].getImagePath());
+            	boolean exists = file.isFile();
+            	if (exists) {
+                  	Image slot8Image = new Image(file.toURI().toString());
+                  	if (Slot8.getText() != "Empty") {
+                  		DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getDamage()));
+                  		DurSlot08.setText(String.valueOf(p1.getInvList()[8].getDuribility()));
+                      	Slot8ImageView.setImage(slot8Image);
+                  		VboxSlot8.setOpacity(1);  
+                  		if (p1.getInvList()[8].getItemType() == "HP Potion") {
+                  			DmgLabelSlot8.setText(" HP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Armor") {
+                  			DmgLabelSlot8.setText(" AP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getArmorHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot8.setText(" SP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionStam()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  	}
+            	} else {
+            		throw new FileNotFoundException();
+            	}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	File file = new File("resource/defaultImage.png");
+        		  Image slot8Image = new Image(file.toURI().toString());
+                	if (Slot8.getText() != "Empty") {
+                  		DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getDamage()));
+                  		DurSlot08.setText(String.valueOf(p1.getInvList()[8].getDuribility()));
+                      	Slot8ImageView.setImage(slot8Image);
+                  		VboxSlot8.setOpacity(1);  
+                  		if (p1.getInvList()[8].getItemType() == "HP Potion") {
+                  			DmgLabelSlot8.setText(" HP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Armor") {
+                  			DmgLabelSlot8.setText(" AP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getArmorHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot8.setText(" SP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionStam()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	File file = new File("resource/defaultImage.png");
+        		  Image slot8Image = new Image(file.toURI().toString());
+                	if (Slot8.getText() != "Empty") {
+                  		DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getDamage()));
+                  		DurSlot08.setText(String.valueOf(p1.getInvList()[8].getDuribility()));
+                      	Slot8ImageView.setImage(slot8Image);
+                  		VboxSlot8.setOpacity(1);  
+                  		if (p1.getInvList()[8].getItemType() == "HP Potion") {
+                  			DmgLabelSlot8.setText(" HP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Armor") {
+                  			DmgLabelSlot8.setText(" AP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getArmorHP()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  		else if (p1.getInvList()[8].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot8.setText(" SP  ");
+                  			DmgSlot08.setText(String.valueOf(p1.getInvList()[8].getPotionStam()));
+                  			Slot8ImageView.setImage(slot8Image);
+                  		}
+                  	} 
+        	  }
+          	
           });
           Slot8.setOnMouseExited((event) -> {
           	VboxSlot8.setOpacity(0);        	
@@ -1102,29 +1625,87 @@ public class InventoryController extends GameController{
   	     });
            
           Slot9.setOnMouseEntered((event) -> {
-            	if (Slot9.getText() != "Empty") {
-            		File file = new File(p1.getInvList()[9].getImagePath());
+        	  try {
+          		File file = new File(p1.getInvList()[9].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
                   	Image slot9Image = new Image(file.toURI().toString());
-            		DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getDamage()));
-            		DurSlot09.setText(String.valueOf(p1.getInvList()[9].getDuribility()));
-            		Slot9ImageView.setImage(slot9Image);
-            		VboxSlot9.setOpacity(1);    
-            		if (p1.getInvList()[9].getItemType() == "HP Potion") {
-              			DmgLabelSlot9.setText(" HP  ");
-              			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionHP()));
-              			Slot9ImageView.setImage(slot9Image);
-              		}
-              		else if (p1.getInvList()[9].getItemType() == "Armor") {
-              			DmgLabelSlot9.setText(" AP  ");
-              			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getArmorHP()));
-              			Slot9ImageView.setImage(slot9Image);
-              		}
-              		else if (p1.getInvList()[9].getItemType() == "Stam Potion") {
-              			DmgLabelSlot9.setText(" SP  ");
-              			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionStam()));
-              			Slot9ImageView.setImage(slot9Image);
-              		}
-            	}
+                  	if (Slot9.getText() != "Empty") {
+                		DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getDamage()));
+                		DurSlot09.setText(String.valueOf(p1.getInvList()[9].getDuribility()));
+                		Slot9ImageView.setImage(slot9Image);
+                		VboxSlot9.setOpacity(1);    
+                		if (p1.getInvList()[9].getItemType() == "HP Potion") {
+                  			DmgLabelSlot9.setText(" HP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionHP()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                  		else if (p1.getInvList()[9].getItemType() == "Armor") {
+                  			DmgLabelSlot9.setText(" AP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getArmorHP()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                  		else if (p1.getInvList()[9].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot9.setText(" SP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionStam()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                	}
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+        		  	File file = new File("resource/defaultImage.png");
+                	Image slot9Image = new Image(file.toURI().toString());
+                	if (Slot9.getText() != "Empty") {
+                		DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getDamage()));
+                		DurSlot09.setText(String.valueOf(p1.getInvList()[9].getDuribility()));
+                		Slot9ImageView.setImage(slot9Image);
+                		VboxSlot9.setOpacity(1);    
+                		if (p1.getInvList()[9].getItemType() == "HP Potion") {
+                  			DmgLabelSlot9.setText(" HP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionHP()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                  		else if (p1.getInvList()[9].getItemType() == "Armor") {
+                  			DmgLabelSlot9.setText(" AP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getArmorHP()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                  		else if (p1.getInvList()[9].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot9.setText(" SP  ");
+                  			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionStam()));
+                  			Slot9ImageView.setImage(slot9Image);
+                  		}
+                	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	File file = new File("resource/defaultImage.png");
+              	Image slot9Image = new Image(file.toURI().toString());
+              	if (Slot9.getText() != "Empty") {
+              		DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getDamage()));
+              		DurSlot09.setText(String.valueOf(p1.getInvList()[9].getDuribility()));
+              		Slot9ImageView.setImage(slot9Image);
+              		VboxSlot9.setOpacity(1);    
+              		if (p1.getInvList()[9].getItemType() == "HP Potion") {
+                			DmgLabelSlot9.setText(" HP  ");
+                			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionHP()));
+                			Slot9ImageView.setImage(slot9Image);
+                		}
+                		else if (p1.getInvList()[9].getItemType() == "Armor") {
+                			DmgLabelSlot9.setText(" AP  ");
+                			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getArmorHP()));
+                			Slot9ImageView.setImage(slot9Image);
+                		}
+                		else if (p1.getInvList()[9].getItemType() == "Stam Potion") {
+                			DmgLabelSlot9.setText(" SP  ");
+                			DmgSlot09.setText(String.valueOf(p1.getInvList()[9].getPotionStam()));
+                			Slot9ImageView.setImage(slot9Image);
+                		}
+              	}
+        	  }
+            	
             });
             Slot9.setOnMouseExited((event) -> {
             	VboxSlot9.setOpacity(0);        	
@@ -1148,9 +1729,40 @@ public class InventoryController extends GameController{
   	     });
           
           Slot10.setOnMouseEntered((event) -> {
-            	if (Slot10.getText() != "Empty") {
-            		File file = new File(p1.getInvList()[10].getImagePath());
+        	  try {
+          		File file = new File(p1.getInvList()[10].getImagePath());
+          		boolean exists = file.isFile();
+          		if (exists) {
                   	Image slot10Image = new Image(file.toURI().toString());
+                  	if (Slot10.getText() != "Empty") {
+                		DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getDamage()));
+                		DurSlot10.setText(String.valueOf(p1.getInvList()[10].getDuribility()));
+                		Slot10ImageView.setImage(slot10Image);
+                		VboxSlot10.setOpacity(1);  
+                		if (p1.getInvList()[10].getItemType() == "HP Potion") {
+                  			DmgLabelSlot10.setText(" HP  ");
+                  			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getPotionHP()));
+                  			Slot10ImageView.setImage(slot10Image);
+                  		}
+                  		else if (p1.getInvList()[10].getItemType() == "Armor") {
+                  			DmgLabelSlot10.setText(" AP  ");
+                  			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getArmorHP()));
+                  			Slot10ImageView.setImage(slot10Image);
+                  		}
+                  		else if (p1.getInvList()[10].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot10.setText(" SP  ");
+                  			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getPotionStam()));
+                  			Slot10ImageView.setImage(slot10Image);
+                  		}
+                	}
+          		} else {
+          			throw new FileNotFoundException();
+          		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	  Image slot10Image = new Image(file.toURI().toString());
+      		  	if (Slot10.getText() != "Empty") {
             		DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getDamage()));
             		DurSlot10.setText(String.valueOf(p1.getInvList()[10].getDuribility()));
             		Slot10ImageView.setImage(slot10Image);
@@ -1171,6 +1783,33 @@ public class InventoryController extends GameController{
               			Slot10ImageView.setImage(slot10Image);
               		}
             	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	  Image slot10Image = new Image(file.toURI().toString());
+      		  	if (Slot10.getText() != "Empty") {
+            		DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getDamage()));
+            		DurSlot10.setText(String.valueOf(p1.getInvList()[10].getDuribility()));
+            		Slot10ImageView.setImage(slot10Image);
+            		VboxSlot10.setOpacity(1);  
+            		if (p1.getInvList()[10].getItemType() == "HP Potion") {
+              			DmgLabelSlot10.setText(" HP  ");
+              			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getPotionHP()));
+              			Slot10ImageView.setImage(slot10Image);
+              		}
+              		else if (p1.getInvList()[10].getItemType() == "Armor") {
+              			DmgLabelSlot10.setText(" AP  ");
+              			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getArmorHP()));
+              			Slot10ImageView.setImage(slot10Image);
+              		}
+              		else if (p1.getInvList()[10].getItemType() == "Stam Potion") {
+              			DmgLabelSlot10.setText(" SP  ");
+              			DmgSlot10.setText(String.valueOf(p1.getInvList()[10].getPotionStam()));
+              			Slot10ImageView.setImage(slot10Image);
+              		}
+            	}
+        	  }
+            	
             });
             Slot10.setOnMouseExited((event) -> {
             	VboxSlot10.setOpacity(0);        	
@@ -1192,29 +1831,87 @@ public class InventoryController extends GameController{
   	    	 }
   	     });
           Slot11.setOnMouseEntered((event) -> {
-          	if (Slot11.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[11].getImagePath());
-              	Image slot11Image = new Image(file.toURI().toString());
-          		DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getDamage()));
-          		DurSlot11.setText(String.valueOf(p1.getInvList()[11].getDuribility()));
-            	Slot11ImageView.setImage(slot11Image);
-          		VboxSlot11.setOpacity(1);  
-          		if (p1.getInvList()[11].getItemType() == "HP Potion") {
-          			DmgLabelSlot11.setText(" HP  ");
-          			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionHP()));
-          			Slot11ImageView.setImage(slot11Image);
-          		}
-          		else if (p1.getInvList()[11].getItemType() == "Armor") {
-          			DmgLabelSlot11.setText(" AP  ");
-          			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getArmorHP()));
-          			Slot11ImageView.setImage(slot11Image);
-          		}
-          		else if (p1.getInvList()[11].getItemType() == "Stam Potion") {
-          			DmgLabelSlot11.setText(" SP  ");
-          			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionStam()));
-          			Slot11ImageView.setImage(slot11Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[11].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot11Image = new Image(file.toURI().toString());
+                      	if (Slot11.getText() != "Empty") {
+                      		DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getDamage()));
+                      		DurSlot11.setText(String.valueOf(p1.getInvList()[11].getDuribility()));
+                        	Slot11ImageView.setImage(slot11Image);
+                      		VboxSlot11.setOpacity(1);  
+                      		if (p1.getInvList()[11].getItemType() == "HP Potion") {
+                      			DmgLabelSlot11.setText(" HP  ");
+                      			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionHP()));
+                      			Slot11ImageView.setImage(slot11Image);
+                      		}
+                      		else if (p1.getInvList()[11].getItemType() == "Armor") {
+                      			DmgLabelSlot11.setText(" AP  ");
+                      			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getArmorHP()));
+                      			Slot11ImageView.setImage(slot11Image);
+                      		}
+                      		else if (p1.getInvList()[11].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot11.setText(" SP  ");
+                      			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionStam()));
+                      			Slot11ImageView.setImage(slot11Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+                	Image slot11Image = new Image(file.toURI().toString());
+                	if (Slot11.getText() != "Empty") {
+                  		DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getDamage()));
+                  		DurSlot11.setText(String.valueOf(p1.getInvList()[11].getDuribility()));
+                    	Slot11ImageView.setImage(slot11Image);
+                  		VboxSlot11.setOpacity(1);  
+                  		if (p1.getInvList()[11].getItemType() == "HP Potion") {
+                  			DmgLabelSlot11.setText(" HP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionHP()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  		else if (p1.getInvList()[11].getItemType() == "Armor") {
+                  			DmgLabelSlot11.setText(" AP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getArmorHP()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  		else if (p1.getInvList()[11].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot11.setText(" SP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionStam()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+                	Image slot11Image = new Image(file.toURI().toString());
+                	if (Slot11.getText() != "Empty") {
+                  		DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getDamage()));
+                  		DurSlot11.setText(String.valueOf(p1.getInvList()[11].getDuribility()));
+                    	Slot11ImageView.setImage(slot11Image);
+                  		VboxSlot11.setOpacity(1);  
+                  		if (p1.getInvList()[11].getItemType() == "HP Potion") {
+                  			DmgLabelSlot11.setText(" HP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionHP()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  		else if (p1.getInvList()[11].getItemType() == "Armor") {
+                  			DmgLabelSlot11.setText(" AP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getArmorHP()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  		else if (p1.getInvList()[11].getItemType() == "Stam Potion") {
+                  			DmgLabelSlot11.setText(" SP  ");
+                  			DmgSlot11.setText(String.valueOf(p1.getInvList()[11].getPotionStam()));
+                  			Slot11ImageView.setImage(slot11Image);
+                  		}
+                  	}
+        	  }
+          	
           });
           Slot11.setOnMouseExited((event) -> {
           	VboxSlot11.setOpacity(0);        	
@@ -1237,30 +1934,90 @@ public class InventoryController extends GameController{
   	    	 }
   	     });
           Slot12.setOnMouseEntered((event) -> {
-          	if (Slot12.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[12].getImagePath());
-              	Image slot12Image = new Image(file.toURI().toString());
-            	Slot12ImageView.setImage(slot12Image);
-          		DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getDamage()));
-          		DurSlot12.setText(String.valueOf(p1.getInvList()[12].getDuribility()));
-            	Slot12ImageView.setImage(slot12Image);
-          		VboxSlot12.setOpacity(1);    
-          		if (p1.getInvList()[12].getItemType() == "HP Potion") {
-          			DmgLabelSlot12.setText(" HP  ");
-          			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionHP()));
-          			Slot12ImageView.setImage(slot12Image);
-          		}
-          		else if (p1.getInvList()[12].getItemType() == "Armor") {
-          			DmgLabelSlot12.setText(" AP  ");
-          			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getArmorHP()));
-          			Slot12ImageView.setImage(slot12Image);
-          		}
-          		else if (p1.getInvList()[12].getItemType() == "Stam Potion") {
-          			DmgLabelSlot12.setText(" SP  ");
-          			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionStam()));
-          			Slot12ImageView.setImage(slot12Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[12].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot12Image = new Image(file.toURI().toString());
+                      	if (Slot12.getText() != "Empty") {
+                        	Slot12ImageView.setImage(slot12Image);
+                      		DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getDamage()));
+                      		DurSlot12.setText(String.valueOf(p1.getInvList()[12].getDuribility()));
+                        	Slot12ImageView.setImage(slot12Image);
+                      		VboxSlot12.setOpacity(1);    
+                      		if (p1.getInvList()[12].getItemType() == "HP Potion") {
+                      			DmgLabelSlot12.setText(" HP  ");
+                      			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionHP()));
+                      			Slot12ImageView.setImage(slot12Image);
+                      		}
+                      		else if (p1.getInvList()[12].getItemType() == "Armor") {
+                      			DmgLabelSlot12.setText(" AP  ");
+                      			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getArmorHP()));
+                      			Slot12ImageView.setImage(slot12Image);
+                      		}
+                      		else if (p1.getInvList()[12].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot12.setText(" SP  ");
+                      			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionStam()));
+                      			Slot12ImageView.setImage(slot12Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+                	Image slot12Image = new Image(file.toURI().toString());
+                	if (Slot12.getText() != "Empty") {
+                  	Slot12ImageView.setImage(slot12Image);
+                		DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getDamage()));
+                		DurSlot12.setText(String.valueOf(p1.getInvList()[12].getDuribility()));
+                  	Slot12ImageView.setImage(slot12Image);
+                		VboxSlot12.setOpacity(1);    
+                		if (p1.getInvList()[12].getItemType() == "HP Potion") {
+                			DmgLabelSlot12.setText(" HP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionHP()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                		else if (p1.getInvList()[12].getItemType() == "Armor") {
+                			DmgLabelSlot12.setText(" AP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getArmorHP()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                		else if (p1.getInvList()[12].getItemType() == "Stam Potion") {
+                			DmgLabelSlot12.setText(" SP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionStam()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+                	Image slot12Image = new Image(file.toURI().toString());
+                	if (Slot12.getText() != "Empty") {
+                  	Slot12ImageView.setImage(slot12Image);
+                		DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getDamage()));
+                		DurSlot12.setText(String.valueOf(p1.getInvList()[12].getDuribility()));
+                  	Slot12ImageView.setImage(slot12Image);
+                		VboxSlot12.setOpacity(1);    
+                		if (p1.getInvList()[12].getItemType() == "HP Potion") {
+                			DmgLabelSlot12.setText(" HP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionHP()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                		else if (p1.getInvList()[12].getItemType() == "Armor") {
+                			DmgLabelSlot12.setText(" AP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getArmorHP()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                		else if (p1.getInvList()[12].getItemType() == "Stam Potion") {
+                			DmgLabelSlot12.setText(" SP  ");
+                			DmgSlot12.setText(String.valueOf(p1.getInvList()[12].getPotionStam()));
+                			Slot12ImageView.setImage(slot12Image);
+                		}
+                	}
+        	  }
+          	
           });
           Slot12.setOnMouseExited((event) -> {
           	VboxSlot12.setOpacity(0);        	
@@ -1283,29 +2040,87 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot13.setOnMouseEntered((event) -> {
-          	if (Slot13.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[13].getImagePath());
-              	Image slot13Image = new Image(file.toURI().toString());
-          		DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getDamage()));
-          		DurSlot13.setText(String.valueOf(p1.getInvList()[13].getDuribility()));
-            	Slot13ImageView.setImage(slot13Image);
-          		VboxSlot13.setOpacity(1);    
-          		if (p1.getInvList()[13].getItemType() == "HP Potion") {
-          			DmgLabelSlot13.setText(" HP  ");
-          			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionHP()));
-          			Slot13ImageView.setImage(slot13Image);
-          		}
-          		else if (p1.getInvList()[13].getItemType() == "Armor") {
-          			DmgLabelSlot13.setText(" AP  ");
-          			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getArmorHP()));
-          			Slot13ImageView.setImage(slot13Image);
-          		}
-          		else if (p1.getInvList()[13].getItemType() == "Stam Potion") {
-          			DmgLabelSlot13.setText(" SP  ");
-          			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionStam()));
-          			Slot13ImageView.setImage(slot13Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[13].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot13Image = new Image(file.toURI().toString());
+                      	if (Slot13.getText() != "Empty") {
+                      		DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getDamage()));
+                      		DurSlot13.setText(String.valueOf(p1.getInvList()[13].getDuribility()));
+                        	Slot13ImageView.setImage(slot13Image);
+                      		VboxSlot13.setOpacity(1);    
+                      		if (p1.getInvList()[13].getItemType() == "HP Potion") {
+                      			DmgLabelSlot13.setText(" HP  ");
+                      			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionHP()));
+                      			Slot13ImageView.setImage(slot13Image);
+                      		}
+                      		else if (p1.getInvList()[13].getItemType() == "Armor") {
+                      			DmgLabelSlot13.setText(" AP  ");
+                      			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getArmorHP()));
+                      			Slot13ImageView.setImage(slot13Image);
+                      		}
+                      		else if (p1.getInvList()[13].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot13.setText(" SP  ");
+                      			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionStam()));
+                      			Slot13ImageView.setImage(slot13Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot13Image = new Image(file.toURI().toString());
+              	if (Slot13.getText() != "Empty") {
+              		DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getDamage()));
+              		DurSlot13.setText(String.valueOf(p1.getInvList()[13].getDuribility()));
+                	Slot13ImageView.setImage(slot13Image);
+              		VboxSlot13.setOpacity(1);    
+              		if (p1.getInvList()[13].getItemType() == "HP Potion") {
+              			DmgLabelSlot13.setText(" HP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionHP()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              		else if (p1.getInvList()[13].getItemType() == "Armor") {
+              			DmgLabelSlot13.setText(" AP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getArmorHP()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              		else if (p1.getInvList()[13].getItemType() == "Stam Potion") {
+              			DmgLabelSlot13.setText(" SP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionStam()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot13Image = new Image(file.toURI().toString());
+              	if (Slot13.getText() != "Empty") {
+              		DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getDamage()));
+              		DurSlot13.setText(String.valueOf(p1.getInvList()[13].getDuribility()));
+                	Slot13ImageView.setImage(slot13Image);
+              		VboxSlot13.setOpacity(1);    
+              		if (p1.getInvList()[13].getItemType() == "HP Potion") {
+              			DmgLabelSlot13.setText(" HP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionHP()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              		else if (p1.getInvList()[13].getItemType() == "Armor") {
+              			DmgLabelSlot13.setText(" AP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getArmorHP()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              		else if (p1.getInvList()[13].getItemType() == "Stam Potion") {
+              			DmgLabelSlot13.setText(" SP  ");
+              			DmgSlot13.setText(String.valueOf(p1.getInvList()[13].getPotionStam()));
+              			Slot13ImageView.setImage(slot13Image);
+              		}
+              	}
+        	  }
+          	
           });
           Slot13.setOnMouseExited((event) -> {
           	VboxSlot13.setOpacity(0);        	
@@ -1328,29 +2143,87 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot14.setOnMouseEntered((event) -> {
-          	if (Slot14.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[14].getImagePath());
-              	Image slot14Image = new Image(file.toURI().toString());
-          		DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getDamage()));
-          		DurSlot14.setText(String.valueOf(p1.getInvList()[14].getDuribility()));
-            	Slot14ImageView.setImage(slot14Image);
-          		VboxSlot14.setOpacity(1);    
-          		if (p1.getInvList()[14].getItemType() == "HP Potion") {
-          			DmgLabelSlot14.setText(" HP  ");
-          			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionHP()));
-          			Slot14ImageView.setImage(slot14Image);
-          		}
-          		else if (p1.getInvList()[14].getItemType() == "Armor") {
-          			DmgLabelSlot14.setText(" AP  ");
-          			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getArmorHP()));
-          			Slot14ImageView.setImage(slot14Image);
-          		}
-          		else if (p1.getInvList()[14].getItemType() == "Stam Potion") {
-          			DmgLabelSlot14.setText(" SP  ");
-          			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionStam()));
-          			Slot14ImageView.setImage(slot14Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[14].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot14Image = new Image(file.toURI().toString());
+                      	if (Slot14.getText() != "Empty") {
+                      		DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getDamage()));
+                      		DurSlot14.setText(String.valueOf(p1.getInvList()[14].getDuribility()));
+                        	Slot14ImageView.setImage(slot14Image);
+                      		VboxSlot14.setOpacity(1);    
+                      		if (p1.getInvList()[14].getItemType() == "HP Potion") {
+                      			DmgLabelSlot14.setText(" HP  ");
+                      			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionHP()));
+                      			Slot14ImageView.setImage(slot14Image);
+                      		}
+                      		else if (p1.getInvList()[14].getItemType() == "Armor") {
+                      			DmgLabelSlot14.setText(" AP  ");
+                      			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getArmorHP()));
+                      			Slot14ImageView.setImage(slot14Image);
+                      		}
+                      		else if (p1.getInvList()[14].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot14.setText(" SP  ");
+                      			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionStam()));
+                      			Slot14ImageView.setImage(slot14Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot14Image = new Image(file.toURI().toString());
+              	if (Slot14.getText() != "Empty") {
+              		DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getDamage()));
+              		DurSlot14.setText(String.valueOf(p1.getInvList()[14].getDuribility()));
+                	Slot14ImageView.setImage(slot14Image);
+              		VboxSlot14.setOpacity(1);    
+              		if (p1.getInvList()[14].getItemType() == "HP Potion") {
+              			DmgLabelSlot14.setText(" HP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionHP()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              		else if (p1.getInvList()[14].getItemType() == "Armor") {
+              			DmgLabelSlot14.setText(" AP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getArmorHP()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              		else if (p1.getInvList()[14].getItemType() == "Stam Potion") {
+              			DmgLabelSlot14.setText(" SP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionStam()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot14Image = new Image(file.toURI().toString());
+              	if (Slot14.getText() != "Empty") {
+              		DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getDamage()));
+              		DurSlot14.setText(String.valueOf(p1.getInvList()[14].getDuribility()));
+                	Slot14ImageView.setImage(slot14Image);
+              		VboxSlot14.setOpacity(1);    
+              		if (p1.getInvList()[14].getItemType() == "HP Potion") {
+              			DmgLabelSlot14.setText(" HP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionHP()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              		else if (p1.getInvList()[14].getItemType() == "Armor") {
+              			DmgLabelSlot14.setText(" AP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getArmorHP()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              		else if (p1.getInvList()[14].getItemType() == "Stam Potion") {
+              			DmgLabelSlot14.setText(" SP  ");
+              			DmgSlot14.setText(String.valueOf(p1.getInvList()[14].getPotionStam()));
+              			Slot14ImageView.setImage(slot14Image);
+              		}
+              	}
+        	  }
+          	
           });
           Slot14.setOnMouseExited((event) -> {
           	VboxSlot14.setOpacity(0);        	
@@ -1373,29 +2246,88 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot15.setOnMouseEntered((event) -> {
-          	if (Slot15.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[15].getImagePath());
-              	Image slot15Image = new Image(file.toURI().toString());
-          		DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getDamage()));
-          		DurSlot15.setText(String.valueOf(p1.getInvList()[15].getDuribility()));
-            	Slot15ImageView.setImage(slot15Image);
-          		VboxSlot15.setOpacity(1);    
-          		if (p1.getInvList()[15].getItemType() == "HP Potion") {
-          			DmgLabelSlot15.setText(" HP  ");
-          			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionHP()));
-          			Slot15ImageView.setImage(slot15Image);
-          		}
-          		else if (p1.getInvList()[15].getItemType() == "Armor") {
-          			DmgLabelSlot15.setText(" AP  ");
-          			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getArmorHP()));
-          			Slot15ImageView.setImage(slot15Image);
-          		}
-          		else if (p1.getInvList()[15].getItemType() == "Stam Potion") {
-          			DmgLabelSlot15.setText(" SP  ");
-          			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionStam()));
-          			Slot15ImageView.setImage(slot15Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[15].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot15Image = new Image(file.toURI().toString());
+                      	if (Slot15.getText() != "Empty") {
+                      		DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getDamage()));
+                      		DurSlot15.setText(String.valueOf(p1.getInvList()[15].getDuribility()));
+                        	Slot15ImageView.setImage(slot15Image);
+                      		VboxSlot15.setOpacity(1);    
+                      		if (p1.getInvList()[15].getItemType() == "HP Potion") {
+                      			DmgLabelSlot15.setText(" HP  ");
+                      			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionHP()));
+                      			Slot15ImageView.setImage(slot15Image);
+                      		}
+                      		else if (p1.getInvList()[15].getItemType() == "Armor") {
+                      			DmgLabelSlot15.setText(" AP  ");
+                      			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getArmorHP()));
+                      			Slot15ImageView.setImage(slot15Image);
+                      		}
+                      		else if (p1.getInvList()[15].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot15.setText(" SP  ");
+                      			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionStam()));
+                      			Slot15ImageView.setImage(slot15Image);
+                      		}
+                      	}	
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot15Image = new Image(file.toURI().toString());
+              	if (Slot15.getText() != "Empty") {
+              		DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getDamage()));
+              		DurSlot15.setText(String.valueOf(p1.getInvList()[15].getDuribility()));
+                	Slot15ImageView.setImage(slot15Image);
+              		VboxSlot15.setOpacity(1);    
+              		if (p1.getInvList()[15].getItemType() == "HP Potion") {
+              			DmgLabelSlot15.setText(" HP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionHP()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              		else if (p1.getInvList()[15].getItemType() == "Armor") {
+              			DmgLabelSlot15.setText(" AP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getArmorHP()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              		else if (p1.getInvList()[15].getItemType() == "Stam Potion") {
+              			DmgLabelSlot15.setText(" SP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionStam()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              	}	
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot15Image = new Image(file.toURI().toString());
+              	if (Slot15.getText() != "Empty") {
+              		DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getDamage()));
+              		DurSlot15.setText(String.valueOf(p1.getInvList()[15].getDuribility()));
+                	Slot15ImageView.setImage(slot15Image);
+              		VboxSlot15.setOpacity(1);    
+              		if (p1.getInvList()[15].getItemType() == "HP Potion") {
+              			DmgLabelSlot15.setText(" HP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionHP()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              		else if (p1.getInvList()[15].getItemType() == "Armor") {
+              			DmgLabelSlot15.setText(" AP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getArmorHP()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              		else if (p1.getInvList()[15].getItemType() == "Stam Potion") {
+              			DmgLabelSlot15.setText(" SP  ");
+              			DmgSlot15.setText(String.valueOf(p1.getInvList()[15].getPotionStam()));
+              			Slot15ImageView.setImage(slot15Image);
+              		}
+              	}	
+        	  }
+
+
           });
           Slot15.setOnMouseExited((event) -> {
           	VboxSlot15.setOpacity(0);        	
@@ -1424,29 +2356,87 @@ public class InventoryController extends GameController{
    	    	 }
    	     });
           Slot16.setOnMouseEntered((event) -> {
-          	if (Slot16.getText() != "Empty") {
-          		File file = new File(p1.getInvList()[16].getImagePath());
-              	Image slot16Image = new Image(file.toURI().toString());
-          		DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getDamage()));
-          		DurSlot16.setText(String.valueOf(p1.getInvList()[16].getDuribility()));
-            	Slot16ImageView.setImage(slot16Image);
-          		VboxSlot16.setOpacity(1);    
-          		if (p1.getInvList()[16].getItemType() == "HP Potion") {
-          			DmgLabelSlot16.setText(" HP  ");
-          			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionHP()));
-          			Slot16ImageView.setImage(slot16Image);
-          		}
-          		else if (p1.getInvList()[16].getItemType() == "Armor") {
-          			DmgLabelSlot16.setText(" AP  ");
-          			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getArmorHP()));
-          			Slot16ImageView.setImage(slot16Image);
-          		}
-          		else if (p1.getInvList()[16].getItemType() == "Stam Potion") {
-          			DmgLabelSlot16.setText(" SP  ");
-          			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionStam()));
-          			Slot16ImageView.setImage(slot16Image);
-          		}
-          	}
+        	  try {
+            		File file = new File(p1.getInvList()[16].getImagePath());
+            		boolean exists = file.isFile();
+            		if (exists) {
+                      	Image slot16Image = new Image(file.toURI().toString());
+                      	if (Slot16.getText() != "Empty") {
+                      		DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getDamage()));
+                      		DurSlot16.setText(String.valueOf(p1.getInvList()[16].getDuribility()));
+                        	Slot16ImageView.setImage(slot16Image);
+                      		VboxSlot16.setOpacity(1);    
+                      		if (p1.getInvList()[16].getItemType() == "HP Potion") {
+                      			DmgLabelSlot16.setText(" HP  ");
+                      			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionHP()));
+                      			Slot16ImageView.setImage(slot16Image);
+                      		}
+                      		else if (p1.getInvList()[16].getItemType() == "Armor") {
+                      			DmgLabelSlot16.setText(" AP  ");
+                      			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getArmorHP()));
+                      			Slot16ImageView.setImage(slot16Image);
+                      		}
+                      		else if (p1.getInvList()[16].getItemType() == "Stam Potion") {
+                      			DmgLabelSlot16.setText(" SP  ");
+                      			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionStam()));
+                      			Slot16ImageView.setImage(slot16Image);
+                      		}
+                      	}
+            		} else {
+            			throw new FileNotFoundException();
+            		}
+        	  } catch (NullPointerException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot16Image = new Image(file.toURI().toString());
+              	if (Slot16.getText() != "Empty") {
+              		DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getDamage()));
+              		DurSlot16.setText(String.valueOf(p1.getInvList()[16].getDuribility()));
+                	Slot16ImageView.setImage(slot16Image);
+              		VboxSlot16.setOpacity(1);    
+              		if (p1.getInvList()[16].getItemType() == "HP Potion") {
+              			DmgLabelSlot16.setText(" HP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionHP()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+              		else if (p1.getInvList()[16].getItemType() == "Armor") {
+              			DmgLabelSlot16.setText(" AP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getArmorHP()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+              		else if (p1.getInvList()[16].getItemType() == "Stam Potion") {
+              			DmgLabelSlot16.setText(" SP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionStam()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+              	}
+        	  } catch (FileNotFoundException e) {
+        		  e.printStackTrace();
+      		  	  File file = new File("resource/defaultImage.png");
+      		  	Image slot16Image = new Image(file.toURI().toString());
+              	if (Slot16.getText() != "Empty") {
+              		DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getDamage()));
+              		DurSlot16.setText(String.valueOf(p1.getInvList()[16].getDuribility()));
+                	Slot16ImageView.setImage(slot16Image);
+              		VboxSlot16.setOpacity(1);    
+              		if (p1.getInvList()[16].getItemType() == "HP Potion") {
+              			DmgLabelSlot16.setText(" HP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionHP()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+              		else if (p1.getInvList()[16].getItemType() == "Armor") {
+              			DmgLabelSlot16.setText(" AP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getArmorHP()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+              		else if (p1.getInvList()[16].getItemType() == "Stam Potion") {
+              			DmgLabelSlot16.setText(" SP  ");
+              			DmgSlot16.setText(String.valueOf(p1.getInvList()[16].getPotionStam()));
+              			Slot16ImageView.setImage(slot16Image);
+              		}
+        	  }
+        	  }
+          	
           });
           Slot16.setOnMouseExited((event) -> {
           	VboxSlot16.setOpacity(0);        	
