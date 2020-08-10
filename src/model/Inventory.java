@@ -14,76 +14,61 @@ public class Inventory {
 	
 	//The following are various items to be picked up in-game
 	private static Item Empty = new Item();
-	private static Weapon woodenSword = new Weapon("Wooden Sword",5,10);
-	private static Weapon ironSword = new Weapon("Iron Sword",7,20);
-	private static Weapon silverSword = new Weapon("Silver Sword",15,15);
-	private static Weapon flamingSword = new Weapon("Flaming Sword", 30, 30);
-	private static Weapon rustySword = new Weapon("Rusty Sword", 12, 5);
-	private static Armor leatherArmor = new Armor("Leather Armor", 4, 10);
-	private static Armor armorScraps = new Armor("Armor Scraps", 2, 10);
-	private static Armor rustyIronArmor = new Armor("Rusty Iron Armor", 6, 15);
-	private static Armor shinyIronArmor = new Armor("Shiny Iron Armor", 10, 15);
-	private static HpPotion HPUltraPotion = new HpPotion("Ultra HP Potion", 20, 1);
-	private static HpPotion HPpotion = new HpPotion("HP Potion", 10, 1);
-	private static StamPotion staminaPotion = new StamPotion("Stamina Potion", 3, 1);
-	private static StamPotion ultraStaminaPotion = new StamPotion("Ultra Stamina Potion", 6, 1);
-	private static Key silverKey = new Key("Silver Key", 1, 1);
-	private static Key goldKey = new Key("Gold Key", 2, 1);
 
 	public Key getSilverKey() {
-		return silverKey;
+		return new Key("Silver Key", 1, 1, "resource/RandomKey1.png");
 	}
 	public Key getGoldKey() {
-		return goldKey;
+		return new Key("Gold Key", 2, 1, "resource/RandomKey2.png");
 	}
 	public HpPotion getHPUltraPotion() {
-		return HPUltraPotion;
+		return new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
 	}
 	public StamPotion getUltraStaminaPotion() {
-		return ultraStaminaPotion;
+		return new StamPotion("Ultra Stamina Potion", 6, 1, "resource/UltraStaminaPotion.png");
 	}
 	public Armor getArmorScraps() {
-		return armorScraps;
+		return new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
 	}
 	public Armor getRustyIronArmor() {
-		return rustyIronArmor;
+		return new Armor("Rusty Iron Armor", 6, 15, "resource/RustyArmor.png");
 	}
 	public Armor getShinyIronArmor() {
-		return shinyIronArmor;
+		return new Armor("Shiny Iron Armor", 10, 15, "resource/ShinyArmor.png");
 	}
 	public StamPotion getStaminaPotion() {
-		return staminaPotion;
+		return new StamPotion("Stamina Potion", 3, 1, "resource/StaminaPotion.png");
 	}
 	public HpPotion getHPPotion() {
-		return HPpotion;
+		return new HpPotion("HP Potion", 10, 1, "resource/HPPotion.png");
 	}
 	public Armor getLeatherArmor()
 	{
-		return leatherArmor;
+		return new Armor("Leather Armor", 4, 10, "resource/LeatherArmor.png");
 	}
 	public Weapon getRustySword() {
-		return rustySword;
+		return new Weapon("Rusty Sword", 12, 5, "resource/RustySword.png");
 	}
 	public Weapon getWoodenSword()
 	{
-		return woodenSword;
+		return new Weapon("Wooden Sword",5,10, "resource/WoodenSword.png");
 	}
 	
-	public Weapon getIronSword()
+	public static Weapon getIronSword()
 	{
-		return ironSword;
+		return new Weapon("Iron Sword",7,20, "resource/IronSword.png");
 	}
 	public Weapon getSilverSword()
 	{
-		return silverSword;
+		return new Weapon("Silver Sword",15,15, "resource/SilverSword.png");
 	}
 	public Weapon getFlamingSword()
 	{
-		return flamingSword;
+		return new Weapon("Flaming Sword", 30, 30, "resource/FlamingSword.png");
 	}
 	public Item getEmpty()
 	{
-		return Empty;
+		return new Item();
 	}
 	public Item[] getInvList()
 	{
@@ -199,7 +184,7 @@ public class Inventory {
 	
 	public void addToInv(Inventory anInv, Item anItem)
 	{
-		if (anInv.invList[anInv.invElement] == Empty)
+		if (anInv.invList[anInv.invElement].getItemType() == "Empty")
 		{
 		anInv.invList[anInv.invElement++]=anItem;
 		}
@@ -240,7 +225,7 @@ public class Inventory {
 		for(int aSlot = 0; aSlot < invList.length; aSlot++) {
 			if(this.invList[aSlot] == anItem) {
 				this.invElement--;
-				this.invList[aSlot]=Empty;
+				this.invList[aSlot]= Empty;
 				break;
 			}
 		}
