@@ -12,11 +12,13 @@ package application;
 import java.io.IOException;
 import java.util.Scanner;
 
+import model.Door;
 import model.Enemy;
 import model.Inventory;
 import model.Map;
 import model.Player;
 import model.Userinterface;
+import model.WorldItem;
 
 public class Main {
 	
@@ -28,18 +30,22 @@ public class Main {
 		// Creates a new enemy object and sets its stats
 		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
+		WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt")};
+		
+		
+		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
 		//to "Xavier" for a fuller inventory XL
 
 		// Displays the start screen
-		Start menu = new Start();
-		menu.startScreen();
-		playerStats.clearConsole();
+		//Start menu = new Start();
+		//menu.startScreen();
+		//playerStats.clearConsole();
 			
 		Map map = new Map(); // Creates the map
 		try {
-			map.readMap("resource/test.txt");
+			map.readMap("resource/test.txt", player);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -126,12 +132,28 @@ public class Main {
 				playerInput = inputScanner.nextLine();
 				continue;
 			}
-			
-			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") ) {
+			else if (playerInput.equals("use")) {
+				playerStats.clearConsole();
+				for (int i = 0; i < worldItems.length; i++) {
+					 	
+						if (worldItems[i].checkSurroundings(player) && (worldItems[i].getFloor() == map.getLevel())){
+							System.out.println(worldItems[i].onUse(playerInv, map, player));
+							System.out.println(map.getLevel());
+						}
+						else {
+							System.out.println("Nothing to use...");
+						}
+						System.out.println(map.render(player, skeletonOne));
+					
+					
+				}
+			}
+			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") || playerInput.equals("use") ) {
 				playerStats.clearConsole();
 				testmap = map.renderNext(player, skeletonOne, playerInput, playerInv); 
 				System.out.println(testmap);
 			}
+			
 			else {
 				System.out.println("Please input a valid command");
 			}

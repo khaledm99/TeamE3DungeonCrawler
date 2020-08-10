@@ -22,7 +22,7 @@ public class Map {
 	
 	private int width;
 	private int height;
-	private int level;
+	private int floor;
 	// Map layout is stored in a nested array where each "cell" of the map is a single character String, to allow for a working coordinates system.
 	private String[][] layout = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
 					      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
@@ -54,24 +54,28 @@ public class Map {
 	}
 	
 	public int getLevel() {
-		return this.level;
+		return this.floor;
 	}
 	
 	public String[][] getLayout() {
 		return this.layout;
 	}
 	
-	public void readMap(String file) throws IOException {
+	public void readMap(String file, Player player) throws IOException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		//String is = classloader.getResource(file).getFile();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
 		
-		this.level = Integer.parseInt(line);
+		this.floor = Integer.parseInt(line);
 		line = reader.readLine();
-		this.width = Integer.parseInt(line.substring(6));
+		this.width = Integer.parseInt(line);
 		line = reader.readLine();
-		this.height = Integer.parseInt(line.substring(7));
+		this.height = Integer.parseInt(line);
+		line = reader.readLine();
+		player.setXcoord(Integer.parseInt(line));
+		line = reader.readLine();
+		player.setYcoord(Integer.parseInt(line));
 		
 		this.layout = new String[height][width];
 
@@ -137,7 +141,7 @@ public class Map {
 	 */
 	public String renderNext(Player player, Enemy enemy, String direction, Inventory inv) {
 		if (direction.equals("up")) {
-			if (!layout[player.getYcoord()-1][player.getXcoord()].equals("#")) {
+			if (!layout[player.getYcoord()-1][player.getXcoord()].equals("#") && !layout[player.getYcoord()-1][player.getXcoord()].equals("d")) {
 				player.moveUp(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
@@ -155,7 +159,7 @@ public class Map {
 			}
 		}
 		else if (direction.equals("down")) {
-			if (!layout[player.getYcoord()+1][player.getXcoord()].equals("#")) {
+			if (!layout[player.getYcoord()+1][player.getXcoord()].equals("#") && !layout[player.getYcoord()+1][player.getXcoord()].equals("d")) {
 				player.moveDown(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
@@ -174,7 +178,7 @@ public class Map {
 			}
 		}
 		else if (direction.equals("left")) {
-			if (!layout[player.getYcoord()][player.getXcoord()-1].equals("#")) {
+			if (!layout[player.getYcoord()][player.getXcoord()-1].equals("#") && !layout[player.getYcoord()][player.getXcoord()-1].equals("d")) {
 				player.moveLeft(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
@@ -193,7 +197,7 @@ public class Map {
 			}
 		}
 		else if (direction.equals("right")) {
-			if (!layout[player.getYcoord()][player.getXcoord()+1].equals("#")) {
+			if (!layout[player.getYcoord()][player.getXcoord()+1].equals("#") && !layout[player.getYcoord()][player.getXcoord()+1].equals("d")) {
 				player.moveRight(1);
 				if (player.getYcoord() == (enemy.getYcoord()) && player.getXcoord() == (enemy.getXcoord()) && (enemy.isDead() == false)){
 					combat = new Combat();
@@ -210,6 +214,10 @@ public class Map {
 					application.GuiMain.setOnEnemy(false);
 				}
 			}
+		}
+		
+		else if (direction.equals("use")) {
+			
 		}
 		else {
 			return "Please input a valid direction";

@@ -11,11 +11,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.WorldItem;
 
 public class MainController extends GameController {
 	
 	public Stage stage = new Stage();
-
+	
+	private WorldItem[] worldItems = GuiMain.getWorldItems();
 
     private String direction = "";
 	
@@ -66,7 +68,16 @@ public class MainController extends GameController {
 
     @FXML
     void UseClick(ActionEvent event) {
-
+    	for (int i = 0; i < worldItems.length; i++) {
+		 	
+			if (worldItems[i].checkSurroundings(getPlayer()) && (worldItems[i].getFloor() == application.GuiMain.getMap().getLevel())){
+				worldItems[i].onUse(getInv(), application.GuiMain.getMap(), getPlayer());
+			}
+			else {
+			}
+    	}
+		direction = "use";	
+    	refresh();
     }
     
     @FXML
