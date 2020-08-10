@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Random;
 /**
  * 
  * Classname: Enemy
@@ -20,6 +21,8 @@ public class Enemy extends Entity {
 	private int givesXP;
 	private int givesCoin;
 	private int damage;
+	private int difficulty;
+	private Item dropItem;
 
 	/**
 	 * Enemy Constructor
@@ -40,6 +43,28 @@ public class Enemy extends Entity {
 		this.isDead = false;
 		this.givesXP = 5;
 		this.givesCoin = 5;
+		this.setDifficulty(0);
+		this.setDropItem(Inventory.getIronSword());
+	}
+	
+	//Getter for dropItem
+	public Item getDropItem() {
+		return dropItem;
+	}
+	
+	//Setter for dropItem
+	public void setDropItem(Item item) {
+		this.dropItem = item;
+	}
+	
+	// Getter for difficulty
+	public int getDifficulty() {
+		return difficulty;
+	}
+	
+	//Setter for difficulty
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 	
 	// Setter method for damage
@@ -90,23 +115,52 @@ public class Enemy extends Entity {
 	}
 	
 	// This method is responsible for the A.I. during combat
-	public int combatMoveSet(int remainingStamina, int playerStamina) {
-		if (playerStamina > remainingStamina ) {
-			if ((playerStamina - remainingStamina) <= 10) {
-				return remainingStamina;
-			} else if (playerStamina - remainingStamina > 10)
+	public int combatMoveSet(int remainingStamina, int playerStamina, int difficulty) {
+		Random rand = new Random();
+		boolean ability = true;
+		if (difficulty == 0) {
+			if (remainingStamina / this.getStamina() <= 0.6) {
 				return 0;
-		} else if (playerStamina < remainingStamina) {
-			if (playerStamina < 5) {
-				return 5;
-			} else if ((remainingStamina - playerStamina) <= 5) {
-				return remainingStamina;
-			} else if ((remainingStamina - playerStamina) > 5) {
-				return playerStamina + 1;
+			} else {
+				return rand.nextInt(remainingStamina + 1);
 			}
-		} else if (playerStamina == remainingStamina) {
-			return remainingStamina;
 		}
+		if (difficulty == 1) {
+			if (playerStamina > remainingStamina ) {
+				if ((playerStamina - remainingStamina) <= 10) {
+					return remainingStamina;
+				} else if (playerStamina - remainingStamina > 10)
+					return 0;
+			} else if (playerStamina < remainingStamina) {
+				if (playerStamina < 5) {
+					return 5;
+				} else {
+					return rand.nextInt(remainingStamina + 1);
+				}
+			}
+		}
+		if (difficulty == 2) {
+			if (ability == true && playerStamina - remainingStamina > 10) {
+				ability = false;
+				return -1;
+			}
+			if (playerStamina > remainingStamina ) {
+				if ((playerStamina - remainingStamina) <= 10) {
+					return remainingStamina;
+				} else if (playerStamina - remainingStamina > 10)
+					return 0;
+			} else if (playerStamina < remainingStamina) {
+				if (playerStamina < 5) {
+					return 5;
+				} else if (remainingStamina - playerStamina > 10){
+					return playerStamina + 1;
+				} else {
+					return remainingStamina;
+				}
+					
+			}
+		}
+		
 		return 0;
 	}
 }

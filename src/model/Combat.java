@@ -164,7 +164,7 @@ public class Combat {
 				}
 				
 			} else {
-				int enemyMove = enemy.combatMoveSet(enemysRemainingStamina, playersRemainingStamina);
+				int enemyMove = enemy.combatMoveSet(enemysRemainingStamina, playersRemainingStamina, 0);
 				if (playerAttackDecision > playersRemainingStamina) {
 					playerAttackDecision = playersRemainingStamina;
 				}

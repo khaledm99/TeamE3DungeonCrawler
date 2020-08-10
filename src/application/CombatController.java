@@ -28,6 +28,7 @@ public class CombatController extends GameController {
 	private int weaponDamage;
 	private int enemyDamage;
 	private String enemyName;
+	private int difficulty;
 	
     @FXML
     private Slider stamSlider;
@@ -63,9 +64,9 @@ public class CombatController extends GameController {
     @FXML
     void initialize() {
     	playersRemainingHP = getPlayer().getHp();
-    	enemysRemainingHP = application.GuiMain.getEnemy().getHp();
+    	enemysRemainingHP = getEnemy().getHp();
     	playersRemainingStamina = getPlayer().getStamina();
-    	enemysRemainingStamina = application.GuiMain.getEnemy().getStamina();
+    	enemysRemainingStamina = getEnemy().getStamina();
     	hpPotionAmount = 1;
     	stamPotionAmount = 1;
     	staminaBuff = 0;
@@ -81,12 +82,15 @@ public class CombatController extends GameController {
     	*/
     	enemyDamage = getEnemy().getDamage();
     	enemyName = getEnemy().getName();
+    	difficulty = getEnemy().getDifficulty();
     	
     	playerHP.setProgress(playersRemainingHP / 20.0);
     	enemyHP.setProgress(enemysRemainingHP / 20.0);
     	playerStam.setProgress(playersRemainingStamina / 20.0);
     	enemyStam.setProgress(enemysRemainingStamina / 20.0);
-    	
+    	if (armourDefence > getEnemy().getDamage()) {
+    		armourDefence = getEnemy().getDamage();
+    	}
     }
     
     @FXML
@@ -132,75 +136,71 @@ public class CombatController extends GameController {
     @FXML
     public void playerMoveButton(ActionEvent event){
     	double playerMove = stamSlider.getValue();
-    	int enemyMove = combatMoveSet(enemysRemainingStamina, playersRemainingStamina);
+    	int enemyMove = getEnemy().combatMoveSet(enemysRemainingStamina, playersRemainingStamina, getEnemy().getDifficulty());
     	
     	if (playerMove > playersRemainingStamina) {
 			playerMove = playersRemainingStamina;
 		}
-		if (playerMove == 0) {
+    	if (enemyMove == -1) {
+    		combatText.setText("The creature lets out a chilling howl that drains your energy and saps your will to live!");
+    		playersRemainingStamina = 0;
+    		enemysRemainingStamina = getEnemy().getStamina();
+    		playersRemainingHP -= 7;
+    		
+    	} else if (playerMove == 0) {
 			if (enemyMove == 0) {
 				combatText.setText("You and the " + enemyName + " both take a defensive position, eyeing each other carefully..." + "\n");
-				playersRemainingStamina += 5 + staminaBuff;
-				enemysRemainingStamina += 5;
+				playersRemainingStamina += 6 + staminaBuff;
+				enemysRemainingStamina += 6;
 			} else {
 				combatText.setText("The " + enemyName + " launches into an attack, but you take a defensive position, deflecting most of the blow!" + "\n");
 				playersRemainingHP -=1;
-				playersRemainingStamina += 5 + staminaBuff;
-				enemysRemainingStamina -= enemyMove;
-				enemysRemainingStamina += 2;
+				playersRemainingStamina += 6 + staminaBuff;
+				enemysRemainingStamina -= enemyMove / 2;
 			}
 		} else {
+			
 			if (playerMove == enemyMove) {
-				combatText.setText("You both attack with equal force, matching the other's strength and swordplay...");
-				combatText.setText("After a harsh melee, you both retreat to reset your posture");
+				combatText.setText("You both attack with equal force, matching the other's strength and swordplay. After a harsh melee, you both retreat to reset your posture");
 				playersRemainingHP -= 1;
 				enemysRemainingHP-= 1;
-				playersRemainingStamina -= playerMove;
-				playersRemainingStamina += 2 + staminaBuff;
-				enemysRemainingStamina -= enemyMove;
-				enemysRemainingStamina += 2;
+				playersRemainingStamina -= (playerMove / 2);
+				playersRemainingStamina += staminaBuff;
+				enemysRemainingStamina -= enemyMove / 2;
 				
 			} else if (playerMove > enemyMove) {
 				if (enemyMove == 0) {
 					combatText.setText("You launch into an attack, but the " + enemyName + " takes a defensive position, deflecting most of the blow");
 					enemysRemainingHP -=1;
-					enemysRemainingStamina += 5;
-					playersRemainingStamina -= playerMove;
-					playersRemainingStamina += 2 + staminaBuff;
+					enemysRemainingStamina += 6;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
 				} else if ((playerMove - enemyMove) <= 5) {
-					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force...");
-					combatText.setText("The " + enemyName + " is overpowered by your blows and you land a glancing hit!" + "\n");
-					enemysRemainingHP -= (weaponDamage - 2);
-					enemysRemainingStamina -= enemyMove;
-					enemysRemainingStamina += 2;
-					playersRemainingStamina -= playerMove;
-					playersRemainingStamina += 2 + staminaBuff;
-				} else if ((playerMove - enemyMove) > 5){
-					combatText.setText("The " + enemyName + " moves to swing, but you catch them off guard with a powerful attack...");
-					combatText.setText("You brush past their defense and land a devastating blow!" + "\n");
+					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force. The " + enemyName + " is overpowered by your blows and you land a glancing hit!" + "\n");
 					enemysRemainingHP -= weaponDamage;
-					enemysRemainingStamina -= enemyMove;
-					enemysRemainingStamina += 2;
-					playersRemainingStamina -= playerMove;
-					playersRemainingStamina += 2 + staminaBuff;
+					enemysRemainingStamina -= enemyMove / 2;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
+				} else if ((playerMove - enemyMove) > 5){
+					combatText.setText("The " + enemyName + " moves to swing, but you catch them off guard with a powerful attack and land a devastating blow!" + "\n");
+					enemysRemainingHP -= weaponDamage + 3;
+					enemysRemainingStamina -= enemyMove / 2;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
 				}
 			} else if (playerMove < enemyMove) {
 				if ((enemyMove - playerMove) <=5) {
-					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force...");
-					combatText.setText("The " + enemyName + " overpowers you and lands a glancing hit!" + "\n");
-					playersRemainingHP -= ((enemyDamage - 2) - armourDefence);
-					enemysRemainingStamina -= enemyMove;
-					enemysRemainingStamina += 2;
-					playersRemainingStamina -= playerMove;
-					playersRemainingStamina +=2 + staminaBuff;
-				} else if ((enemyMove - playerMove) > 5) {
-					combatText.setText("You make an attack, but the " + enemyName + " catches you off guard with a powerful attack...");
-					combatText.setText("They brush past your defense and land a devastating blow!" + "\n");
+					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force. The " + enemyName + " overpowers you and lands a glancing hit!" + "\n");
 					playersRemainingHP -= (enemyDamage - armourDefence);
-					enemysRemainingStamina -= enemyMove;
-					enemysRemainingStamina += 2;
-					playersRemainingStamina -= playerMove;
-					playersRemainingStamina += 2 + staminaBuff;
+					enemysRemainingStamina -= enemyMove / 2;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
+				} else if ((enemyMove - playerMove) > 5) {
+					combatText.setText("You make an attack, but the " + enemyName + " catches you off guard with a powerful attack and lands a devastating blow!" + "\n");
+					playersRemainingHP -= (enemyDamage + 3 - armourDefence);
+					enemysRemainingStamina -= enemyMove / 2;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
 				}
 			}
 		}
@@ -239,41 +239,27 @@ public class CombatController extends GameController {
     	}
     	
     }
-    
-    public int combatMoveSet(int remainingStamina, int playerStamina) {
-    	if(enemysRemainingStamina / getEnemy().getStamina() < 0.3) {
-    		return 0;
-		    } else if (playerStamina > remainingStamina ) {
-					if ((playerStamina - remainingStamina) <= 10) {
-						return remainingStamina;
-					} else if (playerStamina - remainingStamina > 10)
-						return 0;
-				} else if (playerStamina < remainingStamina) {
-					if (playerStamina < 5) {
-						return 5;
-					} else if ((remainingStamina - playerStamina) <= 5) {
-						return remainingStamina;
-					} else if ((remainingStamina - playerStamina) > 5) {
-						return playerStamina + 1;
-					}
-				} else if (playerStamina == remainingStamina) {
-					return remainingStamina;
-				}
-				return 0;
-	}
-	
  
 	@Override
 	public void refresh() {
 		getPlayer().setHp(playersRemainingHP);
 		getEnemy().setHp(enemysRemainingHP);
+		Stage stage = (Stage) fleeButton.getScene().getWindow();
+		stage.close();
+		if (hpPotionAmount == 0) {
+			getInv().dropFromInv(getEquippedList()[3]);
+		}
+		if (stamPotionAmount == 0) {
+			getInv().dropFromInv(getEquippedList()[4]);
+		}
 		if (enemysRemainingHP < 1) {
 			getEnemy().setDead(true);
 			getPlayer().setKillCount(getPlayer().getKillCount() + 1);
 			getPlayer().setCoins(getPlayer().getCoins() + application.GuiMain.getEnemy().getGivesCoin());
 			getPlayer().setXp(getPlayer().getXp() + application.GuiMain.getEnemy().getGivesXP());
-			Stage stage = (Stage) fleeButton.getScene().getWindow();
-	    	stage.close();		}
+			getInv().addToInv(getInv(), getEnemy().getDropItem());
+	    	stage.close();		
+	    	}
 		
 }
 
