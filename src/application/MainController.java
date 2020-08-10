@@ -19,8 +19,8 @@ public class MainController extends GameController {
 	
 	private WorldItem[] worldItems = GuiMain.getWorldItems();
 
-    private String direction = "";
-	
+    private String direction = "";   
+    
 	@FXML
     private TextArea mapWindow;
 
@@ -71,16 +71,24 @@ public class MainController extends GameController {
     	int exists = 3;
     	for (int i = 0; i < worldItems.length; i++) {
 		 	
-			if (worldItems[i].checkSurroundings(getPlayer()) && (worldItems[i].getFloor() == application.GuiMain.getMap().getLevel())){
+			if (worldItems[i].checkSurroundings(getPlayer()) && (worldItems[i].getFloor() == application.GuiMain.getMap().getLevel()) && WorldItem.keyCheck(getInv(), worldItems[i])){
 				eventOutput.setText(worldItems[i].onUse(getInv(), application.GuiMain.getMap(), getPlayer()));
+			}
+			
+			else if ((worldItems[i].checkSurroundings(getPlayer()) && (worldItems[i].getFloor() == application.GuiMain.getMap().getLevel()) && !WorldItem.keyCheck(getInv(), worldItems[i]))){
+				eventOutput.setText("Key Required...");
 			}
 			else {
 				exists--;
 			}
+			
     	}
 		if (exists == 0) {
 			eventOutput.setText("Nothing to use...");
 		}
+		
+		
+		
     	direction = "use";	
     	refresh();
     }
