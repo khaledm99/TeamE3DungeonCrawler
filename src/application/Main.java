@@ -32,8 +32,6 @@ public class Main {
 		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
 		
-		
-		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
 		//to "Xavier" for a fuller inventory XL
@@ -141,7 +139,6 @@ public class Main {
 					 	
 					if (worldItems[i].checkSurroundings(player) && (worldItems[i].getFloor() == map.getLevel()) && WorldItem.keyCheck(playerInv, worldItems[i])){
 							System.out.println(worldItems[i].onUse(playerInv, map, player));
-							System.out.println(map.getLevel());
 						}
 						else 
 							exists--;

@@ -1,5 +1,7 @@
 package model;
 
+import application.MainController;
+
 public class WorldItem extends Item{
 	private int floor;
 	private int xcoord;
