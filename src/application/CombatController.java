@@ -29,6 +29,9 @@ public class CombatController extends GameController {
 	private int enemyDamage;
 	private String enemyName;
 	private int difficulty;
+
+	private int amountOfAtks;
+	private int amountOfDfns;
 	
     @FXML
     private Slider stamSlider;
@@ -63,6 +66,8 @@ public class CombatController extends GameController {
     
     @FXML
     void initialize() {
+    	amountOfAtks = 0;
+    	amountOfDfns = 0;
     	playersRemainingHP = getPlayer().getHp();
     	enemysRemainingHP = getEnemy().getHp();
     	playersRemainingStamina = getPlayer().getStamina();
@@ -72,8 +77,15 @@ public class CombatController extends GameController {
     	staminaBuff = 0;
     	healPotion = getEquippedList()[3].getPotionHP();
     	stamPotion = getEquippedList()[4].getPotionHP();
+    	
     	armourDefence = getEquippedList()[2].getArmorHP();
-    	weaponDamage = getEquippedList()[0].getDamage();
+    	if (getEquippedList()[1].getItemType() == "Empty") {
+    		//System.out.println("One weapon equipped");
+    		weaponDamage = getEquippedList()[0].getDamage();
+    	}	
+    	else {
+    		weaponDamage = getEquippedList()[0].getDamage() + getEquippedList()[1].getDamage();
+    	}
     	/*
     	healPotion = 10;
     	stamPotion = 3;
@@ -153,6 +165,7 @@ public class CombatController extends GameController {
 				playersRemainingStamina += 6 + staminaBuff;
 				enemysRemainingStamina += 6;
 			} else {
+				amountOfDfns++;
 				combatText.setText("The " + enemyName + " launches into an attack, but you take a defensive position, deflecting most of the blow!" + "\n");
 				playersRemainingHP -=1;
 				playersRemainingStamina += 6 + staminaBuff;
@@ -161,6 +174,8 @@ public class CombatController extends GameController {
 		} else {
 			
 			if (playerMove == enemyMove) {
+				amountOfDfns++;
+				amountOfAtks++;
 				combatText.setText("You both attack with equal force, matching the other's strength and swordplay. After a harsh melee, you both retreat to reset your posture");
 				playersRemainingHP -= 1;
 				enemysRemainingHP-= 1;
@@ -170,18 +185,21 @@ public class CombatController extends GameController {
 				
 			} else if (playerMove > enemyMove) {
 				if (enemyMove == 0) {
+					amountOfAtks++;
 					combatText.setText("You launch into an attack, but the " + enemyName + " takes a defensive position, deflecting most of the blow");
 					enemysRemainingHP -=1;
 					enemysRemainingStamina += 6;
 					playersRemainingStamina -= playerMove / 2;
 					playersRemainingStamina += staminaBuff;
 				} else if ((playerMove - enemyMove) <= 5) {
+					amountOfAtks++;
 					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force. The " + enemyName + " is overpowered by your blows and you land a glancing hit!" + "\n");
 					enemysRemainingHP -= weaponDamage;
 					enemysRemainingStamina -= enemyMove / 2;
 					playersRemainingStamina -= playerMove / 2;
 					playersRemainingStamina += staminaBuff;
 				} else if ((playerMove - enemyMove) > 5){
+					amountOfAtks++;
 					combatText.setText("The " + enemyName + " moves to swing, but you catch them off guard with a powerful attack and land a devastating blow!" + "\n");
 					enemysRemainingHP -= weaponDamage + 3;
 					enemysRemainingStamina -= enemyMove / 2;
@@ -190,12 +208,15 @@ public class CombatController extends GameController {
 				}
 			} else if (playerMove < enemyMove) {
 				if ((enemyMove - playerMove) <=5) {
+					amountOfDfns++;
+					amountOfAtks++;
 					combatText.setText("You and the " + enemyName + " swing at each other, weapons clashing with deadly force. The " + enemyName + " overpowers you and lands a glancing hit!" + "\n");
 					playersRemainingHP -= (enemyDamage - armourDefence);
 					enemysRemainingStamina -= enemyMove / 2;
 					playersRemainingStamina -= playerMove / 2;
 					playersRemainingStamina += staminaBuff;
 				} else if ((enemyMove - playerMove) > 5) {
+					amountOfDfns++;
 					combatText.setText("You make an attack, but the " + enemyName + " catches you off guard with a powerful attack and lands a devastating blow!" + "\n");
 					playersRemainingHP -= (enemyDamage + 3 - armourDefence);
 					enemysRemainingStamina -= enemyMove / 2;
@@ -242,10 +263,15 @@ public class CombatController extends GameController {
  
 	@Override
 	public void refresh() {
+		System.out.println("In Combat refresh");
 		getPlayer().setHp(playersRemainingHP);
 		getEnemy().setHp(enemysRemainingHP);
 		Stage stage = (Stage) fleeButton.getScene().getWindow();
 		stage.close();
+		
+		getEquippedList()[0].setDuribility(getEquippedList()[0].getDuribility() - amountOfAtks);	
+		getEquippedList()[1].setDuribility(getEquippedList()[1].getDuribility() - amountOfAtks);			 
+		getEquippedList()[2].setDuribility(getEquippedList()[2].getDuribility() - amountOfDfns);
 		if (hpPotionAmount == 0) {
 			getInv().dropFromInv(getEquippedList()[3]);
 		}

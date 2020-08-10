@@ -3,6 +3,11 @@ package application;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +23,8 @@ import model.Item;
 
 public class InventoryController extends GameController{
 
+	private ScheduledExecutorService executorService;
+	
 	@FXML
     private Label DmgLabelSlot15;
 
@@ -538,10 +545,24 @@ public class InventoryController extends GameController{
     	getInv().dropFromInv(getEquippedList()[3]);
     	return potionHp;
     }
-
+    private void initializeScheduler() {
+		executorService = Executors.newSingleThreadScheduledExecutor();
+		executorService.scheduleAtFixedRate(this::loadData, 0, 1, TimeUnit.SECONDS);
+		 
+	}
+    private void loadData() {
+		
+		Platform.runLater(() -> {;
+		
+		refresh();
+		
+		});
+		
+	}
     @FXML
     void initialize() {
     	refresh();
+		initializeScheduler();
         assert HealthLeftLabel != null : "fx:id=\"HealthLeftLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
         assert TotalHPLabel != null : "fx:id=\"TotalHPLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
         assert StaminaLeftLabel != null : "fx:id=\"StaminaLeftLabel\" was not injected: check your FXML file 'Inventory.fxml'.";
@@ -575,6 +596,7 @@ public class InventoryController extends GameController{
     } 
     @Override
     public void refresh() {
+    	
     	//System.out.println("Inv refresh check");
     	//the inventory set up here will be moved once we continue working on those classes
     	//So far I set up the inventory of "Player" and set their HP.
@@ -2739,6 +2761,7 @@ public class InventoryController extends GameController{
         		 }
         	  }
           }
+          
         //Listview "un-equipping"
           StringEquippedListView.setOnMouseClicked((event) ->  {
         	  int unEquipIndex = StringEquippedListView.getSelectionModel().getSelectedIndex();
@@ -2753,9 +2776,12 @@ public class InventoryController extends GameController{
           });
           
           ArrayList<Item> EquippedArrayList = new ArrayList<Item>();
+          
           for(int i = 0; i < 5;i++) {
           	EquippedArrayList.add(Empty);
           }
+          
+          
           for(int i = 0; i < ItemObjectListView.getItems().size();i++) {
           	if (ItemObjectListView.getItems().get(i).getItemType() == "Armor") {
           		if (EquippedArrayList.get(2) == Empty && EquippedArrayList.get(2) != ItemObjectListView.getItems().get(i)) {
@@ -2785,6 +2811,19 @@ public class InventoryController extends GameController{
           		EquippedArrayList.set(4,ItemObjectListView.getItems().get(i));
           		}
           	}
+          }
+          //this code removes an item from the equipped list and inventory list when durability reaches 0 after battle
+          for(int i = 0; i < 5; i++) {
+  	    	if (ItemObjectListView.getItems().size() > i) {
+  	    		if(EquippedArrayList.get(i).getItemType() != "Empty" && 
+  	    				EquippedArrayList.get(i).getDuribility() <=0) {
+  	    			StringEquippedListView.getItems().remove(i);
+      	    		ItemObjectListView.getItems().remove(i);
+      	    		getInv().dropFromInv(EquippedArrayList.get(i));
+      	    		EquippedArrayList.remove(i);
+  	    		}      	    		
+  	    		  	    		
+  	    	}
           }
           StringEquippedListView.getItems().clear();
           ItemObjectListView.getItems().clear();
