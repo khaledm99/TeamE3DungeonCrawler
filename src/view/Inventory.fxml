@@ -43,11 +43,6 @@
                                           <Label fx:id="TotalHPLabel" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="20" textFill="#081820" />
                                        </children>
                                     </HBox>
-                                    <Button fx:id="RefreshButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#refreshHandler" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10; -fx-background-color: #88C070;" text="Beta Refresh">
-                                       <VBox.margin>
-                                          <Insets left="125.0" top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
                                  </children>
                               </VBox>
                               <HBox prefHeight="100.0" prefWidth="621.0">
