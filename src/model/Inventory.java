@@ -69,7 +69,7 @@ public class Inventory {
 		return woodenSword;
 	}
 	
-	public Weapon getIronSword()
+	public static Weapon getIronSword()
 	{
 		return ironSword;
 	}
