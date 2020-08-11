@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 
 public class StartController extends GameController{
 
-    private String name = "Chosen Undead";
+    private static String name = "Chosen Undead";
     
-    public String getName() {
-    	return this.name;
+    public static String getName() {
+    	return name;
     }    
 
     @FXML
