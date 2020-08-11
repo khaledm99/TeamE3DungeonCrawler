@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<StackPane id="startPane" fx:id="startPane" style="-fx-background-color: #88C070;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartController">
+<StackPane id="startPane" fx:id="startPane" style="-fx-background-color: #081820;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartController">
    <children>
       <VBox alignment="CENTER" prefHeight="342.0" prefWidth="750.0" StackPane.alignment="CENTER">
          <children>
-            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 30;" text="Tomb of the AbyssWalker">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Enter your Hero's name:">
+            <ImageView fitHeight="314.0" fitWidth="667.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resource/TOMBTEXT.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resource/BonfireF1.png" />
+               </image>
+            </ImageView>
+            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-text-fill: #e0f8d0; -fx-font-size: 10;" text="Enter your Hero's name:">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
