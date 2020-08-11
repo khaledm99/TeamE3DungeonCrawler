@@ -703,7 +703,9 @@ public class InventoryController extends GameController{
         	refresh();
   	     });
         
+        // Certain text and images pop up when mouse hovers over this area. This code is repeated for the different areas below. (Slots 0 to 19)
         Slot0.setOnMouseEntered((event) -> {
+        	// Searches for the file name to see if it exists in the resource folder. If it doesn't exist, then it will use a default image file (question mark).
         	try {
         		File file = new File(p1.getInvList()[0].getImagePath());
         		boolean exists = file.isFile();
@@ -734,6 +736,7 @@ public class InventoryController extends GameController{
         		} else {
         			throw new FileNotFoundException();
         		}
+        		// If image file is null, it will catch this error and use default image file.
         	} catch (NullPointerException e) {
         		 
         		File file = new File("resource/defaultImage.png");
@@ -761,6 +764,7 @@ public class InventoryController extends GameController{
             		
             	}
 
+    				// If image file is misspelled or does not exist in the resource folder, it will catch this error and use default image file.
         	} catch (FileNotFoundException e) {
 				 
 				File file = new File("resource/defaultImage.png");
