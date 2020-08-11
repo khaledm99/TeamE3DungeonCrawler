@@ -124,6 +124,30 @@ public class MainController extends GameController {
 				e1.printStackTrace();
 			}
 		}
+		if (getPlayer().getHp() <= 0) {
+			try {
+				FXMLLoader parentLoader = new FXMLLoader();
+				parentLoader.setLocation(getClass().getResource("../view/Death.fxml"));
+				Parent root = parentLoader.load();
+				Scene scene = new Scene(root,1200,800);
+				stage.setScene(scene);
+				stage.show();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		if (getPlayer().getKillCount() == 3) {
+			try {
+				FXMLLoader parentLoader = new FXMLLoader();
+				parentLoader.setLocation(getClass().getResource("../view/Win.fxml"));
+				Parent root = parentLoader.load();
+				Scene scene = new Scene(root,1200,800);
+				stage.setScene(scene);
+				stage.show();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		mapWindow.clear();
 		String nextmap = application.GuiMain.getNextRender(direction);
 		mapWindow.setText(nextmap);

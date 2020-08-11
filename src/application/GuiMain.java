@@ -1,13 +1,11 @@
 package application;
 	
-import java.io.File;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import model.Chest;
 import model.Door;
 import model.Enemy;
@@ -139,11 +137,6 @@ public class GuiMain extends Application {
 			Scene scene = new Scene(root,1200,800);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			primaryStage.setTitle("Tomb of the Abysswalker");
-			File file = new File("resource/bonfire.png");
-			Image iconImage = new Image(file.toURI().toString());
-			primaryStage.getIcons().add(iconImage);
-			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
