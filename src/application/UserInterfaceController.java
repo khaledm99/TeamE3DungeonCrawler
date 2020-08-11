@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -105,9 +107,8 @@ public class UserInterfaceController extends GameController {
     @FXML 
     private Label wieldedWeaponLabel;
     
-   // @FXML 
-   // private Circle circleLogo;
-
+    @FXML
+    private ImageView logoImageView;
 
 	@FXML 
 	void initialize() {
@@ -144,6 +145,10 @@ public class UserInterfaceController extends GameController {
 		else {
 			wieldedWeaponLabel.setText("No Weapon Selected");
 		}
+		
+		File file = new File("resource/Bonfire.png");
+		Image logoImage = new Image(file.toURI().toString());
+		logoImageView.setImage(logoImage);
 		 
 	}
     
