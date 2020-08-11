@@ -11,17 +11,9 @@
    <children>
       <VBox alignment="CENTER" prefHeight="342.0" prefWidth="750.0" StackPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="314.0" fitWidth="667.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resource/TOMBTEXT.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resource/BonfireF1.png" />
-               </image>
-            </ImageView>
-            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-text-fill: #e0f8d0; -fx-font-size: 10;" text="Enter your Hero's name:">
+            <ImageView fx:id="titleImage" fitHeight="314.0" fitWidth="667.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bonfire" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="enterLabel" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-text-fill: #e0f8d0; -fx-font-size: 10;" text="Enter your Hero's name:">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
