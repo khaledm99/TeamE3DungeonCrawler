@@ -32,9 +32,15 @@ public class Enemy extends Entity {
 	 * @param name: Enemy name
 	 */
 	public Enemy(int xcoord, int ycoord, int mapLevel, String name, int damage, int difficulty, Item dropItem) {
+		if (difficulty == 0) {
+			this.setHp(30);
+		} else if (difficulty == 1) {
+			this.setHp(60);
+		} else if (difficulty == 2) {
+			this.setHp(100);
+		}
 		this.setMapLevel(mapLevel);
-		this.setHp(20);
-		this.setDamage(5);
+		this.setDamage(damage);
 		this.setStamina(20);
 		this.setXcoord(xcoord);
 		this.setYcoord(ycoord);
@@ -44,7 +50,8 @@ public class Enemy extends Entity {
 		this.isDead = false;
 		this.givesXP = 5;
 		this.givesCoin = 5;
-		this.setDifficulty(0);
+		this.setDifficulty(difficulty);
+		this.setcombatSprite(difficulty);
 		this.setDropItem(dropItem);
 	}
 	
