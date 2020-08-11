@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="StartController">
+<StackPane id="startPane" fx:id="startPane" style="-fx-background-color: #88C070;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartController">
    <children>
-      <Label layoutX="-17.0" layoutY="-304.0" text="Tomb of the AbyssWalker" />
-      <TextField fx:id="nameField" layoutX="-25.0" layoutY="-208.0" onKeyTyped="#setName" />
-      <Label layoutX="-17.0" layoutY="-235.0" text="Enter your Hero's name:" />
-      <Button fx:id="startButton" layoutX="-25.0" layoutY="-43.0" mnemonicParsing="false" onAction="#startClick" text="Start" />
-      <Button fx:id="quitButton" layoutX="97.0" layoutY="-43.0" mnemonicParsing="false" onAction="#quitClick" text="Quit" />
+      <VBox alignment="CENTER" prefHeight="342.0" prefWidth="750.0" StackPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 30;" text="Tomb of the AbyssWalker">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Enter your Hero's name:">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="nameField" maxWidth="-Infinity" onKeyTyped="#setName" prefHeight="51.0" prefWidth="400.0" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" />
+            <HBox alignment="CENTER" prefHeight="7.0" prefWidth="750.0">
+               <children>
+                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#startClick" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Start">
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitClick" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Quit" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </children>
-</AnchorPane>
+</StackPane>

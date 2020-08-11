@@ -32,14 +32,6 @@
          </TabPane>       
         </children>
       </HBox>
-      <StackPane fx:id="combatStack" mouseTransparent="true" opacity="0.0" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" />
-					<fx:include fx:id="combat" source="Combat.fxml" />
-               </children></HBox>
-         </children>
-      </StackPane>
+      <fx:include fx:id="start" source="Start.fxml" />
    </children>
 </StackPane>
