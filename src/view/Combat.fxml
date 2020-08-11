@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -23,15 +24,13 @@
       <ProgressBar fx:id="enemyStam" layoutX="957.0" layoutY="210.0" prefHeight="36.0" prefWidth="406.0" progress="1.0" rotate="270.0" style="-fx-border-color: #081820; -fx-border-width: 3; -fx-accent: #E0F8D0; -fx-control-inner-background: #568e3e;" />
       <ProgressBar fx:id="playerHP" layoutX="95.0" layoutY="14.0" prefHeight="36.0" prefWidth="400.0" progress="1.0" style="-fx-border-color: #081820; -fx-border-width: 3; -fx-accent: #E0F8D0; -fx-control-inner-background: #568e3e;" />
       <ProgressBar fx:id="enemyHP" layoutX="711.0" layoutY="14.0" prefHeight="36.0" prefWidth="400.0" progress="1.0" style="-fx-accent: #E0F8D0; -fx-border-width: 3; -fx-control-inner-background: #568e3e; -fx-border-color: #081820;" />
-      <Circle fill="DODGERBLUE" layoutX="295.0" layoutY="229.0" radius="71.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #568e3e;" />
       <Sphere radius="0.77" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="142.0" layoutX="840.0" layoutY="157.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #568e3e;" width="142.0" />
       <Button fx:id="playerMoveButton" layoutX="565.0" layoutY="512.0" mnemonicParsing="false" onAction="#playerMoveButton" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-background-color: #568e3e; -fx-border-color: #081820; -fx-border-width: 3;" text="Go!" />
       <Label layoutX="231.0" layoutY="16.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Your HP" />
       <Label layoutX="857.0" layoutY="15.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy HP" />
       <Label layoutX="63.0" layoutY="400.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Your Stamina" />
-      <Label layoutX="263.0" layoutY="212.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Player" />
-      <Label layoutX="876.0" layoutY="212.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy" />
       <Label layoutX="963.0" layoutY="400.0" style="-fx-font-family: &quot;Early GameBoy&quot;;" text="Enemy Stamina" />
+      <ImageView fx:id="playerImage" fitHeight="329.0" fitWidth="340.0" layoutX="125.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="enemyImage" fitHeight="329.0" fitWidth="340.0" layoutX="741.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

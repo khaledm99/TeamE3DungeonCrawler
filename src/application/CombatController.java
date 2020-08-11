@@ -10,7 +10,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class CombatController extends GameController {
 	
@@ -28,10 +29,9 @@ public class CombatController extends GameController {
 	private int weaponDamage;
 	private int enemyDamage;
 	private String enemyName;
-	private int difficulty;
-
 	private int amountOfAtks;
 	private int amountOfDfns;
+	private int combatSprite;
 	
     @FXML
     private Slider stamSlider;
@@ -65,7 +65,18 @@ public class CombatController extends GameController {
     private Button staminaButton;
     
     @FXML
+    private ImageView playerImage;
+    
+    @FXML
+    private ImageView enemyImage;
+    
+    @FXML
     void initialize() {
+    	Image playerImg = new Image("resource/CHARACTER.png");
+    	Image skelImg = new Image("resource/SKELE.png");
+    	Image soldierImg = new Image("resource/HOLLOW.png");
+    	Image sifImg = new Image("resource/SIF.png");
+    	
     	amountOfAtks = 0;
     	amountOfDfns = 0;
     	playersRemainingHP = getPlayer().getHp();
@@ -77,8 +88,18 @@ public class CombatController extends GameController {
     	staminaBuff = 0;
     	healPotion = getEquippedList()[3].getPotionHP();
     	stamPotion = getEquippedList()[4].getPotionHP();
-    	
     	armourDefence = getEquippedList()[2].getArmorHP();
+    	combatSprite = getEnemy().getcombatSprite();
+    	playerImage.setImage(playerImg);
+    	
+    	if (combatSprite == 0) {
+    		enemyImage.setImage(soldierImg);
+    	} else if (combatSprite == 1) {
+    		enemyImage.setImage(skelImg);
+    	} else if (combatSprite == 2) {
+    		enemyImage.setImage(sifImg);
+    	}
+    	
     	if (getEquippedList()[1].getItemType() == "Empty") {
     		//System.out.println("One weapon equipped");
     		weaponDamage = getEquippedList()[0].getDamage();
@@ -86,20 +107,14 @@ public class CombatController extends GameController {
     	else {
     		weaponDamage = getEquippedList()[0].getDamage() + getEquippedList()[1].getDamage();
     	}
-    	/*
-    	healPotion = 10;
-    	stamPotion = 3;
-    	armourDefence = 2;
-    	weaponDamage = 5;
-    	*/
+    	
     	enemyDamage = getEnemy().getDamage();
     	enemyName = getEnemy().getName();
-    	difficulty = getEnemy().getDifficulty();
-    	
     	playerHP.setProgress(playersRemainingHP / 20.0);
     	enemyHP.setProgress(enemysRemainingHP / 20.0);
     	playerStam.setProgress(playersRemainingStamina / 20.0);
     	enemyStam.setProgress(enemysRemainingStamina / 20.0);
+    	
     	if (armourDefence > getEnemy().getDamage()) {
     		armourDefence = getEnemy().getDamage();
     	}
@@ -274,9 +289,11 @@ public class CombatController extends GameController {
 		getEquippedList()[2].setDuribility(getEquippedList()[2].getDuribility() - amountOfDfns);
 		if (hpPotionAmount == 0) {
 			getInv().dropFromInv(getEquippedList()[3]);
+			getEquippedList()[3].setDuribility(0);
 		}
 		if (stamPotionAmount == 0) {
 			getInv().dropFromInv(getEquippedList()[4]);
+			getEquippedList()[4].setDuribility(0);
 		}
 		if (enemysRemainingHP < 1) {
 			getEnemy().setDead(true);

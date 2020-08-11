@@ -31,9 +31,10 @@ public class Main {
 		// Creates a new enemy object and sets its stats
 		//Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
-		Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier"), 
-						   new Enemy(11,6,2,"Skeleton"),
-						   new Enemy(11,6,3,"Great Grey Wolf Sif")};
+		Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier",5,0,Inventory.getIronSword()), 
+					  		new Enemy(11,6,2,"Skeleton",10,1,Inventory.getFlamingSword()),
+					  		new Enemy(11,6,3,"Great Grey Wolf Sif",15,2,Inventory.getShinyIronArmor())
+					  		};
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name

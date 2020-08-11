@@ -38,9 +38,9 @@ public class GuiMain extends Application {
 	
 	//private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
 	
-	private static Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier"), 
-			   						  new Enemy(11,6,2,"Skeleton"),
-			   						  new Enemy(11,6,3,"Great Grey Wolf Sif")};
+	private static Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier",5,0,Inventory.getIronSword()), 
+			   						  new Enemy(11,6,2,"Skeleton",10,1,Inventory.getFlamingSword()),
+			   						  new Enemy(11,6,3,"Great Grey Wolf Sif",15,2,Inventory.getShinyIronArmor())};
 	
 	
 	

@@ -23,6 +23,7 @@ public class Enemy extends Entity {
 	private int damage;
 	private int difficulty;
 	private Item dropItem;
+	private int combatSprite;
 
 	/**
 	 * Enemy Constructor
@@ -30,7 +31,7 @@ public class Enemy extends Entity {
 	 * @param ycoord: initial y-coordinate
 	 * @param name: Enemy name
 	 */
-	public Enemy(int xcoord, int ycoord, int mapLevel, String name) {
+	public Enemy(int xcoord, int ycoord, int mapLevel, String name, int damage, int difficulty, Item dropItem) {
 		this.setMapLevel(mapLevel);
 		this.setHp(20);
 		this.setDamage(5);
@@ -44,7 +45,7 @@ public class Enemy extends Entity {
 		this.givesXP = 5;
 		this.givesCoin = 5;
 		this.setDifficulty(0);
-		this.setDropItem(Inventory.getIronSword());
+		this.setDropItem(dropItem);
 	}
 	
 	public static Enemy chooseEnemy(Enemy[] enemies, Map map) {
@@ -54,6 +55,16 @@ public class Enemy extends Entity {
 			}
 		}
 		return enemies[0];
+	}
+	
+	//Getter for combatSprite
+	public int getcombatSprite() {
+		return combatSprite;
+	}
+	
+	//Setter for combatSprite
+	public void setcombatSprite(int sprite) {
+		this.combatSprite = sprite;
 	}
 	
 	//Getter for dropItem
