@@ -33,7 +33,7 @@ public class Main {
 		
 		Enemy[] enemies = {new Enemy(7,1,1,"Hollow Soldier",5,0,Inventory.getIronSword()), 
 					  		new Enemy(7,10,2,"Skeleton",10,1,Inventory.getFlamingSword()),
-					  		new Enemy(11,6,3,"Great Grey Wolf Sif",15,2,Inventory.getShinyIronArmor())
+					  		new Enemy(12,6,3,"Great Grey Wolf Sif",15,2,Inventory.getShinyIronArmor())
 					  		};
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
@@ -46,7 +46,8 @@ public class Main {
 														   new Chest("Chest Three", 0, 1, 24, 6, Inventory.getHPPotion()),
 														   new Chest("Chest Four", 0, 2, 24, 5, Inventory.getUltraStaminaPotion()),
 														   new Chest("Chest Five", 0, 2, 20, 9, Inventory.getHPUltraPotion()),
-														   new Chest("Chest Six", 0, 2, 16, 12, Inventory.getCrestOfArtorias())
+														   new Chest("Chest Six", 0, 2, 16, 12, Inventory.getCrestOfArtorias()),
+														   new Chest("Chest Seven", 0, 3, 14, 11, Inventory.getShinyIronArmor())
 														   };
 		// Displays the start screen
 		//Start menu = new Start();
