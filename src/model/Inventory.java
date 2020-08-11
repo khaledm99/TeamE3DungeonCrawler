@@ -94,13 +94,20 @@ public class Inventory {
 		return equippedList;
 		
 	}
-	
+	/**
+	 * this method returns the value of the hpPotion for the method
+	 * @return
+	 */
 	public int usePotion() {
 		int potionHP = equippedList[3].getPotionHP();
 		dropFromInv(equippedList[3]);
 		unEquipItem(3);
 		return potionHP;
 	}
+	/**
+	 * this method equips an item at the specified anIndex into the equipped List depending on the weapon type
+	 * @param anIndex
+	 */
 	public void equipItem(int anIndex) {
 		Boolean alreadyEquipped = false;
 		if (anIndex <= this.invList.length && this.invList[anIndex].getItemType() != "Empty") {
@@ -137,14 +144,20 @@ public class Inventory {
 			System.out.println("Make sure you equip an Item in the list");
 		}
 	}
-	
+	/**
+	 * method unequips item at specified anIndex from the equippedList
+	 * @param anIndex
+	 */
 	public void unEquipItem(int anIndex) {
 		if (anIndex <= getEquippedList().length && getEquippedList()[anIndex] != null) {
 			this.equippedList[anIndex] = null;
 		}
 		setEquippedList(this.equippedList);
 	}
-
+	/**
+	 * constructor for class that takes string parameter and if name is == to Xavier sets a full inventory 
+	 * @param name
+	 */
 	public Inventory(String name)
 	{
 		//default start inventory for p1//
@@ -186,7 +199,11 @@ public class Inventory {
 		invList = toCopy.invList;
 		invElement = toCopy.invElement;
 	}
-	
+	/**
+	 * Adds a item anItem to a specified inv anInv wherever the first empty slot.
+	 * @param anInv
+	 * @param anItem
+	 */
 	public void addToInv(Inventory anInv, Item anItem)
 	{
 		if (anInv.invList[anInv.invElement].getItemType() == "Empty")
@@ -224,6 +241,10 @@ public class Inventory {
 		
 	}
 	*/
+	/**
+	 * Drops the first instance of the specified item anItem and replaces it with getEmpty()
+	 * @param anItem
+	 */
 	public void dropFromInv(Item anItem)
 	{
 		//System.out.println("in drop()");
@@ -269,7 +290,9 @@ public class Inventory {
 		}
 	}
 	
-
+	/**
+	 * method for the text version that displays current inventory
+	 */
 	public void getInventory()
 	{
 		int spaceLeft = 0;
