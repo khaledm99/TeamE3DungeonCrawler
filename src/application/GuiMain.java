@@ -24,7 +24,11 @@ public class GuiMain extends Application {
 		
 	private static Inventory p1Inventory = new Inventory(player.getName());
 	
-	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, p1Inventory.getRustySword()), new Chest("Chest One", 0, 1, 1, 1, p1Inventory.getSilverKey())};
+	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 19, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, p1Inventory.getRustySword()), 
+											 new Chest("Chest One", 0, 1, 1, 1, p1Inventory.getSilverKey()),
+											 new Chest("Chest Two", 0, 1, 4, 12, p1Inventory.getRustyIronArmor()),
+											 new Chest("Chest Three", 0, 1, 24, 6, Inventory.getIronSword())
+											 };
 	
 	private static Item[] p1EquippedList;
 	
@@ -34,7 +38,9 @@ public class GuiMain extends Application {
 	
 	//private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
 	
-	private static Enemy[] enemies = {new Enemy(12,3,1,"Skeleton"), new Enemy(11,6,2,"Hollow Soldier")};
+	private static Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier"), 
+			   						  new Enemy(11,6,2,"Skeleton"),
+			   						  new Enemy(11,6,3,"Great Grey Wolf Sif")};
 	
 	
 	
@@ -64,7 +70,7 @@ public class GuiMain extends Application {
 	
 	public static Map readMap() {
 		try {
-			map.readMap("resource/test.txt", player);
+			map.readMap("resource/level1.txt", player);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

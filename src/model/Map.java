@@ -115,7 +115,13 @@ public class Map {
 				if ((player.getXcoord() == iindex) && (player.getYcoord() == index))
 					mapStr += "@";
 				else if ((enemy.getXcoord() == iindex) && (enemy.getYcoord() == index) && (enemy.isDead() == false))
+					if (enemy.getName().equals("Great Grey Wolf Sif")){
+						mapStr += "B";
+					}
+					
+					else {
 					mapStr += "$";
+					}
 				else
 					mapStr += layout[index][iindex];
 			}

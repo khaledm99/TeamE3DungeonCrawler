@@ -31,7 +31,9 @@ public class Main {
 		// Creates a new enemy object and sets its stats
 		//Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
-		Enemy[] enemies = {new Enemy(12,3,1,"Skeleton"), new Enemy(11,6,2,"Hollow Soldier")};
+		Enemy[] enemies = {new Enemy(12,3,1,"Hollow Soldier"), 
+						   new Enemy(11,6,2,"Skeleton"),
+						   new Enemy(11,6,3,"Great Grey Wolf Sif")};
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
@@ -45,7 +47,7 @@ public class Main {
 
 		Map map = new Map(); // Creates the map
 		try {
-			map.readMap("resource/test.txt", player);
+			map.readMap("resource/level1.txt", player);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
