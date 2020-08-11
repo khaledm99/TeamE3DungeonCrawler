@@ -21,6 +21,11 @@ public class Inventory {
 	public Key getGoldKey() {
 		return new Key("Gold Key", 2, 1, "resource/RandomKey2.png");
 	}
+	
+	public Key getCrestOfArtorias() {
+		return new Key("Crest of Artorias", 3, 1, "resource/CrestOfArtorias.png");
+	}
+	
 	public HpPotion getHPUltraPotion() {
 		return new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
 	}
