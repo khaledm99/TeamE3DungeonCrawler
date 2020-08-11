@@ -32,6 +32,7 @@ public class CombatController extends GameController {
 	private int amountOfAtks;
 	private int amountOfDfns;
 	private int combatSprite;
+	private boolean sifPower;
 	
     @FXML
     private Slider stamSlider;
@@ -77,6 +78,7 @@ public class CombatController extends GameController {
     	Image soldierImg = new Image("resource/HOLLOW.png");
     	Image sifImg = new Image("resource/SIF.png");
     	
+    	sifPower = true;
     	amountOfAtks = 0;
     	amountOfDfns = 0;
     	playersRemainingHP = getPlayer().getHp();
@@ -97,6 +99,7 @@ public class CombatController extends GameController {
     	} else if (combatSprite == 1) {
     		enemyImage.setImage(skelImg);
     	} else if (combatSprite == 2) {
+    		enemyImage.setY(160.0);
     		enemyImage.setImage(sifImg);
     	}
     	
@@ -169,11 +172,26 @@ public class CombatController extends GameController {
 			playerMove = playersRemainingStamina;
 		}
     	if (enemyMove == -1) {
-    		combatText.setText("The creature lets out a chilling howl that drains your energy and saps your will to live!");
-    		playersRemainingStamina = 0;
-    		enemysRemainingStamina = getEnemy().getStamina();
-    		playersRemainingHP -= 10;
-    		
+    		if (sifPower = true) {
+    			combatText.setText("The creature lets out a chilling howl that drains your energy and saps your will to live!");
+        		playersRemainingStamina = 0;
+        		enemysRemainingStamina = getEnemy().getStamina();
+        		playersRemainingHP -= 10;
+        		sifPower = false;
+    		} else {
+    			if (playerMove > 0) {
+    				amountOfAtks++;
+					combatText.setText("You launch into an attack, but the " + enemyName + " takes a defensive position, deflecting most of the blow");
+					enemysRemainingHP -=1;
+					enemysRemainingStamina += 6;
+					playersRemainingStamina -= playerMove / 2;
+					playersRemainingStamina += staminaBuff;
+    			} else {
+    				combatText.setText("You and the " + enemyName + " both take a defensive position, eyeing each other carefully..." + "\n");
+    				playersRemainingStamina += 6 + staminaBuff;
+    				enemysRemainingStamina += 6;
+    			}
+    		}	
     	} else if (playerMove == 0) {
 			if (enemyMove == 0) {
 				combatText.setText("You and the " + enemyName + " both take a defensive position, eyeing each other carefully..." + "\n");

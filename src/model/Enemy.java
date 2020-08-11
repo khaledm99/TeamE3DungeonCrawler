@@ -144,7 +144,6 @@ public class Enemy extends Entity {
 	// This method is responsible for the A.I. during combat
 	public int combatMoveSet(int remainingStamina, int playerStamina, int difficulty) {
 		Random rand = new Random();
-		boolean ability = true;
 		if (difficulty == 0) {
 			if (remainingStamina / this.getStamina() <= 0.6) {
 				return 0;
@@ -167,8 +166,7 @@ public class Enemy extends Entity {
 			}
 		}
 		if (difficulty == 2) {
-			if (ability == true && playerStamina - remainingStamina > 10) {
-				ability = false;
+			if (playerStamina - remainingStamina > 10) {
 				return -1;
 			}
 			if (playerStamina > remainingStamina ) {
