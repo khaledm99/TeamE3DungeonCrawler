@@ -50,8 +50,8 @@ public class Main {
 														   new Chest("Chest Seven", 0, 3, 14, 11, Inventory.getShinyIronArmor())
 														   };
 		// Displays the start screen
-		//Start menu = new Start();
-		//player.setName(menu.startScreen());
+		Start menu = new Start();
+		player.setName(menu.startScreen());
 		playerStats.clearConsole();
 
 		Map map = new Map(); // Creates the map
