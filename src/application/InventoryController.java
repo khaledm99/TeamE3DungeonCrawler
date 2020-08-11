@@ -22,9 +22,17 @@ import model.Inventory;
 import model.Item;
 
 public class InventoryController extends GameController{
+	
+	/**
+	 * The method below is how the refresh method is called every second. It is designed by Homing Wat. It is a
+	 * Genius creation that is responsible for all the code woring nicely together
+	 */
 
 	private ScheduledExecutorService executorService;
 	
+	/**
+	 * For the next few hundred lines, the code initializes FXML document objects
+	 */
 	@FXML
     private Label DmgLabelSlot15;
 
@@ -539,7 +547,12 @@ public class InventoryController extends GameController{
     void useButtonClicked(MouseEvent event) {
     	
     }
-
+    /**
+     * this method returns the hp points of the hp potion to add to players hp when a potion is used. 
+     * The potion item is then dropped from the inventory using the dropFromInv method from the
+     * Inventory class
+     * @return
+     */
     public int usePotionGui() {
     	int potionHp = getEquippedList()[3].getPotionHP();
     	getInv().dropFromInv(getEquippedList()[3]);
@@ -594,6 +607,10 @@ public class InventoryController extends GameController{
         assert StaminaProgressBar != null : "fx:id=\"StaminaProgressBar\" was not injected: check your FXML file 'Inventory.fxml'.";
         
     } 
+    
+    /**
+     * the refresh method calls all the objects previously formatted from the FXML and assigns event on actions
+     */
     @Override
     public void refresh() {
     	
@@ -606,7 +623,9 @@ public class InventoryController extends GameController{
     	double healthBar = getPlayer().getHp() / Double.valueOf(TotalHPLabel.getText());
     	HealthLeftLabel.setText(getPlayer().getHp() + "");
     	HealthBarProgressBar.setProgress(healthBar);
-    	
+    	/**
+    	 * sets up a standard inventory for every player
+    	 */
     	Inventory p1 = getInv();
     	p1.setEquippedList(getEquippedList());
     	
@@ -626,7 +645,7 @@ public class InventoryController extends GameController{
     	 * The code below examines the current player's inventory and sets the button label
     	 * to whatever name an Item has at a specified slot in their inventory.
     	 */
- 
+    	
         Slot0.setText(p1.getInvList()[0].getName());
         Slot1.setText(p1.getInvList()[1].getName());
         Slot2.setText(p1.getInvList()[2].getName());
@@ -658,8 +677,9 @@ public class InventoryController extends GameController{
          * The following code implements button presses and adds the type Item objects to 
          * two ListViews. One for the Item display names. The other to store the Item data and indices.
          * If the slot is labeled empty no Item will be added to the EquippedListView. Every time a button is 
-         * pressed the ItemObjectListView must only have 3 or less items stored in it, otherwise
-         * nothing will be added and a Label will become visible. From what I understand there is no way to make this code repeat less... 
+         * pressed the ItemObjectListView must only have 5 or less items stored in it, otherwise
+         * nothing will be added and a Label will become visible.
+         * From what I understand there is no way to make this code repeat less... 
          * Added mouse enter and exit functionality to allow user to check stats of Items
          * 
          */
@@ -667,7 +687,11 @@ public class InventoryController extends GameController{
         
         
        Item Empty = p1.getEmpty();
-       
+       /**
+        * if the players hp plus the potion is less than 20 the button sets the hp + usePotionGui.
+        * Otherwise the hp is set to 20. The potion being used is unequipped and removed from 
+        *the inventory list
+        **/
        UsePotionButton.setOnMouseClicked((event) -> {  
 	       	System.out.println(getEquippedList()[3].getName());
 	       	if (getEquippedList()[3] != Empty) {
@@ -2594,7 +2618,9 @@ public class InventoryController extends GameController{
           	VboxSlot19.setOpacity(0);        	
           });
           
-          //Dropping items from inv
+          /**
+           * Dropping items from inv by using right click
+           */
           Slot0.setOnContextMenuRequested((rClick) -> {
          	if (Slot0.getText() != "Empty") {
          		getInv().dropFromSlot(p1.getInvList()[0],0);
@@ -2716,6 +2742,11 @@ public class InventoryController extends GameController{
            	}
           });
    
+          /**
+           * This is part of the organized display list. It counts how many weapons, armor, and potions are equipped
+           * and ensures only one unique item can be equipped. If there are too many items equipped 
+           * of a specific type the last added item is removed.
+           */
           for(int i = 0; i < ItemObjectListView.getItems().size(); i++) {
         	  if (ItemObjectListView.getItems().get(i).getItemType() == "Weapon") {
         		  if (weaponCount < 2) {
@@ -2767,6 +2798,11 @@ public class InventoryController extends GameController{
           }
           
         //Listview "un-equipping"
+          /**
+           * this code unequips items that are clicked on in the displayed list. Whichever index is clicked is removed
+           * from the string and item object list views. The label is then set to opacity
+           * 0 if it was displayed
+           */
           StringEquippedListView.setOnMouseClicked((event) ->  {
         	  int unEquipIndex = StringEquippedListView.getSelectionModel().getSelectedIndex();
         	  if (unEquipIndex != -1) {
@@ -2779,13 +2815,18 @@ public class InventoryController extends GameController{
         	  refresh();
           });
           
+          /**
+           * sets up an ArrayList filled with 5 "empty" slots
+           */
           ArrayList<Item> EquippedArrayList = new ArrayList<Item>();
-          
           for(int i = 0; i < 5;i++) {
           	EquippedArrayList.add(Empty);
           }
           
-          
+          /**
+           * The code below rearranges the string and item object list views. This is for formatting the arrayList 
+           * later. This is important for setting the equippedList for other controller classes.
+           */
           for(int i = 0; i < ItemObjectListView.getItems().size();i++) {
           	if (ItemObjectListView.getItems().get(i).getItemType() == "Armor") {
           		if (EquippedArrayList.get(2) == Empty && EquippedArrayList.get(2) != ItemObjectListView.getItems().get(i)) {
