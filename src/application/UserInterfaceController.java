@@ -17,7 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Item;
-import model.Map;
 import model.Player;
 import model.Userinterface;
 
@@ -110,15 +109,10 @@ public class UserInterfaceController extends GameController {
     
     @FXML
     private ImageView logoImageView;
-    
-    @FXML 
-    private Label currentMapLevelLabel;
 
 	@FXML 
 	void initialize() {
 		
-		// Image img = new Image("resource/Bonfire.png");
-		// circleLogo.setFill(new ImagePattern(img));
 		
 		for(int i=0; i < weaponsEquipped.length; i++) {
 			
@@ -201,7 +195,6 @@ public class UserInterfaceController extends GameController {
 			this.currentPlayerLevel = currentPlayer.getLevel();
 			this.currentPlayer = currentPlayer;
 			
-	
 	    }
 	
 	/**
@@ -233,9 +226,6 @@ public class UserInterfaceController extends GameController {
 	@Override
 	public void refresh() {
 		
-		//DEBUGGING PURPOSES
-		System.out.println("UIupdates :" + counter + "s");
-		
 		// TODO Auto-generated method stub
 		
 		for(int i=0; i < weaponsEquipped.length; i++) {
@@ -243,9 +233,7 @@ public class UserInterfaceController extends GameController {
 			weaponsEquipped[i] =  getEquippedList()[i].getName();
 			
 		}
-		
-
-		
+	
 		uiInitializer(getPlayer());
 		this.gameUI.setPlayer((getPlayer()));
 		getPlayer().setName(StartController.getName());
@@ -257,7 +245,6 @@ public class UserInterfaceController extends GameController {
 		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
 		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
 		playerXPLabel.setText(Integer.toString(this.currentPlayerXP));
-		currentMapLevelLabel.setText("Map Level: " + Integer.toString(Map.getLevel()));
 		
 		if(!(weaponsEquipped[0] == "Empty"))
 			wieldedWeaponLabel.setText(weaponsEquipped[0]);
@@ -265,8 +252,7 @@ public class UserInterfaceController extends GameController {
 			wieldedWeaponLabel.setText("No Weapon Selected");
 		}
 		
-		//DEBUGGING PURPOSES
-		counter++;
+	
 	}
 
 }
