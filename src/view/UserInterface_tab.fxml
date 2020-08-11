@@ -14,7 +14,7 @@
 
 <Pane maxHeight="-Infinity" prefHeight="800.0" prefWidth="404.0" style="-fx-background-color: #E0F8D0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserInterfaceController">
    <children>
-      <GridPane fx:id="circleLogo" layoutX="2.0" layoutY="192.0" prefHeight="291.0" prefWidth="400.0" vgap="50.0">
+      <GridPane fx:id="circleLogo" layoutX="22.0" layoutY="192.0" prefHeight="291.0" prefWidth="400.0" vgap="50.0">
          <children>
             <Label fx:id="playerID" style="-fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Player:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -96,6 +96,6 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="logoImageView" fitHeight="110.0" fitWidth="156.0" layoutX="118.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoImageView" fitHeight="110.0" fitWidth="156.0" layoutX="151.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
