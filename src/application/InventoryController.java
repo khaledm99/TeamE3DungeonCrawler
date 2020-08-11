@@ -703,7 +703,9 @@ public class InventoryController extends GameController{
         	refresh();
   	     });
         
+        // Certain text and images pop up when mouse hovers over this area. This code is repeated for the different areas below. (Slots 0 to 19)
         Slot0.setOnMouseEntered((event) -> {
+        	// Searches for the file name to see if it exists in the resource folder. If it doesn't exist, then it will use a default image file (question mark).
         	try {
         		File file = new File(p1.getInvList()[0].getImagePath());
         		boolean exists = file.isFile();
@@ -734,8 +736,9 @@ public class InventoryController extends GameController{
         		} else {
         			throw new FileNotFoundException();
         		}
+        		// If image file is null, it will catch this error and use default image file.
         	} catch (NullPointerException e) {
-        		e.printStackTrace();
+        		 
         		File file = new File("resource/defaultImage.png");
     			Image slot0Image = new Image(file.toURI().toString());
     				if (Slot0.getText() != "Empty") {
@@ -761,8 +764,9 @@ public class InventoryController extends GameController{
             		
             	}
 
+    				// If image file is misspelled or does not exist in the resource folder, it will catch this error and use default image file.
         	} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				 
 				File file = new File("resource/defaultImage.png");
     			Image slot0Image = new Image(file.toURI().toString());
     				if (Slot0.getText() != "Empty") {
@@ -951,7 +955,7 @@ public class InventoryController extends GameController{
           		}
  
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
                   	Image slot2Image = new Image(file.toURI().toString());
                   	if (Slot2.getText() != "Empty") {
@@ -976,7 +980,7 @@ public class InventoryController extends GameController{
                   		}
                 	}	
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
           		  Image slot2Image = new Image(file.toURI().toString());
           	if (Slot2.getText() != "Empty") {
@@ -1054,7 +1058,7 @@ public class InventoryController extends GameController{
           			throw new FileNotFoundException();
           		}
         	} catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
         		  File file = new File("resource/defaultImage.png");
               	Image slot3Image = new Image(file.toURI().toString());
             	if (Slot3.getText() != "Empty") {
@@ -1079,7 +1083,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	} catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
         		  File file = new File("resource/defaultImage.png");
               	Image slot3Image = new Image(file.toURI().toString());
             	if (Slot3.getText() != "Empty") {
@@ -1158,7 +1162,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch(NullPointerException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
               	Image slot4Image = new Image(file.toURI().toString());
               	if (Slot4.getText() != "Empty") {
@@ -1183,7 +1187,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	  } catch(FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
                 	Image slot4Image = new Image(file.toURI().toString());
                 	if (Slot4.getText() != "Empty") {
@@ -1262,7 +1266,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  }  catch(NullPointerException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
               	Image slot5Image = new Image(file.toURI().toString());
               	if (Slot5.getText() != "Empty") {
@@ -1287,7 +1291,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
           		  File file = new File("resource/defaultImage.png");
                 	Image slot5Image = new Image(file.toURI().toString());
                 	if (Slot5.getText() != "Empty") {
@@ -1366,7 +1370,7 @@ public class InventoryController extends GameController{
           			throw new FileNotFoundException();
           		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
           		  	File file = new File("resource/defaultImage.png");
                   	Image slot6Image = new Image(file.toURI().toString());
                   	if (Slot6.getText() != "Empty") {
@@ -1391,7 +1395,7 @@ public class InventoryController extends GameController{
                   		}
                 	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
         		  	File file = new File("resource/defaultImage.png");
                   	Image slot6Image = new Image(file.toURI().toString());
                   	if (Slot6.getText() != "Empty") {
@@ -1470,7 +1474,7 @@ public class InventoryController extends GameController{
           			throw new FileNotFoundException();
           		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	File file = new File("resource/defaultImage.png");
                   	Image slot7Image = new Image(file.toURI().toString());
                   	if (Slot7.getText() != "Empty") {
@@ -1495,7 +1499,7 @@ public class InventoryController extends GameController{
                   		}
                 	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	File file = new File("resource/defaultImage.png");
               	Image slot7Image = new Image(file.toURI().toString());
               	if (Slot7.getText() != "Empty") {
@@ -1573,7 +1577,7 @@ public class InventoryController extends GameController{
             		throw new FileNotFoundException();
             	}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	File file = new File("resource/defaultImage.png");
         		  Image slot8Image = new Image(file.toURI().toString());
                 	if (Slot8.getText() != "Empty") {
@@ -1598,7 +1602,7 @@ public class InventoryController extends GameController{
                   		}
                   	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	File file = new File("resource/defaultImage.png");
         		  Image slot8Image = new Image(file.toURI().toString());
                 	if (Slot8.getText() != "Empty") {
@@ -1677,7 +1681,7 @@ public class InventoryController extends GameController{
           			throw new FileNotFoundException();
           		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
         		  	File file = new File("resource/defaultImage.png");
                 	Image slot9Image = new Image(file.toURI().toString());
                 	if (Slot9.getText() != "Empty") {
@@ -1702,7 +1706,7 @@ public class InventoryController extends GameController{
                   		}
                 	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	File file = new File("resource/defaultImage.png");
               	Image slot9Image = new Image(file.toURI().toString());
               	if (Slot9.getText() != "Empty") {
@@ -1781,7 +1785,7 @@ public class InventoryController extends GameController{
           			throw new FileNotFoundException();
           		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	  Image slot10Image = new Image(file.toURI().toString());
       		  	if (Slot10.getText() != "Empty") {
@@ -1806,7 +1810,7 @@ public class InventoryController extends GameController{
               		}
             	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	  Image slot10Image = new Image(file.toURI().toString());
       		  	if (Slot10.getText() != "Empty") {
@@ -1883,7 +1887,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
                 	Image slot11Image = new Image(file.toURI().toString());
                 	if (Slot11.getText() != "Empty") {
@@ -1908,7 +1912,7 @@ public class InventoryController extends GameController{
                   		}
                   	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
                 	Image slot11Image = new Image(file.toURI().toString());
                 	if (Slot11.getText() != "Empty") {
@@ -1987,7 +1991,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
                 	Image slot12Image = new Image(file.toURI().toString());
                 	if (Slot12.getText() != "Empty") {
@@ -2013,7 +2017,7 @@ public class InventoryController extends GameController{
                 		}
                 	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
                 	Image slot12Image = new Image(file.toURI().toString());
                 	if (Slot12.getText() != "Empty") {
@@ -2092,7 +2096,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot13Image = new Image(file.toURI().toString());
               	if (Slot13.getText() != "Empty") {
@@ -2117,7 +2121,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot13Image = new Image(file.toURI().toString());
               	if (Slot13.getText() != "Empty") {
@@ -2195,7 +2199,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot14Image = new Image(file.toURI().toString());
               	if (Slot14.getText() != "Empty") {
@@ -2220,7 +2224,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot14Image = new Image(file.toURI().toString());
               	if (Slot14.getText() != "Empty") {
@@ -2298,7 +2302,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot15Image = new Image(file.toURI().toString());
               	if (Slot15.getText() != "Empty") {
@@ -2323,7 +2327,7 @@ public class InventoryController extends GameController{
               		}
               	}	
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot15Image = new Image(file.toURI().toString());
               	if (Slot15.getText() != "Empty") {
@@ -2408,7 +2412,7 @@ public class InventoryController extends GameController{
             			throw new FileNotFoundException();
             		}
         	  } catch (NullPointerException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot16Image = new Image(file.toURI().toString());
               	if (Slot16.getText() != "Empty") {
@@ -2433,7 +2437,7 @@ public class InventoryController extends GameController{
               		}
               	}
         	  } catch (FileNotFoundException e) {
-        		  e.printStackTrace();
+        		   
       		  	  File file = new File("resource/defaultImage.png");
       		  	Image slot16Image = new Image(file.toURI().toString());
               	if (Slot16.getText() != "Empty") {

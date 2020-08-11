@@ -15,39 +15,39 @@ public class Inventory {
 	//The following are various items to be picked up in-game
 	private static Item Empty = new Item();
 
-	public Key getSilverKey() {
+	public static Key getSilverKey() {
 		return new Key("Silver Key", 1, 1, "resource/RandomKey1.png");
 	}
-	public Key getGoldKey() {
+	public static Key getGoldKey() {
 		return new Key("Gold Key", 2, 1, "resource/RandomKey2.png");
 	}
 	
-	public Key getCrestOfArtorias() {
+	public static Key getCrestOfArtorias() {
 		return new Key("Crest of Artorias", 3, 1, "resource/CrestOfArtorias.png");
 	}
 	
-	public HpPotion getHPUltraPotion() {
-		return new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
+	public static HpPotion getHPUltraPotion() {
+		return new HpPotion("Ultra HP Potion", 20, 1, "resource/EstusFlask.png");
 	}
-	public StamPotion getUltraStaminaPotion() {
-		return new StamPotion("Ultra Stamina Potion", 6, 1, "resource/UltraStaminaPotion.png");
+	public static StamPotion getUltraStaminaPotion() {
+		return new StamPotion("Ultra Stamina Potion", 6, 1, "resource/GreenBlossom.png");
 	}
 	public Armor getArmorScraps() {
 		return new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
 	}
-	public Armor getRustyIronArmor() {
+	public static Armor getRustyIronArmor() {
 		return new Armor("Rusty Iron Armor", 10, 10, "resource/RustyArmor.png");
 	}
 	public static Armor getShinyIronArmor() {
 		return new Armor("Shiny Iron Armor", 15, 20, "resource/ShinyArmor.png");
 	}
-	public StamPotion getStaminaPotion() {
+	public static StamPotion getStaminaPotion() {
 		return new StamPotion("Stamina Potion", 4, 1, "resource/StaminaPotion.png");
 	}
-	public HpPotion getHPPotion() {
+	public static HpPotion getHPPotion() {
 		return new HpPotion("HP Potion", 10, 1, "resource/HPPotion.png");
 	}
-	public Armor getLeatherArmor()
+	public static Armor getLeatherArmor()
 	{
 		return new Armor("Leather Armor", 4, 10, "resource/LeatherArmor.png");
 	}
