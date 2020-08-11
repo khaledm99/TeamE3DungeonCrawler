@@ -29,8 +29,9 @@ public class Main {
 		Player player = new Player(6,8,"Player", false);
 		
 		// Creates a new enemy object and sets its stats
-		Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
+		//Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
 		
+		Enemy[] enemies = {new Enemy(12,3,1,"Skeleton"), new Enemy(11,6,2,"Hollow Soldier")};
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
@@ -53,7 +54,7 @@ public class Main {
 		String playerInput = "";
 		
 		// Renders the map and prompts for user input
-		String testmap = map.render(player, skeletonOne);
+		String testmap = map.render(player, Enemy.chooseEnemy(enemies, map));
 		//System.out.println(map.getName());
 		System.out.println(testmap);
 		System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
@@ -70,7 +71,7 @@ public class Main {
 				System.out.println("Type anything to return: ");
 				inputScanner.nextLine();
 				playerStats.clearConsole();
-				System.out.println(map.render(player, skeletonOne));
+				System.out.println(map.render(player, Enemy.chooseEnemy(enemies, map)));
 				System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
@@ -126,7 +127,7 @@ public class Main {
 					}
 					
 				}
-				System.out.println(map.render(player, skeletonOne));
+				System.out.println(map.render(player, Enemy.chooseEnemy(enemies, map)));
 				System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 				playerInput = inputScanner.nextLine();
 				continue;
@@ -146,11 +147,11 @@ public class Main {
 				if (exists == 0) {
 					System.out.println("Nothing to use...");
 				}
-				System.out.println(map.render(player, skeletonOne));
+				System.out.println(map.render(player, Enemy.chooseEnemy(enemies, map)));
 			}
 			else if (playerInput.equals("up") || playerInput.equals("down") || playerInput.equals("left") || playerInput.equals("right") || playerInput.equals("use") ) {
 				playerStats.clearConsole();
-				testmap = map.renderNext(player, skeletonOne, playerInput, playerInv); 
+				testmap = map.renderNext(player, Enemy.chooseEnemy(enemies, map), playerInput, playerInv); 
 				System.out.println(testmap);
 			}
 			

@@ -24,7 +24,7 @@ public class GuiMain extends Application {
 		
 	private static Inventory p1Inventory = new Inventory(player.getName());
 	
-	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, p1Inventory.getRustySword()), new Chest("Chest One", 0, 2, 1, 1, p1Inventory.getSilverKey())};
+	private static WorldItem[] worldItems = {new Door("Door One", 1, 1, 5, 0, "resource/test2.txt"), new Chest("Chest Two", 0, 2, 18, 10, p1Inventory.getRustySword()), new Chest("Chest One", 0, 1, 1, 1, p1Inventory.getSilverKey())};
 	
 	private static Item[] p1EquippedList;
 	
@@ -32,7 +32,11 @@ public class GuiMain extends Application {
 	
 	private static Userinterface playerStats = new Userinterface(player);
 	
-	private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
+	//private static Enemy skeletonOne = new Enemy(12,3,1,"Skeleton"); 
+	
+	private static Enemy[] enemies = {new Enemy(12,3,1,"Skeleton"), new Enemy(11,6,2,"Hollow Soldier")};
+	
+	
 	
 	private static Boolean onEnemy = false;
 	
@@ -43,15 +47,15 @@ public class GuiMain extends Application {
 	}
 	
 	public static String getRender(Map torender) {
-		return torender.render(player, skeletonOne);
+		return torender.render(player, Enemy.chooseEnemy(enemies, map));
 	}
 	
 	public static String getNextRender(String direction) {
-		return map.renderNext(player, skeletonOne, direction, p1Inventory);
+		return map.renderNext(player, Enemy.chooseEnemy(enemies, map), direction, p1Inventory);
 	}
 	
 	public static Enemy getEnemy() {
-		return skeletonOne;
+		return Enemy.chooseEnemy(enemies, map);
 	}
 	
 	public static Map getMap() {

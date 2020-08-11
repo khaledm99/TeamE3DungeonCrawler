@@ -47,6 +47,15 @@ public class Enemy extends Entity {
 		this.setDropItem(Inventory.getIronSword());
 	}
 	
+	public static Enemy chooseEnemy(Enemy[] enemies, Map map) {
+		for (int i = 0; i < enemies.length; i++) {
+			if (enemies[i].getMapLevel() == map.getLevel()) {
+				return enemies[i];
+			}
+		}
+		return enemies[0];
+	}
+	
 	//Getter for dropItem
 	public Item getDropItem() {
 		return dropItem;
