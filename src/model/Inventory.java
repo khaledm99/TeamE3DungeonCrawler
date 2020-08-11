@@ -27,10 +27,10 @@ public class Inventory {
 	}
 	
 	public static HpPotion getHPUltraPotion() {
-		return new HpPotion("Ultra HP Potion", 20, 1, "resource/UltraHPPotion.png");
+		return new HpPotion("Ultra HP Potion", 20, 1, "resource/EstusFlask.png");
 	}
 	public static StamPotion getUltraStaminaPotion() {
-		return new StamPotion("Ultra Stamina Potion", 6, 1, "resource/UltraStaminaPotion.png");
+		return new StamPotion("Ultra Stamina Potion", 6, 1, "resource/GreenBlossom.png");
 	}
 	public Armor getArmorScraps() {
 		return new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
