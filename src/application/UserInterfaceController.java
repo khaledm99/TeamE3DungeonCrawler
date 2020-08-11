@@ -31,6 +31,9 @@ import model.Userinterface;
  * Description:	This class functions as the userinterface GUI controller. As inputs it takes the current players coins,
  * 				health, xp, killcount and level from the 'Player' class and produces a visual representation
  * 				of the stats and current progress in the game at current point of time.
+ * 				
+ * 				NOTE: at this time the stats does not update in current game time due to refresh issues (this will be addressed in the
+ * 				final iteration)  
  * 
  */
 
@@ -110,7 +113,7 @@ public class UserInterfaceController extends GameController {
 	@FXML 
 	void initialize() {
 		
-		//for loop to obtain the main weapon equipped in the inventory list
+		
 		for(int i=0; i < weaponsEquipped.length; i++) {
 			
 			weaponsEquipped[i] =  getEquippedList()[i].getName();
@@ -195,7 +198,7 @@ public class UserInterfaceController extends GameController {
 	    }
 	
 	/**
-	 * initializeScheduler Method. Method which initializes the scheduler to periodically the stats update method every 1 second
+	 * initializeScheduler Method. Method which initializes the scheduler used to call stats update method recurrently ingame
 	 */
 	private void initializeScheduler() {
 		executorService = Executors.newSingleThreadScheduledExecutor();
@@ -204,7 +207,7 @@ public class UserInterfaceController extends GameController {
 	}
 	
 	/**
-	 * loadData method. Method which executes the period command
+	 * loadData method. Method which executes the recurrent stats updates
 	 */
 	private void loadData() {
 		
@@ -217,7 +220,8 @@ public class UserInterfaceController extends GameController {
 	}
 	
 	/**
-	 * refresh method. This method is called upon when updating the player stats. 
+	 * refresh method. This method is called upon when updating the player stats. For the next iteration we will be implementing
+	 * this method more actively in order to update the players stats in real time.
 	 */
 	@Override
 	public void refresh() {

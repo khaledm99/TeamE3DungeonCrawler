@@ -1,3 +1,13 @@
+/**
+ * Classname: SpriteAnimation
+ * 
+ * Version: 0
+ * 
+ * Author: Khaled Mograbee
+ * 
+ * Description: Handles animation settings in GUI start screen
+ *
+ */
 package application;
 
 import javafx.animation.Interpolator;
@@ -8,16 +18,17 @@ import javafx.util.Duration;
 
 public class SpriteAnimation extends Transition{
 	
-	private final ImageView imageView;
-    private final int count; 
-    private final int columns;
-    private final int offsetX; 
-    private final int offsetY;
-    private final int width;
-    private final int height; 
+	private final ImageView imageView; // ImageView holding sprite to be animated
+    private final int count; // Number of frames
+    private final int columns; // Columns in sprite sheet
+    private final int offsetX; // Offset from vertical edge of sprite sheet
+    private final int offsetY; // Offset from horizontal edge of sprite sheet
+    private final int width; // Width of sprite
+    private final int height; // Height of sprite
 
     private int lastIndex;
 	
+    // SpriteAnimation Constructor
     public SpriteAnimation(
             ImageView imageView, 
             Duration duration, 

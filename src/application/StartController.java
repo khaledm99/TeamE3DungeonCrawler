@@ -1,3 +1,14 @@
+/**
+ * Classname: StartController
+ * 
+ * Version: 0
+ * 
+ * Author: Khaled Mograbee
+ * 
+ * Description: Controls start screen in GUI version. Has animated intro and allows
+ * player to enter a name.
+ *
+ */
 package application;
 
 import javafx.animation.Animation;
@@ -20,8 +31,9 @@ import javafx.animation.Transition;
 
 public class StartController extends GameController{
 
-    private static String name = "Chosen Undead";
+    private static String name = "Chosen Undead"; // Default name
     
+    // Name getter
     public static String getName() {
     	return name;
     }    
@@ -46,27 +58,31 @@ public class StartController extends GameController{
     
     @FXML
     private Label enterLabel;
-
+    
+    // Sets name using text entered in nameField TextField
     @FXML
-    void setName(KeyEvent event) {
+    void setName(KeyEvent event) { 
     	if (!nameField.getText().equals("")) {
     		name = nameField.getText();
     	}
     }
 
+    // Starts the game
     @FXML
-    void startClick(ActionEvent event) {
+    void startClick(ActionEvent event) { 
     	startPane.setOpacity(0);
     	startPane.setMouseTransparent(true);
     }
-
+    
+    // Quits the game
     @FXML
-    void quitClick(ActionEvent event) {
+    void quitClick(ActionEvent event) { 
     	System.exit(0);
     	Stage stage= (Stage)startPane.getScene().getWindow();
     	stage.close();
     }
     
+    // Sets the opacity of label, TextField, and buttons to 100%. For use in intro animation
     private void setOpacity() {
     	startButton.setOpacity(1);
     	quitButton.setOpacity(1);
@@ -74,7 +90,11 @@ public class StartController extends GameController{
     	enterLabel.setOpacity(1);
     }
     
-    
+    /**
+     * initialize method: Sets all elements to 0% opacity and fades in the title and bonfire animation.
+     * After the fade is completed, the label, TextField and buttons pop in. Bonfire animation
+     * loops indefinitely.
+     */
     @FXML
     void initialize() {
     	startButton.setOpacity(0);

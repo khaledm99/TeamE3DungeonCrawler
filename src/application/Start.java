@@ -1,3 +1,14 @@
+/**
+ * Classname: Start
+ * 
+ * Version: 0
+ * 
+ * Author: Khaled Mograbee
+ * 
+ * Description: Start screen for text version. Displays title, exposition text,
+ * and allows the player to choose a name.
+ *
+ */
 package application;
 import java.util.Scanner;
 
@@ -5,10 +16,11 @@ import model.Userinterface;
 
 public class Start {
 
-	private String name = "Chosen Undead";
-	private Userinterface printer = new Userinterface();
-	private Scanner choiceInput = new Scanner(System.in);
+	private String name = "Chosen Undead"; // Default name
+	private Userinterface printer = new Userinterface(); // User interface object to handle the slow text print of the exposition
+	private Scanner choiceInput = new Scanner(System.in); // User input scanner
 	
+	// When called, displays the start screen and runs through it's features.
 	public String startScreen() {
 		System.out.println("---------------------------");
 		System.out.println("TOMB OF THE ABYSSWALKER");

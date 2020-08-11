@@ -1,7 +1,7 @@
 /**
  * Classname: Main
  * 
- * Version: 0
+ * Version: Final
  * 
  * Author: Khaled Mograbee
  * 
@@ -28,17 +28,17 @@ public class Main {
 		// Creates a new player object and sets its stats
 		Player player = new Player(6,8,"Player", false);
 		
-		// Creates a new enemy object and sets its stats
-		//Enemy skeletonOne = new Enemy(12,3,1,"Skeleton");
-		
+		// Creates a list of enemies with stats
 		Enemy[] enemies = {new Enemy(7,1,1,"Hollow Soldier",5,0,Inventory.getIronSword()), 
 					  		new Enemy(7,10,2,"Skeleton",10,1,Inventory.getFlamingSword()),
 					  		new Enemy(12,6,3,"Great Grey Wolf Sif",15,2,Inventory.getShinyIronArmor())
 					  		};
 		
 		Userinterface playerStats = new Userinterface(player); // Creates a new user interface using the player 
-		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
+		Inventory playerInv = new Inventory(player.getName()); //added Character using the player's name set at start with it's default inventory. Change name
 		//to "Xavier" for a fuller inventory XL
+		
+		// List of items that exist in the world, setting relevant data
 		WorldItem[] worldItems = {new Door("Door One", 1, 1, 19, 0, "resource/level2.txt"), 
 														   new Door("Door Two", 3, 2, 13, 0, "resource/level3.txt"),
 														   new Chest("Chest One", 0, 1, 1, 1, Inventory.getSilverKey()),
@@ -55,25 +55,27 @@ public class Main {
 		playerStats.clearConsole();
 
 		Map map = new Map(); // Creates the map
+		
+		// Reads the first level from a text file
 		try {
 			map.readMap("resource/level1.txt", player);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		// Initializes a scanner for player input
 		Scanner inputScanner = new Scanner(System.in);
 		String playerInput = "";
 		
 		// Renders the map and prompts for user input
 		String testmap = map.render(player, Enemy.chooseEnemy(enemies, map));
-		//System.out.println(map.getName());
 		System.out.println(testmap);
 		System.out.println("What would you like to do? (up, down, left, right, use, stats, inventory, quit) ");
 		playerInput = inputScanner.nextLine();
 		playerStats.clearConsole();
 		
 		
-		// This loop either moves the player and re-displays the map, displays the stats window, or quits depending on user input
+		// This loop either moves the player and re-displays the map, displays the stats window, opens the inventory, uses a world item, or quits depending on user input
 		while (!playerInput.equals("quit")) {
 			if (playerInput.equals("stats")) {
 				playerStats.clearConsole();

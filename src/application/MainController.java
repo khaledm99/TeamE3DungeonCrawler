@@ -1,3 +1,14 @@
+/**
+ * Classname: MainController
+ * 
+ * Version: 0
+ * 
+ * Author: Khaled Mograbee
+ * 
+ * Description: Handles controls on the main screen of the game. Handles 
+ * character input for movement, item use, inventory use, and stats view.
+ *
+ */
 package application;
 import java.io.IOException;
 
@@ -17,7 +28,7 @@ public class MainController extends GameController {
 	
 	public Stage stage = new Stage();
 	
-	private WorldItem[] worldItems = GuiMain.getWorldItems();
+	private WorldItem[] worldItems = GuiMain.getWorldItems(); // Retrieves list of world items from GuiMain
 
     private String direction = "";   
     
@@ -43,29 +54,35 @@ public class MainController extends GameController {
     private Button DownButton;
 
     @FXML
-    void DownClick(ActionEvent event) {
+    void DownClick(ActionEvent event) { // Moves player down 
     	direction = "down";
     	refresh();
     }
 
     @FXML
-    void RightClick(ActionEvent event) {
+    void RightClick(ActionEvent event) { // Moves player right
     	direction = "right";
     	refresh();
     }
 
     @FXML
-    void UpClick(ActionEvent event) {
+    void UpClick(ActionEvent event) { // Moves player up
     	direction = "up";
     	refresh();
     }
 
     @FXML
-    void LeftClick(ActionEvent event) {
+    void LeftClick(ActionEvent event) { // Moves player left
     	direction = "left";
     	refresh();
     }
 
+    /**
+     * UseClick Method: Checks if there are world items in any of the four adjacent tiles to the player.
+     * If there is an item, checks if it requires a key. If so, prints "Key Required..." to the event output. 
+     * If no key is required, calls the onUse method on the world item.
+     * @param event
+     */
     @FXML
     void UseClick(ActionEvent event) {
     	int exists = 3;
@@ -93,6 +110,9 @@ public class MainController extends GameController {
     	refresh();
     }
     
+    /**
+     * Initialize method: Sets the button graphics and renders the initial map
+     */
     @FXML
     void initialize() {
     	mapWindow.setEditable(false);
@@ -110,7 +130,12 @@ public class MainController extends GameController {
     	mapWindow.setText(initmap);
     }
     
-	@Override
+	/**
+	 * refresh Method: Called on every button click. Checks if the player is on an enemy, has died,
+	 * or has beaten the game, and displays the relevant screen. Otherwise, renders the next map based on button
+	 * input.
+	 */
+    @Override
 	public void refresh() {	
 		if (getOnEnemy()) {
 			try {

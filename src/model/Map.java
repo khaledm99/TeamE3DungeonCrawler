@@ -13,7 +13,7 @@ import java.io.InputStream;
  * 
  * Author: Khaled Mograbee
  * 
- * Description: Holds map data. Contains methods for displaying the map based on player coordinates as well as re-rendering the map
+ * Description: Holds map data and reads layout from text files. Contains methods for displaying the map based on player coordinates as well as re-rendering the map
  * to reflect player movement as prompted in the main loop.
  *
  */
@@ -38,7 +38,7 @@ public class Map {
 					      {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}
 	};
 	
-	// Creates an enemy for test combat scenario
+	
 	
 	private Combat combat;
 
@@ -61,6 +61,13 @@ public class Map {
 		return this.layout;
 	}
 	
+	/**
+	 * readMap method. Takes a .txt file and reads the room number, width, height, initial player
+	 * coordinates, and layout.
+	 * @param file
+	 * @param player
+	 * @throws IOException
+	 */
 	public void readMap(String file, Player player) throws IOException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		//String is = classloader.getResource(file).getFile();
@@ -105,8 +112,8 @@ public class Map {
 	 * 
 	 * Iterates through the map layout and creates a string
 	 * representing the map. For each cell, checks if there is a player
-	 * or enemy and replaces that cell character with '@' for the player and 
-	 * '$' for an enemy
+	 * or enemy and replaces that cell character with '@' for the player,
+	 * '$' for an enemy, and 'B' for the boss.
 	 */
 	public String render(Player player, Enemy enemy) {
 		String mapStr = "";
@@ -138,6 +145,7 @@ public class Map {
 	 * @param enemy: enemy object to display on map
 	 * @param direction: direction of movement taken from user input
 	 * to reflect player movement on new map render
+	 * @param inv: inventory for use when initializing combat
 	 * @return mapStr: string of the map to be displayed in main
 	 * 
 	 * Description: Functions similarly to the render method, but takes a direction
