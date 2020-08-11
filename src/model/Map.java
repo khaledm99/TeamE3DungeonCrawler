@@ -115,7 +115,7 @@ public class Map {
 				if ((player.getXcoord() == iindex) && (player.getYcoord() == index))
 					mapStr += "@";
 				else if ((enemy.getXcoord() == iindex) && (enemy.getYcoord() == index) && (enemy.isDead() == false))
-					if (enemy.getName().equals("Great Grey Wolf Sif")){
+					if (enemy.getDifficulty() == 2){
 						mapStr += "B";
 					}
 					
@@ -234,10 +234,16 @@ public class Map {
 		for (int index = 0; index < layout.length; index++) {
 			for (int iindex = 0; iindex < layout[index].length; iindex++) {
 				
-				if ((player.getXcoord() == iindex) && (player.getYcoord() == index)) {
-					mapStr += "@";}
-				else if ((enemy.getXcoord() == iindex) && (enemy.getYcoord() == index && (enemy.isDead() == false)))
+				if ((player.getXcoord() == iindex) && (player.getYcoord() == index))
+					mapStr += "@";
+				else if ((enemy.getXcoord() == iindex) && (enemy.getYcoord() == index) && (enemy.isDead() == false))
+					if (enemy.getDifficulty() == 2){
+						mapStr += "B";
+					}
+					
+					else {
 					mapStr += "$";
+					}
 				else {
 
 					mapStr += layout[index][iindex];

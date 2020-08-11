@@ -40,7 +40,7 @@ public class Main {
 		Inventory playerInv = new Inventory(player.getName()); //added Character "player" with it's default inventory. Change name
 		//to "Xavier" for a fuller inventory XL
 		WorldItem[] worldItems = {new Door("Door One", 1, 1, 19, 0, "resource/level2.txt"), 
-														   new Door("Door Two", 3, 1, 13, 0, "resource/level3.txt"),
+														   new Door("Door Two", 3, 2, 13, 0, "resource/level3.txt"),
 														   new Chest("Chest One", 0, 1, 1, 1, Inventory.getSilverKey()),
 														   new Chest("Chest Two", 0, 1, 4, 12, Inventory.getRustyIronArmor()),
 														   new Chest("Chest Three", 0, 1, 24, 6, Inventory.getHPPotion()),
