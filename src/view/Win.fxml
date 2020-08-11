@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WinController">
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #081820;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="843.0" prefWidth="1493.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="WinPane" fitHeight="368.0" fitWidth="635.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@../../../../../YOUWIN.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="50.0" top="200.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button fx:id="WinButton" mnemonicParsing="false" onMouseClicked="#endGame" prefHeight="60.0" prefWidth="148.0" style="-fx-background-color: #E0F8D0; -fx-font-family: &quot;Early GameBoy&quot;; -fx-font-size: 10;" text="Bask In The Glory" wrapText="true">
+                           <VBox.margin>
+                              <Insets left="235.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>
