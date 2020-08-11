@@ -111,7 +111,7 @@ public class CombatController extends GameController {
     	enemyDamage = getEnemy().getDamage();
     	enemyName = getEnemy().getName();
     	playerHP.setProgress(playersRemainingHP / 20.0);
-    	enemyHP.setProgress(enemysRemainingHP / 20.0);
+    	enemyHP.setProgress((float)enemysRemainingHP / getEnemy().getHp());
     	playerStam.setProgress(playersRemainingStamina / 20.0);
     	enemyStam.setProgress(enemysRemainingStamina / 20.0);
     	
@@ -124,7 +124,7 @@ public class CombatController extends GameController {
     public void healPotion(ActionEvent event) {
     	if (hpPotionAmount > 0) {
     		playersRemainingHP += healPotion;
-    		enemysRemainingStamina += 5;
+    		enemysRemainingStamina += 6;
 			hpPotionAmount = 0;
 			if (playersRemainingHP > 20) {
 				playersRemainingHP = 20;
@@ -143,7 +143,7 @@ public class CombatController extends GameController {
     		combatText.setText("You back off to hastily quaff your potion, giving yourself " + stamPotion + " extra stamina regen!\n\nMake your next move...");
     		staminaBuff = stamPotion;
     		staminaDuration = 5;
-    		enemysRemainingStamina += 5;
+    		enemysRemainingStamina += 6;
     		stamPotionAmount = 0;
     		update();
 		
@@ -172,7 +172,7 @@ public class CombatController extends GameController {
     		combatText.setText("The creature lets out a chilling howl that drains your energy and saps your will to live!");
     		playersRemainingStamina = 0;
     		enemysRemainingStamina = getEnemy().getStamina();
-    		playersRemainingHP -= 7;
+    		playersRemainingHP -= 10;
     		
     	} else if (playerMove == 0) {
 			if (enemyMove == 0) {
@@ -256,7 +256,7 @@ public class CombatController extends GameController {
     		enemysRemainingStamina = 20;
     	}
     	playerHP.setProgress(playersRemainingHP / 20.0);
-    	enemyHP.setProgress(enemysRemainingHP / 20.0);
+    	enemyHP.setProgress((float)enemysRemainingHP / getEnemy().getHp());
     	playerStam.setProgress(playersRemainingStamina / 20.0);
     	enemyStam.setProgress(enemysRemainingStamina / 20.0);
     	if (staminaDuration > 0) {

@@ -31,13 +31,13 @@ public class Inventory {
 		return new Armor("Armor Scraps", 2, 10, "resource/ArmorScraps.png");
 	}
 	public Armor getRustyIronArmor() {
-		return new Armor("Rusty Iron Armor", 6, 15, "resource/RustyArmor.png");
+		return new Armor("Rusty Iron Armor", 10, 10, "resource/RustyArmor.png");
 	}
 	public static Armor getShinyIronArmor() {
-		return new Armor("Shiny Iron Armor", 10, 15, "resource/ShinyArmor.png");
+		return new Armor("Shiny Iron Armor", 15, 20, "resource/ShinyArmor.png");
 	}
 	public StamPotion getStaminaPotion() {
-		return new StamPotion("Stamina Potion", 3, 1, "resource/StaminaPotion.png");
+		return new StamPotion("Stamina Potion", 4, 1, "resource/StaminaPotion.png");
 	}
 	public HpPotion getHPPotion() {
 		return new HpPotion("HP Potion", 10, 1, "resource/HPPotion.png");
@@ -56,7 +56,7 @@ public class Inventory {
 	
 	public static Weapon getIronSword()
 	{
-		return new Weapon("Iron Sword",10,20, "resource/IronSword.png");
+		return new Weapon("Iron Sword",10,10, "resource/IronSword.png");
 	}
 	public Weapon getSilverSword()
 	{
@@ -64,7 +64,7 @@ public class Inventory {
 	}
 	public static Weapon getFlamingSword()
 	{
-		return new Weapon("Flaming Sword", 20, 30, "resource/FlamingSword.png");
+		return new Weapon("Flaming Sword", 20, 20, "resource/FlamingSword.png");
 	}
 	public Item getEmpty()
 	{
