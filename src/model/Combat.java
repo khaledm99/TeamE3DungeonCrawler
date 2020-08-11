@@ -88,6 +88,22 @@ public class Combat {
 	public void combatRun(Enemy enemy, Player player, Inventory inv) {
 		
 		consoleClear = new Userinterface();
+		
+		if (inv.getEquippedList()[0] == null) {
+			inv.equipItem(0);
+		}
+		
+		if (inv.getEquippedList()[2] == null) {
+			inv.equipItem(1);
+		}
+		
+		if (inv.getEquippedList()[3] == null) {
+			inv.equipItem(2);
+		}
+		
+		if (inv.getEquippedList()[4] == null) {
+			inv.equipItem(3);
+		}
 		int weaponDamage = inv.getEquippedList()[0].getDamage();
 		String weaponName = inv.getEquippedList()[0].getName();
 		int armourDefence = inv.getEquippedList()[2].getArmorHP();
