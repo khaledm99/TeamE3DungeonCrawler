@@ -1,23 +1,23 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import model.Item;
 import model.Player;
 import model.Userinterface;
+
 
 /**
  * Classname: UserInterfaceController
@@ -56,6 +56,8 @@ public class UserInterfaceController extends GameController {
 	private Userinterface gameUI = new Userinterface();
 	
 	private int counter = 0;
+	
+	private  String [] weaponsEquipped = new String [2];
 	
 	
     @FXML
@@ -100,29 +102,48 @@ public class UserInterfaceController extends GameController {
     @FXML
     private Label playerID;
 
-    @FXML
-    void toggleONProgress(ActionEvent event) {
-
-    }
-
-    @FXML
-    void toggleOFFProgress(ActionEvent event) {
-
-    }
+    @FXML 
+    private Label wieldedWeaponLabel;
     
+   // @FXML 
+   // private Circle circleLogo;
+
+
 	@FXML 
 	void initialize() {
 		
+		// Image img = new Image("resource/Bonfire.png");
+		// circleLogo.setFill(new ImagePattern(img));
+		
+		for(int i=0; i < weaponsEquipped.length; i++) {
+			
+			weaponsEquipped[i] =  getEquippedList()[i].getName();
+			
+		}
+		
 		this.gameUI.setPlayer(getPlayer());
+		
 		initializeScheduler();
+		
 		this.currentPlayerId = getPlayer().getName();
+		
 		playerNameLabel.setText(getPlayer().getName());
-		killCountLabel.setText(Integer.toString(getPlayer().getKillCount()));
-		playerCoinsLabel.setText(Integer.toString(getPlayer().getCoins()));
+		
+		killCountLabel.setText("* " + Integer.toString(getPlayer().getKillCount()));
+		
+		playerCoinsLabel.setText("* " + Integer.toString(getPlayer().getCoins()));
+		
 		playerLvlLabel.setText(Integer.toString(getPlayer().getLevel()));
+		
 		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
+		
 		playerXPLabel.setText(Integer.toString(getPlayer().getXp()));
 		
+		if(!(weaponsEquipped[0] == "Empty"))
+			wieldedWeaponLabel.setText(weaponsEquipped[0].toString());
+		else {
+			wieldedWeaponLabel.setText("No Weapon Selected");
+		}
 		 
 	}
     
@@ -203,19 +224,36 @@ public class UserInterfaceController extends GameController {
 	@Override
 	public void refresh() {
 		
-		
 		//DEBUGGING PURPOSES
 		System.out.println("UIupdates :" + counter + "s");
 		
 		// TODO Auto-generated method stub
 		
+		for(int i=0; i < weaponsEquipped.length; i++) {
+			
+			weaponsEquipped[i] =  getEquippedList()[i].getName();
+			
+		}
+		
+
+		
 		uiInitializer(getPlayer());
 		this.gameUI.setPlayer((getPlayer()));
-		killCountLabel.setText(Integer.toString(this.currentPlayerKillCount));
-		playerCoinsLabel.setText(Integer.toString(this.currentPlayerCoins));
+		getPlayer().setName(StartController.getName());
+		
+		this.currentPlayerId = getPlayer().getName();
+		playerNameLabel.setText(getPlayer().getName());
+		killCountLabel.setText("* " + Integer.toString(this.currentPlayerKillCount));
+		playerCoinsLabel.setText("* " + Integer.toString(this.currentPlayerCoins));
 		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
 		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
 		playerXPLabel.setText(Integer.toString(this.currentPlayerXP));
+		
+		if(!(weaponsEquipped[0] == "Empty"))
+			wieldedWeaponLabel.setText(weaponsEquipped[0]);
+		else {
+			wieldedWeaponLabel.setText("No Weapon Selected");
+		}
 		
 		//DEBUGGING PURPOSES
 		counter++;
