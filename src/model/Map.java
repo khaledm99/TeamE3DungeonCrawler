@@ -22,7 +22,7 @@ public class Map {
 	
 	private int width;
 	private int height;
-	private int floor;
+	private static int floor;
 	// Map layout is stored in a nested array where each "cell" of the map is a single character String, to allow for a working coordinates system.
 	private String[][] layout = { {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
 					      {"#",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","#"},
@@ -53,8 +53,8 @@ public class Map {
 		return this.height;
 	}
 	
-	public int getLevel() {
-		return this.floor;
+	public static int getLevel() {
+		return floor;
 	}
 	
 	public String[][] getLayout() {

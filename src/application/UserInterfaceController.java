@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Item;
+import model.Map;
 import model.Player;
 import model.Userinterface;
 
@@ -109,6 +110,9 @@ public class UserInterfaceController extends GameController {
     
     @FXML
     private ImageView logoImageView;
+    
+    @FXML 
+    private Label currentMapLevelLabel;
 
 	@FXML 
 	void initialize() {
@@ -253,6 +257,7 @@ public class UserInterfaceController extends GameController {
 		playerLvlLabel.setText(Integer.toString(this.currentPlayerLevel));
 		healthBarLabel.setText(replaceHealthBarCharacters(gameUI.healthBarStringCreator()));
 		playerXPLabel.setText(Integer.toString(this.currentPlayerXP));
+		currentMapLevelLabel.setText("Map Level: " + Integer.toString(Map.getLevel()));
 		
 		if(!(weaponsEquipped[0] == "Empty"))
 			wieldedWeaponLabel.setText(weaponsEquipped[0]);
